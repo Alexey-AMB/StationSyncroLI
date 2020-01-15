@@ -1,0 +1,29 @@
+﻿<Properties StartupConfiguration="{77C02630-4935-4BE5-8CCA-008BD5FEFB63}|Default">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SSLI_Statistic/Statistic.cs">
+    <Files>
+      <File FileName="SSLI_Statistic/Statistic.cs" Line="1" Column="1" />
+      <File FileName="SSLI_TermExchange/ClassFileCopy.cs" Line="17" Column="59" />
+      <File FileName="SSLI_WEBServer/WEBServer.cs" Line="19" Column="1" />
+      <File FileName="SSLI_Utils/Utils.cs" Line="6" Column="38" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="StationSyncroLI" expanded="True">
+            <Node name="SSLI_Statistic" expanded="True">
+              <Node name="Statistic.cs" selected="True" />
+            </Node>
+            <Node name="StationSyncroLI" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.StationSyncroLI PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore />
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>
