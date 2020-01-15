@@ -46,15 +46,15 @@ namespace StationSyncroCE
                 }
             }
 
-            sExecutePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            sExecutePath = (System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase)).Replace("file:", "");
 
-            Utils.CutLogFile(sExecutePath + "//" + Utils.sFileNameLog, sExecutePath, 2000);
+            Utils.CutLogFile(sExecutePath + Utils.pd + Utils.sFileNameLog, sExecutePath, 2000);
 
-            //!!!if (!Directory.Exists("//Documents and Settings//SSCE")) Directory.CreateDirectory("//Documents and Settings//SSCE");
+            if (!Directory.Exists(".//Documents and Settings//SSCE")) Directory.CreateDirectory(".//Documents and Settings//SSCE");
 
-            if(FindConfigFile() != null) Utils.LoadInit(sExecutePath + "//" + Utils.sFileNameInit);
+            if(FindConfigFile() != null) Utils.LoadInit(sExecutePath + Utils.pd + Utils.sFileNameInit);
             Utils.sVersionSSCE = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            this.labelVersionOS.Text = "Ver. OS: " + new FileInfo("\\Windows\\nk.exe").CreationTime.ToString("ddMMyyyy");
+            //!!!this.labelVersionOS.Text = "Ver. OS: " + new FileInfo("\\Windows\\nk.exe").CreationTime.ToString("ddMMyyyy");
             if (Utils.bInizialised)
             {
                 try
@@ -68,7 +68,7 @@ namespace StationSyncroCE
                     if (!Directory.Exists(Utils.strConfig.sPathToInBox)) Directory.CreateDirectory(Utils.strConfig.sPathToInBox);
 
                     //int result = Registry.CreateValueDWORD(Registry.HKLM, @"SOFTWARE\AMB InTech\AmbStarter", "AmbAngle", 180);
-                    //result = Registry.CreateValueString(Registry.HKLM, @"SOFTWARE\AMB InTech\AmbStarter", "AutoRunFileName", sExecutePath + "\\" + "StationSyncroCE.exe");
+                    //result = Registry.CreateValueString(Registry.HKLM, @"SOFTWARE\AMB InTech\AmbStarter", "AutoRunFileName", sExecutePath + Utils.pd + "StationSyncroCE.exe");
                     //result = Registry.CreateKey(@"SOFTWARE\AMB InTech\SSCE");
                     //result = Registry.CreateValueString(Registry.HKLM, @"SOFTWARE\AMB InTech\SSCE", "PathToNewSoftSS", Utils.strConfig.sPathToNewSoftSS); //это потом читает стартер
                     //result = Registry.CreateValueString(Registry.HKLM, @"SOFTWARE\AMB InTech\SSCE", "VersionSSCE_Main", Utils.sVersionSSCE);
@@ -88,10 +88,10 @@ namespace StationSyncroCE
                 {
                     try
                     {
-                        if (SSCE.NativeFile.GetFileInfo(fi.FullName) >= SSCE.NativeFile.GetFileInfo(Utils.strConfig.sPathToExecute + "\\" + fi.Name))
+                        if (SSCE.NativeFile.GetFileInfo(fi.FullName) >= SSCE.NativeFile.GetFileInfo(Utils.strConfig.sPathToExecute + Utils.pd + fi.Name))
                         {
-                            if (File.Exists(Utils.strConfig.sPathToExecute + "\\" + fi.Name)) File.Delete(Utils.strConfig.sPathToExecute + "\\" + fi.Name);
-                            File.Copy(fi.FullName, Utils.strConfig.sPathToExecute + "\\" + fi.Name);
+                            if (File.Exists(Utils.strConfig.sPathToExecute + Utils.pd + fi.Name)) File.Delete(Utils.strConfig.sPathToExecute + Utils.pd + fi.Name);
+                            File.Copy(fi.FullName, Utils.strConfig.sPathToExecute + Utils.pd + fi.Name);
                         }
 
                         File.Delete(fi.FullName);
@@ -161,8 +161,8 @@ namespace StationSyncroCE
             Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToInBox);
 
             Utils.SaveInit();
-            Utils.SaveInit("\\Storage Card" + "\\" + Utils.sFileNameInit + ".bak");
-            Utils.SaveInit("\\Documents and Settings\\SSCE" + "\\" + Utils.sFileNameInit + ".bak");
+            Utils.SaveInit("\\Storage Card" + Utils.pd + Utils.sFileNameInit + ".bak");
+            Utils.SaveInit("\\Documents and Settings\\SSCE" + Utils.pd + Utils.sFileNameInit + ".bak");
 
             this.timer1.Enabled = false;
             this.timer4.Enabled = false;
@@ -275,8 +275,8 @@ namespace StationSyncroCE
             if (DateTime.Now > dtSaveConfig)
             {
                 dtSaveConfig = DateTime.Now.AddDays(7);
-                Utils.SaveInit("\\Storage Card" + "\\" + Utils.sFileNameInit + ".bak");
-                Utils.SaveInit("\\Documents and Settings\\SSCE" + "\\" + Utils.sFileNameInit + ".bak");
+                Utils.SaveInit("\\Storage Card" + Utils.pd + Utils.sFileNameInit + ".bak");
+                Utils.SaveInit("\\Documents and Settings\\SSCE" + Utils.pd + Utils.sFileNameInit + ".bak");
             }
         }
 
@@ -519,8 +519,8 @@ namespace StationSyncroCE
             Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToNewSoftSS);
             Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToInBox);
 
-            Utils.SaveInit("\\Storage Card" + "\\" + Utils.sFileNameInit + ".bak");
-            Utils.SaveInit("\\Documents and Settings\\SSCE" + "\\" + Utils.sFileNameInit + ".bak");
+            Utils.SaveInit("\\Storage Card" + Utils.pd + Utils.sFileNameInit + ".bak");
+            Utils.SaveInit("\\Documents and Settings\\SSCE" + Utils.pd + Utils.sFileNameInit + ".bak");
 
             for (int i = 0; i < arThreadRS.Length; i++)
             {
@@ -534,37 +534,37 @@ namespace StationSyncroCE
             {
                 string sRet = null;
 
-                if (File.Exists(sExecutePath + "\\" + Utils.sFileNameInit))
+                if (File.Exists(sExecutePath + Utils.pd + Utils.sFileNameInit))
                 {
                     stSSConfig stC = new stSSConfig();
-                    if (Utils.LoadInitFile(sExecutePath + "\\" + Utils.sFileNameInit, ref stC))
+                    if (Utils.LoadInitFile(sExecutePath + Utils.pd + Utils.sFileNameInit, ref stC))
                     {
-                        sRet = sExecutePath + "\\" + Utils.sFileNameInit;
-                        Utils.WriteDebugString(sExecutePath, " #FindConfigFile: config use - " + sExecutePath + "\\" + Utils.sFileNameInit);
+                        sRet = sExecutePath + Utils.pd + Utils.sFileNameInit;
+                        Utils.WriteDebugString(sExecutePath, " #FindConfigFile: config use - " + sExecutePath + Utils.pd + Utils.sFileNameInit);
                         return sRet;
                     }
                 }
-                if (File.Exists("\\Storage Card" + "\\" + Utils.sFileNameInit + ".bak"))
+                if (File.Exists("\\Storage Card" + Utils.pd + Utils.sFileNameInit + ".bak"))
                 {
                     stSSConfig stC = new stSSConfig();
-                    if (Utils.LoadInitFile("\\Storage Card" + "\\" + Utils.sFileNameInit + ".bak", ref stC))
+                    if (Utils.LoadInitFile("\\Storage Card" + Utils.pd + Utils.sFileNameInit + ".bak", ref stC))
                     {
-                        if (File.Exists(sExecutePath + "\\" + Utils.sFileNameInit)) File.Delete(sExecutePath + "\\" + Utils.sFileNameInit);
-                        File.Copy("\\Storage Card" + "\\" + Utils.sFileNameInit + ".bak", sExecutePath + "\\" + Utils.sFileNameInit);
-                        sRet = sExecutePath + "\\" + Utils.sFileNameInit;
-                        Utils.WriteDebugString(sExecutePath, " #FindConfigFile: config use - " + "\\Storage Card" + "\\" + Utils.sFileNameInit + ".bak");
+                        if (File.Exists(sExecutePath + Utils.pd + Utils.sFileNameInit)) File.Delete(sExecutePath + Utils.pd + Utils.sFileNameInit);
+                        File.Copy("\\Storage Card" + Utils.pd + Utils.sFileNameInit + ".bak", sExecutePath + Utils.pd + Utils.sFileNameInit);
+                        sRet = sExecutePath + Utils.pd + Utils.sFileNameInit;
+                        Utils.WriteDebugString(sExecutePath, " #FindConfigFile: config use - " + "\\Storage Card" + Utils.pd + Utils.sFileNameInit + ".bak");
                         return sRet;
                     }
                 }
-                if (File.Exists("\\Documents and Settings\\SSCE" + "\\" + Utils.sFileNameInit + ".bak"))
+                if (File.Exists("\\Documents and Settings\\SSCE" + Utils.pd + Utils.sFileNameInit + ".bak"))
                 {
                     stSSConfig stC = new stSSConfig();
-                    if (Utils.LoadInitFile("\\Documents and Settings\\SSCE" + "\\" + Utils.sFileNameInit + ".bak", ref stC))
+                    if (Utils.LoadInitFile("\\Documents and Settings\\SSCE" + Utils.pd + Utils.sFileNameInit + ".bak", ref stC))
                     {
-                        if (File.Exists(sExecutePath + "\\" + Utils.sFileNameInit)) File.Delete(sExecutePath + "\\" + Utils.sFileNameInit);
-                        File.Copy("\\Documents and Settings\\SSCE" + "\\" + Utils.sFileNameInit + ".bak", sExecutePath + "\\" + Utils.sFileNameInit);
-                        sRet = sExecutePath + "\\" + Utils.sFileNameInit;
-                        Utils.WriteDebugString(sExecutePath, " #FindConfigFile: config use - " + "\\Documents and Settings\\SSCE" + "\\" + Utils.sFileNameInit + ".bak");
+                        if (File.Exists(sExecutePath + Utils.pd + Utils.sFileNameInit)) File.Delete(sExecutePath + Utils.pd + Utils.sFileNameInit);
+                        File.Copy("\\Documents and Settings\\SSCE" + Utils.pd + Utils.sFileNameInit + ".bak", sExecutePath + Utils.pd + Utils.sFileNameInit);
+                        sRet = sExecutePath + Utils.pd + Utils.sFileNameInit;
+                        Utils.WriteDebugString(sExecutePath, " #FindConfigFile: config use - " + "\\Documents and Settings\\SSCE" + Utils.pd + Utils.sFileNameInit + ".bak");
                         return sRet;
                     }
                 }

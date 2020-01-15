@@ -775,6 +775,9 @@ namespace SSCE
         public const string sFileNameProgrammTransfer = "TransferFiles_SSCE.exe";
         public const string sIPLocalRNDIS = "192.168.56.119";// у хоста192.168.56.150, у клиента 192,168,56,119
         public const int iLoacalRNDISPort = 30000;
+
+        public static string pd = Path.DirectorySeparatorChar.ToString();
+
         /// <summary>
         /// Объект для синхронизации работы с файлом конфигурации.
         /// </summary>
@@ -1047,22 +1050,22 @@ namespace SSCE
         {
             string sRet = "";
 
-            Int32 FILE_DEVICE_HAL = 0x00000101;
-            Int32 FILE_ANY_ACCESS = 0x0;
-            Int32 METHOD_BUFFERED = 0x0;
+            //Int32 FILE_DEVICE_HAL = 0x00000101;
+            //Int32 FILE_ANY_ACCESS = 0x0;
+            //Int32 METHOD_BUFFERED = 0x0;
 
-            Int32 IOCTL_HAL_GET_DEVICE_INFO =
-                ((FILE_DEVICE_HAL) << 16) | ((FILE_ANY_ACCESS) << 14)
-                | ((1) << 2) | (METHOD_BUFFERED);
+            //Int32 IOCTL_HAL_GET_DEVICE_INFO =
+            //    ((FILE_DEVICE_HAL) << 16) | ((FILE_ANY_ACCESS) << 14)
+            //    | ((1) << 2) | (METHOD_BUFFERED);
 
-            bool bRetVal = false;
-            UInt32 uSPIValue = 263; //GetUUID
-            UInt32 uBytesReturned = 0;
-            Guid meUUID = new Guid();
-            bRetVal = KernelIoControl(IOCTL_HAL_GET_DEVICE_INFO,
-                   ref uSPIValue, Marshal.SizeOf(uSPIValue), ref meUUID, Marshal.SizeOf(meUUID), ref uBytesReturned);
-            sRet = meUUID.ToString("N");
-            if (bRetVal) return sRet;
+            //bool bRetVal = false;
+            //UInt32 uSPIValue = 263; //GetUUID
+            //UInt32 uBytesReturned = 0;
+            //Guid meUUID = new Guid();
+            //bRetVal = KernelIoControl(IOCTL_HAL_GET_DEVICE_INFO,
+            //       ref uSPIValue, Marshal.SizeOf(uSPIValue), ref meUUID, Marshal.SizeOf(meUUID), ref uBytesReturned);
+            //sRet = meUUID.ToString("N");
+            //if (bRetVal) return sRet;
             return "01020304050607080102030405060708";
         }
         /// <summary>
