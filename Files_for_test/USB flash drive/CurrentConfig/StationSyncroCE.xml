@@ -1,0 +1,94 @@
+<?xml version="1.0"?>
+<stSSConfig xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <sNamePodrazdelenie>ЛУВД Тестовое СЕ v6.0.0.0</sNamePodrazdelenie>
+  <iDebugLevel>2</iDebugLevel>
+  <sTextLastCriticalError />
+  <sTimeLastCriticalError />
+  <sPathToExecute>\Storage Card\SSCE</sPathToExecute>
+  <sPathToFullBase>\Storage Card\FullBase</sPathToFullBase>
+  <sPathToInBox>\Storage Card\InBox</sPathToInBox>
+  <sPathToNewSoftSS>\Storage Card\NewSoft\SS</sPathToNewSoftSS>
+  <sPathToNewSoftTerminal>\Storage Card\NewSoft\Terminal</sPathToNewSoftTerminal>
+  <sPathToOutBox>\Storage Card\OutBox</sPathToOutBox>
+  <sPathToProtocol>\Storage Card\Protocols</sPathToProtocol>
+  <sPathToUpdTerm>\Storage Card\Updates</sPathToUpdTerm>
+  <arsSupportedBases>
+    <string>FED_LICA</string>
+    <string>MESTN_LICA</string>
+    <string>PASSPORT</string>
+  </arsSupportedBases>
+  <arstTasks>
+    <stSSTasks>
+      <iNumStart>1</iNumStart>
+      <sNameTask>SSCE.GetFiles</sNameTask>
+      <sCurrentVersion>6.0.0.0</sCurrentVersion>
+    </stSSTasks>
+    <stSSTasks>
+      <iNumStart>2</iNumStart>
+      <sNameTask>SSCE.TermExchange</sNameTask>
+      <sCurrentVersion>6.0.0.2</sCurrentVersion>
+    </stSSTasks>
+    <stSSTasks>
+      <iNumStart>3</iNumStart>
+      <sNameTask>SSCE.Statistic</sNameTask>
+      <sCurrentVersion>6.0.0.0</sCurrentVersion>
+    </stSSTasks>
+    <stSSTasks>
+      <iNumStart>4</iNumStart>
+      <sNameTask>SSCE.WEBServer</sNameTask>
+      <sCurrentVersion>6.0.0.1</sCurrentVersion>
+    </stSSTasks>
+  </arstTasks>
+  <strMail>
+    <sAdressMailLocal>test@ambintech.ru</sAdressMailLocal>
+    <sAdresServerUVD>test_UVD@ambintech.ru</sAdresServerUVD>
+    <sNameCOMPort>COM1</sNameCOMPort>
+    <sNameDialUp>UVDDIALUP</sNameDialUp>
+    <sUserDialUp>user</sUserDialUp>
+    <sPassDialUp>pass</sPassDialUp>
+    <sPOP3Server />
+    <sUserPOP3 />
+    <sPassPOP3 />
+    <sSMTPServer>10.88.140.83</sSMTPServer>
+    <bUseDialUp>false</bUseDialUp>
+    <sLastRecivedTime>13.01.2011 01:11:07</sLastRecivedTime>
+    <sLastSendedTime>13.01.2011 01:11:10</sLastSendedTime>
+    <iReciveInterval>120</iReciveInterval>
+    <iSendInterval>20</iSendInterval>
+    <sPhoneDialNumber>2236996</sPhoneDialNumber>
+  </strMail>
+  <strStatistic>
+    <sHoursSave>08:30</sHoursSave>
+    <sLastSended>27.01.2011 13:41:45</sLastSended>
+    <sNextSave>28.01.2011</sNextSave>
+    <sPrevionsSave>27.01.2011</sPrevionsSave>
+  </strStatistic>
+  <strGetFiles>
+    <sHoursRecive>18:00</sHoursRecive>
+    <sIPServerUVD>10.88.140.88.</sIPServerUVD>
+    <sPortServerUVD>21</sPortServerUVD>
+    <sFTPUser>anonymous</sFTPUser>
+    <sFTPPass>test@ambintech.ru</sFTPPass>
+    <sFileNameListOnServer>List.xml</sFileNameListOnServer>
+    <sPathOnServerToFullBase>FullBases</sPathOnServerToFullBase>
+    <sPathOnServerToUpdates>Updates\UpdTerm</sPathOnServerToUpdates>
+    <sPathOnServerToNewSoftSS>NewSoft\SSCE</sPathOnServerToNewSoftSS>
+    <sPathOnServerToNewSoftTerm>NewSoft\TerminalT6CE</sPathOnServerToNewSoftTerm>
+    <sLastRecive>23.04.2001 14:20:02</sLastRecive>
+    <sNextRecive>30.07.2001</sNextRecive>
+    <iReciveInterval>10</iReciveInterval>
+    <sNameProtocol>FTP</sNameProtocol>
+  </strGetFiles>
+  <strWebServer>
+    <sWWWrootDir>\Temp</sWWWrootDir>
+    <iPortWWWserver>80</iPortWWWserver>
+  </strWebServer>
+  <strNet>
+    <sIPAdressLocal>192.168.0.118</sIPAdressLocal>
+    <sMask>255.255.255.0</sMask>
+    <sGateway>192.168.0.1</sGateway>
+    <sMAC_hi>4208</sMAC_hi>
+    <sMAC_lo>286228480</sMAC_lo>
+  </strNet>
+  <sPassword>111111</sPassword>
+</stSSConfig>

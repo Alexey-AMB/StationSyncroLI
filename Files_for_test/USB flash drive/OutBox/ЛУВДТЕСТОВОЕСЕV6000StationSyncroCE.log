@@ -1,0 +1,614 @@
+26.10.2010 12:14:02 -GetFilesService- PrepareAndSendMail.Delete(1):OK - file: \Storage Card\OutBox\МУРМАНСКИЙЛОВДТStationSyncroCE.log
+26.10.2010 12:14:03 -GetFilesService- PrepareAndSendMail.Send(2):OK - file: SSStat_МУРМАНСКИЙЛОВДТ_26102010.xml
+26.10.2010 12:14:03 -GetFilesService- AddLastSendedInfo:OK
+26.10.2010 12:14:03 -GetFilesService- PrepareAndSendMail.Delete(2):OK - file: \Storage Card\OutBox\SSStat_МУРМАНСКИЙЛОВДТ_26102010.xml
+26.10.2010 13:54:00 -GetFilesService- GetUpdates.Entrance:OK
+26.10.2010 13:54:00 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+26.10.2010 13:54:00 -GetFilesService- GetNewSoft.Entrance:OK
+26.10.2010 13:54:00 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+26.10.2010 13:54:00 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+26.10.2010 13:54:00 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+26.10.2010 13:54:00 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+26.10.2010 13:54:00 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+26.10.2010 13:54:00 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+26.10.2010 13:54:01 -GetFilesService- GetNewSoft.Exit:OK
+26.10.2010 15:54:02 -GetFilesService- GetUpdates.Entrance:OK
+26.10.2010 15:54:02 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+26.10.2010 15:54:02 -GetFilesService- GetNewSoft.Entrance:OK
+26.10.2010 15:54:02 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+26.10.2010 15:54:02 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+26.10.2010 15:54:02 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+26.10.2010 15:54:02 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+26.10.2010 15:54:02 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+26.10.2010 15:54:02 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+26.10.2010 15:54:02 -GetFilesService- GetNewSoft.Exit:OK
+26.10.2010 17:54:03 -GetFilesService- GetUpdates.Entrance:OK
+26.10.2010 17:54:03 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+26.10.2010 17:54:03 -GetFilesService- GetNewSoft.Entrance:OK
+26.10.2010 17:54:03 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+26.10.2010 17:54:03 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+26.10.2010 17:54:03 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+26.10.2010 17:54:03 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+26.10.2010 17:54:03 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+26.10.2010 17:54:03 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+26.10.2010 17:54:03 -GetFilesService- GetNewSoft.Exit:OK
+27.10.2010 9:34:48 #CutLogFile(\Storage Card\SSCE\StationSyncroCE.log):OK
+27.10.2010 9:34:48 #FindConfigFile: config use - \Storage Card\SSCE\StationSyncroCE.xml
+27.10.2010 9:34:51 -GetFilesService- ---------------------------
+27.10.2010 9:34:51 -GetFilesService- Init:OK
+27.10.2010 9:34:51 -GetFilesService- Init.Dialup:DISABLE
+27.10.2010 9:34:51 -TermExchange- ---------------------------
+27.10.2010 9:34:51 -TermExchange- Init:OK
+27.10.2010 9:34:51 -StatisticService- ---------------------------
+27.10.2010 9:34:51 -StatisticService- Init:OK
+27.10.2010 9:34:51 -WEBService- ---------------------------
+27.10.2010 9:34:51 -WEBService- Init:OK
+27.10.2010 9:34:51 -WEBService- Start.Entrance:OK
+27.10.2010 9:34:51 -TermExchange- Start.Entrance:OK
+27.10.2010 9:34:51 -StatisticService- Start.Entrance:OK
+27.10.2010 9:34:52 -StatisticService- MakeStatFile.Entrance:OK
+27.10.2010 9:34:52 -GetFilesService- LoadRemoteListFile.FTP:ERROR - 530 User test@ambintech.ru cannot log in.
+27.10.2010 9:34:53 -GetFilesService- LoadRemoteListFile:ERROR - Нельзя показать сообщение об ошибке, так как не удается найти содержащую его дополнительную сборку ресурсов
+27.10.2010 9:34:53 -StatisticService- WorkWithFiles.Entrance:OK
+27.10.2010 9:34:54 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-4
+27.10.2010 9:34:54 -StatisticService- WorkWithFiles.Exit:OK
+27.10.2010 9:34:54 -StatisticService- WorkWithFiles.Entrance:OK
+27.10.2010 9:34:54 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-5
+27.10.2010 9:34:54 -StatisticService- WorkWithFiles.Exit:OK
+27.10.2010 9:34:54 -StatisticService- WorkWithFiles.Entrance:OK
+27.10.2010 9:34:54 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-2
+27.10.2010 9:34:54 -StatisticService- WorkWithFiles.Exit:OK
+27.10.2010 9:34:54 -StatisticService- WorkWithFiles.Entrance:OK
+27.10.2010 9:34:54 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-1
+27.10.2010 9:34:54 -StatisticService- WorkWithFiles.Exit:OK
+27.10.2010 9:34:55 -StatisticService- WorkWithFiles.Entrance:OK
+27.10.2010 9:34:55 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-3
+27.10.2010 9:34:55 -StatisticService- WorkWithFiles.Exit:OK
+27.10.2010 9:34:55 -StatisticService- SaveStatFile:OK
+27.10.2010 9:34:55 -StatisticService- MakeStatFile.Exit:OK
+27.10.2010 9:34:55 -StatisticService- WriteNewNextSave:OK
+27.10.2010 9:54:52 -GetFilesService- PrepareAndSendMail.Send(1):OK - file: МУРМАНСКИЙЛОВДТStationSyncroCE.log
+27.10.2010 9:54:52 -GetFilesService- AddLastSendedInfo:OK
+27.10.2010 9:54:52 -GetFilesService- PrepareAndSendMail.Delete(1):OK - file: \Storage Card\OutBox\МУРМАНСКИЙЛОВДТStationSyncroCE.log
+27.10.2010 9:54:53 -GetFilesService- PrepareAndSendMail.Send(2):OK - file: SSStat_МУРМАНСКИЙЛОВДТ_27102010.xml
+27.10.2010 9:54:53 -GetFilesService- AddLastSendedInfo:OK
+27.10.2010 9:54:53 -GetFilesService- PrepareAndSendMail.Delete(2):OK - file: \Storage Card\OutBox\SSStat_МУРМАНСКИЙЛОВДТ_27102010.xml
+27.10.2010 11:34:51 -GetFilesService- GetUpdates.Entrance:OK
+27.10.2010 11:34:51 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+27.10.2010 11:34:51 -GetFilesService- GetNewSoft.Entrance:OK
+27.10.2010 11:34:51 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+27.10.2010 11:34:51 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+27.10.2010 11:34:51 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+27.10.2010 11:34:51 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+27.10.2010 11:34:52 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+27.10.2010 11:34:52 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+27.10.2010 11:34:52 -GetFilesService- GetNewSoft.Exit:OK
+27.10.2010 13:34:53 -GetFilesService- GetUpdates.Entrance:OK
+27.10.2010 13:34:53 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+27.10.2010 13:34:53 -GetFilesService- GetNewSoft.Entrance:OK
+27.10.2010 13:34:53 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+27.10.2010 13:34:53 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+27.10.2010 13:34:53 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+27.10.2010 13:34:53 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+27.10.2010 13:34:53 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+27.10.2010 13:34:53 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+27.10.2010 13:34:53 -GetFilesService- GetNewSoft.Exit:OK
+27.10.2010 15:34:54 -GetFilesService- GetUpdates.Entrance:OK
+27.10.2010 15:34:54 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+27.10.2010 15:34:54 -GetFilesService- GetNewSoft.Entrance:OK
+27.10.2010 15:34:54 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+27.10.2010 15:34:54 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+27.10.2010 15:34:54 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+27.10.2010 15:34:54 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+27.10.2010 15:34:54 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+27.10.2010 15:34:54 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+27.10.2010 15:34:54 -GetFilesService- GetNewSoft.Exit:OK
+27.10.2010 17:34:55 -GetFilesService- GetUpdates.Entrance:OK
+27.10.2010 17:34:56 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+27.10.2010 17:34:56 -GetFilesService- GetNewSoft.Entrance:OK
+27.10.2010 17:34:56 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+27.10.2010 17:34:56 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+27.10.2010 17:34:56 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+27.10.2010 17:34:56 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+27.10.2010 17:34:56 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+27.10.2010 17:34:56 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+27.10.2010 17:34:56 -GetFilesService- GetNewSoft.Exit:OK
+28.10.2010 9:47:21 #CutLogFile(\Storage Card\SSCE\StationSyncroCE.log):OK
+28.10.2010 9:47:21 #FindConfigFile: config use - \Storage Card\SSCE\StationSyncroCE.xml
+28.10.2010 9:47:23 -GetFilesService- ---------------------------
+28.10.2010 9:47:23 -GetFilesService- Init:OK
+28.10.2010 9:47:23 -GetFilesService- Init.Dialup:DISABLE
+28.10.2010 9:47:23 -TermExchange- ---------------------------
+28.10.2010 9:47:23 -TermExchange- Init:OK
+28.10.2010 9:47:23 -StatisticService- ---------------------------
+28.10.2010 9:47:23 -StatisticService- Init:OK
+28.10.2010 9:47:24 -WEBService- ---------------------------
+28.10.2010 9:47:24 -WEBService- Init:OK
+28.10.2010 9:47:24 -TermExchange- Start.Entrance:OK
+28.10.2010 9:47:24 -StatisticService- Start.Entrance:OK
+28.10.2010 9:47:24 -WEBService- Start.Entrance:OK
+28.10.2010 9:47:24 -GetFilesService- Start.Entrance:OK
+28.10.2010 9:47:25 -StatisticService- MakeStatFile.Entrance:OK
+28.10.2010 9:47:25 -StatisticService- WorkWithFiles.Entrance:OK
+28.10.2010 9:47:25 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-4
+28.10.2010 9:47:25 -StatisticService- WorkWithFiles.Exit:OK
+28.10.2010 9:47:25 -StatisticService- WorkWithFiles.Entrance:OK
+28.10.2010 9:47:26 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-5
+28.10.2010 9:47:26 -StatisticService- WorkWithFiles.Exit:OK
+28.10.2010 9:47:26 -WEBService- WorkWithHTMLFile.Entrance:OK
+28.10.2010 9:47:26 -GetFilesService- LoadRemoteListFile:ERROR - Нельзя показать сообщение об ошибке, так как не удается найти содержащую его дополнительную сборку ресурсов
+28.10.2010 9:47:26 -WEBService- WorkWithHTMLFile.Exit:OK
+28.10.2010 9:47:26 -WEBService- Start:OK
+28.10.2010 9:47:26 -StatisticService- WorkWithFiles.Entrance:OK
+28.10.2010 9:47:27 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-2
+28.10.2010 9:47:27 -StatisticService- WorkWithFiles.Exit:OK
+28.10.2010 9:47:27 -StatisticService- WorkWithFiles.Entrance:OK
+28.10.2010 9:47:27 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-1
+28.10.2010 9:47:27 -StatisticService- WorkWithFiles.Exit:OK
+28.10.2010 9:47:27 -StatisticService- WorkWithFiles.Entrance:OK
+28.10.2010 9:47:27 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-3
+28.10.2010 9:47:27 -StatisticService- WorkWithFiles.Exit:OK
+28.10.2010 9:47:27 -StatisticService- SaveStatFile:OK
+28.10.2010 9:47:27 -StatisticService- MakeStatFile.Exit:OK
+28.10.2010 9:47:28 -StatisticService- WriteNewNextSave:OK
+28.10.2010 10:07:26 -GetFilesService- PrepareAndSendMail.Send(1):OK - file: МУРМАНСКИЙЛОВДТStationSyncroCE.log
+28.10.2010 10:07:26 -GetFilesService- AddLastSendedInfo:OK
+28.10.2010 10:07:26 -GetFilesService- PrepareAndSendMail.Delete(1):OK - file: \Storage Card\OutBox\МУРМАНСКИЙЛОВДТStationSyncroCE.log
+28.10.2010 10:07:27 -GetFilesService- PrepareAndSendMail.Send(2):OK - file: SSStat_МУРМАНСКИЙЛОВДТ_28102010.xml
+28.10.2010 10:07:27 -GetFilesService- AddLastSendedInfo:OK
+28.10.2010 10:07:27 -GetFilesService- PrepareAndSendMail.Delete(2):OK - file: \Storage Card\OutBox\SSStat_МУРМАНСКИЙЛОВДТ_28102010.xml
+28.10.2010 11:47:24 -GetFilesService- GetUpdates.Entrance:OK
+28.10.2010 11:47:24 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+28.10.2010 11:47:24 -GetFilesService- GetNewSoft.Entrance:OK
+28.10.2010 11:47:24 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+28.10.2010 11:47:24 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+28.10.2010 11:47:24 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+28.10.2010 11:47:24 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+28.10.2010 11:47:24 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+28.10.2010 11:47:24 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+28.10.2010 11:47:24 -GetFilesService- GetNewSoft.Exit:OK
+28.10.2010 13:47:25 -GetFilesService- GetUpdates.Entrance:OK
+28.10.2010 13:47:46 -GetFilesService- GetUpdates.FTP.Connect:ERROR - Couldn't connect to remote server
+28.10.2010 13:47:46 -GetFilesService- GetNewSoft.Entrance:OK
+28.10.2010 13:47:46 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+28.10.2010 13:48:07 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - Couldn't connect to remote server
+28.10.2010 13:48:07 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+28.10.2010 13:48:07 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+28.10.2010 13:48:28 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - Couldn't connect to remote server
+28.10.2010 13:48:28 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+28.10.2010 13:48:28 -GetFilesService- GetNewSoft.Exit:OK
+28.10.2010 15:48:29 -GetFilesService- GetUpdates.Entrance:OK
+28.10.2010 15:48:30 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+28.10.2010 15:48:30 -GetFilesService- GetNewSoft.Entrance:OK
+28.10.2010 15:48:30 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+28.10.2010 15:48:30 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+28.10.2010 15:48:30 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+28.10.2010 15:48:30 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+28.10.2010 15:48:30 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+28.10.2010 15:48:30 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+28.10.2010 15:48:30 -GetFilesService- GetNewSoft.Exit:OK
+28.10.2010 17:48:31 -GetFilesService- GetUpdates.Entrance:OK
+28.10.2010 17:48:31 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+28.10.2010 17:48:31 -GetFilesService- GetNewSoft.Entrance:OK
+28.10.2010 17:48:31 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+28.10.2010 17:48:31 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+28.10.2010 17:48:31 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+28.10.2010 17:48:31 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+28.10.2010 17:48:31 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+28.10.2010 17:48:31 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+28.10.2010 17:48:31 -GetFilesService- GetNewSoft.Exit:OK
+29.10.2010 9:39:09 #CutLogFile(\Storage Card\SSCE\StationSyncroCE.log):OK
+29.10.2010 9:39:09 #FindConfigFile: config use - \Storage Card\SSCE\StationSyncroCE.xml
+29.10.2010 9:39:11 -GetFilesService- ---------------------------
+29.10.2010 9:39:11 -GetFilesService- Init:OK
+29.10.2010 9:39:11 -GetFilesService- Init.Dialup:DISABLE
+29.10.2010 9:39:11 -TermExchange- ---------------------------
+29.10.2010 9:39:11 -TermExchange- Init:OK
+29.10.2010 9:39:11 -StatisticService- ---------------------------
+29.10.2010 9:39:11 -StatisticService- Init:OK
+29.10.2010 9:39:11 -WEBService- ---------------------------
+29.10.2010 9:39:12 -WEBService- Init:OK
+29.10.2010 9:39:12 -TermExchange- Start.Entrance:OK
+29.10.2010 9:39:12 -StatisticService- Start.Entrance:OK
+29.10.2010 9:39:12 -WEBService- Start.Entrance:OK
+29.10.2010 9:39:12 -GetFilesService- Start.Entrance:OK
+29.10.2010 9:39:13 -StatisticService- MakeStatFile.Entrance:OK
+29.10.2010 9:39:14 -StatisticService- WorkWithFiles.Entrance:OK
+29.10.2010 9:39:14 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-4
+29.10.2010 9:39:14 -StatisticService- WorkWithFiles.Exit:OK
+29.10.2010 9:39:14 -WEBService- WorkWithHTMLFile.Entrance:OK
+29.10.2010 9:39:14 -GetFilesService- LoadRemoteListFile:ERROR - Нельзя показать сообщение об ошибке, так как не удается найти содержащую его дополнительную сборку ресурсов
+29.10.2010 9:39:14 -WEBService- WorkWithHTMLFile.Exit:OK
+29.10.2010 9:39:14 -WEBService- Start:OK
+29.10.2010 9:39:14 -StatisticService- WorkWithFiles.Entrance:OK
+29.10.2010 9:39:15 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-5
+29.10.2010 9:39:15 -StatisticService- WorkWithFiles.Exit:OK
+29.10.2010 9:39:15 -StatisticService- WorkWithFiles.Entrance:OK
+29.10.2010 9:39:15 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-2
+29.10.2010 9:39:15 -StatisticService- WorkWithFiles.Exit:OK
+29.10.2010 9:39:15 -StatisticService- WorkWithFiles.Entrance:OK
+29.10.2010 9:39:15 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-1
+29.10.2010 9:39:15 -StatisticService- WorkWithFiles.Exit:OK
+29.10.2010 9:39:15 -StatisticService- WorkWithFiles.Entrance:OK
+29.10.2010 9:39:15 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-3
+29.10.2010 9:39:15 -StatisticService- WorkWithFiles.Exit:OK
+29.10.2010 9:39:16 -StatisticService- SaveStatFile:OK
+29.10.2010 9:39:16 -StatisticService- MakeStatFile.Exit:OK
+29.10.2010 9:39:16 -StatisticService- WriteNewNextSave:OK
+29.10.2010 9:59:13 -GetFilesService- PrepareAndSendMail.Send(1):OK - file: МУРМАНСКИЙЛОВДТStationSyncroCE.log
+29.10.2010 9:59:13 -GetFilesService- AddLastSendedInfo:OK
+29.10.2010 9:59:13 -GetFilesService- PrepareAndSendMail.Delete(1):OK - file: \Storage Card\OutBox\МУРМАНСКИЙЛОВДТStationSyncroCE.log
+29.10.2010 9:59:14 -GetFilesService- PrepareAndSendMail.Send(2):OK - file: SSStat_МУРМАНСКИЙЛОВДТ_29102010.xml
+29.10.2010 9:59:14 -GetFilesService- AddLastSendedInfo:OK
+29.10.2010 9:59:14 -GetFilesService- PrepareAndSendMail.Delete(2):OK - file: \Storage Card\OutBox\SSStat_МУРМАНСКИЙЛОВДТ_29102010.xml
+29.10.2010 11:39:12 -GetFilesService- GetUpdates.Entrance:OK
+29.10.2010 11:39:12 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+29.10.2010 11:39:12 -GetFilesService- GetNewSoft.Entrance:OK
+29.10.2010 11:39:12 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+29.10.2010 11:39:12 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+29.10.2010 11:39:12 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+29.10.2010 11:39:12 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+29.10.2010 11:39:12 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+29.10.2010 11:39:12 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+29.10.2010 11:39:12 -GetFilesService- GetNewSoft.Exit:OK
+29.10.2010 13:39:13 -GetFilesService- GetUpdates.Entrance:OK
+29.10.2010 13:39:13 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+29.10.2010 13:39:13 -GetFilesService- GetNewSoft.Entrance:OK
+29.10.2010 13:39:13 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+29.10.2010 13:39:13 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+29.10.2010 13:39:13 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+29.10.2010 13:39:14 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+29.10.2010 13:39:14 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+29.10.2010 13:39:14 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+29.10.2010 13:39:14 -GetFilesService- GetNewSoft.Exit:OK
+29.10.2010 15:39:15 -GetFilesService- GetUpdates.Entrance:OK
+29.10.2010 15:39:15 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+29.10.2010 15:39:15 -GetFilesService- GetNewSoft.Entrance:OK
+29.10.2010 15:39:15 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+29.10.2010 15:39:16 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+29.10.2010 15:39:16 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+29.10.2010 15:39:16 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+29.10.2010 15:39:16 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+29.10.2010 15:39:16 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+29.10.2010 15:39:16 -GetFilesService- GetNewSoft.Exit:OK
+29.10.2010 17:39:17 -GetFilesService- GetUpdates.Entrance:OK
+29.10.2010 17:39:17 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+29.10.2010 17:39:17 -GetFilesService- GetNewSoft.Entrance:OK
+29.10.2010 17:39:17 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+29.10.2010 17:39:17 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+29.10.2010 17:39:17 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+29.10.2010 17:39:17 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+29.10.2010 17:39:18 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+29.10.2010 17:39:18 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+29.10.2010 17:39:18 -GetFilesService- GetNewSoft.Exit:OK
+01.11.2010 10:29:14 #CutLogFile(\Storage Card\SSCE\StationSyncroCE.log):OK
+01.11.2010 10:29:14 #FindConfigFile: config use - \Storage Card\SSCE\StationSyncroCE.xml
+01.11.2010 10:29:16 -GetFilesService- ---------------------------
+01.11.2010 10:29:16 -GetFilesService- Init:OK
+01.11.2010 10:29:16 -GetFilesService- Init.Dialup:DISABLE
+01.11.2010 10:29:16 -TermExchange- ---------------------------
+01.11.2010 10:29:16 -TermExchange- Init:OK
+01.11.2010 10:29:16 -StatisticService- ---------------------------
+01.11.2010 10:29:16 -StatisticService- Init:OK
+01.11.2010 10:29:16 -WEBService- ---------------------------
+01.11.2010 10:29:17 -WEBService- Init:OK
+01.11.2010 10:29:17 -TermExchange- Start.Entrance:OK
+01.11.2010 10:29:17 -StatisticService- Start.Entrance:OK
+01.11.2010 10:29:17 -WEBService- Start.Entrance:OK
+01.11.2010 10:29:17 -GetFilesService- Start.Entrance:OK
+01.11.2010 10:29:18 -StatisticService- MakeStatFile.Entrance:OK
+01.11.2010 10:29:18 -StatisticService- WorkWithFiles.Entrance:OK
+01.11.2010 10:29:18 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-4
+01.11.2010 10:29:18 -StatisticService- WorkWithFiles.Exit:OK
+01.11.2010 10:29:18 -GetFilesService- LoadRemoteListFile.FTP:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 10:29:18 -GetFilesService- LoadRemoteListFile:ERROR - Нельзя показать сообщение об ошибке, так как не удается найти содержащую его дополнительную сборку ресурсов
+01.11.2010 10:29:19 -StatisticService- WorkWithFiles.Entrance:OK
+01.11.2010 10:29:19 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-5
+01.11.2010 10:29:19 -WEBService- WorkWithHTMLFile.Entrance:OK
+01.11.2010 10:29:19 -StatisticService- WorkWithFiles.Exit:OK
+01.11.2010 10:29:19 -StatisticService- WorkWithFiles.Entrance:OK
+01.11.2010 10:29:19 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-2
+01.11.2010 10:29:19 -StatisticService- WorkWithFiles.Exit:OK
+01.11.2010 10:29:19 -StatisticService- WorkWithFiles.Entrance:OK
+01.11.2010 10:29:19 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-1
+01.11.2010 10:29:19 -StatisticService- WorkWithFiles.Exit:OK
+01.11.2010 10:29:20 -StatisticService- WorkWithFiles.Entrance:OK
+01.11.2010 10:29:20 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-3
+01.11.2010 10:29:20 -StatisticService- WorkWithFiles.Exit:OK
+01.11.2010 10:29:20 -WEBService- WorkWithHTMLFile.Exit:OK
+01.11.2010 10:29:20 -WEBService- Start:OK
+01.11.2010 10:29:21 -StatisticService- SaveStatFile:OK
+01.11.2010 10:29:21 -StatisticService- MakeStatFile.Exit:OK
+01.11.2010 10:29:21 -StatisticService- WriteNewNextSave:OK
+01.11.2010 10:49:18 -GetFilesService- PrepareAndSendMail.Send(1):OK - file: МУРМАНСКИЙЛОВДТStationSyncroCE.log
+01.11.2010 10:49:18 -GetFilesService- AddLastSendedInfo:OK
+01.11.2010 10:49:18 -GetFilesService- PrepareAndSendMail.Delete(1):OK - file: \Storage Card\OutBox\МУРМАНСКИЙЛОВДТStationSyncroCE.log
+01.11.2010 10:49:19 -GetFilesService- PrepareAndSendMail.Send(2):OK - file: SSStat_МУРМАНСКИЙЛОВДТ_01112010.xml
+01.11.2010 10:49:19 -GetFilesService- AddLastSendedInfo:OK
+01.11.2010 10:49:19 -GetFilesService- PrepareAndSendMail.Delete(2):OK - file: \Storage Card\OutBox\SSStat_МУРМАНСКИЙЛОВДТ_01112010.xml
+01.11.2010 12:29:17 -GetFilesService- GetUpdates.Entrance:OK
+01.11.2010 12:29:17 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 12:29:17 -GetFilesService- GetNewSoft.Entrance:OK
+01.11.2010 12:29:17 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+01.11.2010 12:29:17 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 12:29:17 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+01.11.2010 12:29:17 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+01.11.2010 12:29:18 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 12:29:18 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+01.11.2010 12:29:18 -GetFilesService- GetNewSoft.Exit:OK
+01.11.2010 14:29:19 -GetFilesService- GetUpdates.Entrance:OK
+01.11.2010 14:29:19 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 14:29:19 -GetFilesService- GetNewSoft.Entrance:OK
+01.11.2010 14:29:19 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+01.11.2010 14:29:19 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 14:29:19 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+01.11.2010 14:29:19 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+01.11.2010 14:29:20 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 14:29:20 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+01.11.2010 14:29:20 -GetFilesService- GetNewSoft.Exit:OK
+01.11.2010 16:29:21 -GetFilesService- GetUpdates.Entrance:OK
+01.11.2010 16:29:21 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 16:29:21 -GetFilesService- GetNewSoft.Entrance:OK
+01.11.2010 16:29:21 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+01.11.2010 16:29:21 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 16:29:21 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+01.11.2010 16:29:21 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+01.11.2010 16:29:21 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 16:29:21 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+01.11.2010 16:29:21 -GetFilesService- GetNewSoft.Exit:OK
+01.11.2010 18:29:22 -GetFilesService- GetUpdates.Entrance:OK
+01.11.2010 18:29:22 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 18:29:22 -GetFilesService- GetNewSoft.Entrance:OK
+01.11.2010 18:29:22 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+01.11.2010 18:29:22 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 18:29:22 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+01.11.2010 18:29:22 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+01.11.2010 18:29:22 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 18:29:22 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+01.11.2010 18:29:22 -GetFilesService- GetNewSoft.Exit:OK
+01.11.2010 20:29:23 -GetFilesService- GetUpdates.Entrance:OK
+01.11.2010 20:29:23 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 20:29:23 -GetFilesService- GetNewSoft.Entrance:OK
+01.11.2010 20:29:23 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+01.11.2010 20:29:23 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 20:29:23 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+01.11.2010 20:29:23 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+01.11.2010 20:29:23 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+01.11.2010 20:29:23 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+01.11.2010 20:29:23 -GetFilesService- GetNewSoft.Exit:OK
+02.11.2010 10:41:09 #CutLogFile(\Storage Card\SSCE\StationSyncroCE.log):OK
+02.11.2010 10:41:09 #FindConfigFile: config use - \Storage Card\SSCE\StationSyncroCE.xml
+02.11.2010 10:41:11 -GetFilesService- ---------------------------
+02.11.2010 10:41:11 -GetFilesService- Init:OK
+02.11.2010 10:41:11 -GetFilesService- Init.Dialup:DISABLE
+02.11.2010 10:41:11 -TermExchange- ---------------------------
+02.11.2010 10:41:11 -TermExchange- Init:OK
+02.11.2010 10:41:11 -StatisticService- ---------------------------
+02.11.2010 10:41:11 -StatisticService- Init:OK
+02.11.2010 10:41:11 -WEBService- ---------------------------
+02.11.2010 10:41:12 -WEBService- Init:OK
+02.11.2010 10:41:12 -TermExchange- Start.Entrance:OK
+02.11.2010 10:41:12 -StatisticService- Start.Entrance:OK
+02.11.2010 10:41:12 -WEBService- Start.Entrance:OK
+02.11.2010 10:41:12 -GetFilesService- Start.Entrance:OK
+02.11.2010 10:41:13 -StatisticService- MakeStatFile.Entrance:OK
+02.11.2010 10:41:13 -GetFilesService- LoadRemoteListFile.FTP:ERROR - 530 User test@ambintech.ru cannot log in.
+02.11.2010 10:41:13 -GetFilesService- LoadRemoteListFile:ERROR - Нельзя показать сообщение об ошибке, так как не удается найти содержащую его дополнительную сборку ресурсов
+02.11.2010 10:41:14 -WEBService- WorkWithHTMLFile.Entrance:OK
+02.11.2010 10:41:14 -StatisticService- WorkWithFiles.Entrance:OK
+02.11.2010 10:41:14 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-4
+02.11.2010 10:41:14 -StatisticService- WorkWithFiles.Exit:OK
+02.11.2010 10:41:14 -WEBService- WorkWithHTMLFile.Exit:OK
+02.11.2010 10:41:14 -WEBService- Start:OK
+02.11.2010 10:41:15 -StatisticService- WorkWithFiles.Entrance:OK
+02.11.2010 10:41:15 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-5
+02.11.2010 10:41:15 -StatisticService- WorkWithFiles.Exit:OK
+02.11.2010 10:41:15 -StatisticService- WorkWithFiles.Entrance:OK
+02.11.2010 10:41:15 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-2
+02.11.2010 10:41:15 -StatisticService- WorkWithFiles.Exit:OK
+02.11.2010 10:41:15 -StatisticService- WorkWithFiles.Entrance:OK
+02.11.2010 10:41:15 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-1
+02.11.2010 10:41:15 -StatisticService- WorkWithFiles.Exit:OK
+02.11.2010 10:41:15 -StatisticService- WorkWithFiles.Entrance:OK
+02.11.2010 10:41:15 -StatisticService- WorkWithFiles.ReadInitXML:OK - 219-3
+02.11.2010 10:41:15 -StatisticService- WorkWithFiles.Exit:OK
+02.11.2010 10:41:16 -StatisticService- SaveStatFile:OK
+02.11.2010 10:41:16 -StatisticService- MakeStatFile.Exit:OK
+02.11.2010 10:41:16 -StatisticService- WriteNewNextSave:OK
+02.11.2010 11:01:13 -GetFilesService- PrepareAndSendMail.Send(1):OK - file: МУРМАНСКИЙЛОВДТStationSyncroCE.log
+02.11.2010 11:01:13 -GetFilesService- AddLastSendedInfo:OK
+02.11.2010 11:01:13 -GetFilesService- PrepareAndSendMail.Delete(1):OK - file: \Storage Card\OutBox\МУРМАНСКИЙЛОВДТStationSyncroCE.log
+02.11.2010 11:01:15 -GetFilesService- PrepareAndSendMail.Send(2):OK - file: SSStat_МУРМАНСКИЙЛОВДТ_02112010.xml
+02.11.2010 11:01:15 -GetFilesService- AddLastSendedInfo:OK
+02.11.2010 11:01:15 -GetFilesService- PrepareAndSendMail.Delete(2):OK - file: \Storage Card\OutBox\SSStat_МУРМАНСКИЙЛОВДТ_02112010.xml
+02.11.2010 11:18:16 -WEBService- Work.Client connected:OK
+02.11.2010 11:18:16 -WEBService- StartListen:ERROR - Нельзя показать сообщение об ошибке, так как не удается найти содержащую его дополнительную сборку ресурсов
+02.11.2010 12:41:12 -GetFilesService- GetUpdates.Entrance:OK
+02.11.2010 12:41:12 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+02.11.2010 12:41:12 -GetFilesService- GetNewSoft.Entrance:OK
+02.11.2010 12:41:12 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+02.11.2010 12:41:12 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+02.11.2010 12:41:12 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+02.11.2010 12:41:12 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+02.11.2010 12:41:12 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+02.11.2010 12:41:12 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+02.11.2010 12:41:12 -GetFilesService- GetNewSoft.Exit:OK
+02.11.2010 14:41:13 -GetFilesService- GetUpdates.Entrance:OK
+02.11.2010 14:41:13 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+02.11.2010 14:41:13 -GetFilesService- GetNewSoft.Entrance:OK
+02.11.2010 14:41:13 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+02.11.2010 14:41:13 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+02.11.2010 14:41:13 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+02.11.2010 14:41:13 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+02.11.2010 14:41:13 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+02.11.2010 14:41:13 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+02.11.2010 14:41:13 -GetFilesService- GetNewSoft.Exit:OK
+02.11.2010 16:41:14 -GetFilesService- GetUpdates.Entrance:OK
+02.11.2010 16:41:14 -GetFilesService- GetUpdates.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+02.11.2010 16:41:14 -GetFilesService- GetNewSoft.Entrance:OK
+02.11.2010 16:41:14 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+02.11.2010 16:41:14 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+02.11.2010 16:41:14 -GetFilesService- GetNewSoft.NewSoftTerm:find -1 files.
+02.11.2010 16:41:14 -GetFilesService- GetAllFromFTPFolder.Entrance:OK
+02.11.2010 16:41:14 -GetFilesService- GetAllFromFTPFolder.FTP.Connect:ERROR - 530 User test@ambintech.ru cannot log in.
+02.11.2010 16:41:14 -GetFilesService- GetNewSoft.NewSoftSS:find -1 files.
+02.11.2010 16:41:14 -GetFilesService- GetNewSoft.Exit:OK
+02.11.2010 17:21:01 -TermExchange- ReadPic:ERROR CRC
+02.11.2010 17:21:02 -FormUSBCopy- CopyAll.start
+02.11.2010 17:22:06 -TermExchange- ReadPic:ERROR CRC
+02.11.2010 17:22:41 -FormUSBCopy- AddLastRecivedInfo:OK - ROZ_LICA.SDF
+02.11.2010 17:22:41 -FormUSBCopy- AddLastRecivedInfo:OK - T6.Base.FED_LICA.xml
+02.11.2010 17:22:42 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01062010.dat
+02.11.2010 17:22:42 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01072010.dat
+02.11.2010 17:22:43 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01092010.dat
+02.11.2010 17:22:43 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01102010.dat
+02.11.2010 17:22:43 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02062010.dat
+02.11.2010 17:22:44 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02072010.dat
+02.11.2010 17:22:44 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02082010.dat
+02.11.2010 17:22:45 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02092010.dat
+02.11.2010 17:22:46 -FormUSBCopy- AddLastRecivedInfo:OK - IZM03062010.dat
+02.11.2010 17:22:46 -FormUSBCopy- AddLastRecivedInfo:OK - IZM03082010.dat
+02.11.2010 17:22:47 -FormUSBCopy- AddLastRecivedInfo:OK - IZM03092010.dat
+02.11.2010 17:22:47 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04052010.dat
+02.11.2010 17:22:48 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04062010.dat
+02.11.2010 17:22:48 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04082010.dat
+02.11.2010 17:22:49 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04102010.dat
+02.11.2010 17:22:49 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05052010.dat
+02.11.2010 17:22:49 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05072010.dat
+02.11.2010 17:22:50 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05082010.dat
+02.11.2010 17:22:50 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05102010.dat
+02.11.2010 17:22:51 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06052010.dat
+02.11.2010 17:22:51 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06072010.dat
+02.11.2010 17:22:51 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06082010.dat
+02.11.2010 17:22:52 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06092010.dat
+02.11.2010 17:22:52 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06102010.dat
+02.11.2010 17:22:53 -FormUSBCopy- AddLastRecivedInfo:OK - IZM07052010.dat
+02.11.2010 17:22:53 -FormUSBCopy- CopyAll.exit
+02.11.2010 17:28:18 -FormUSBCopy- CopyAll.start
+02.11.2010 17:28:23 -TermExchange- ReadPic:ERROR CRC
+02.11.2010 17:29:04 -TermExchange- ReadPic:ERROR CRC
+02.11.2010 17:29:04 -TermExchange- ReadPic:ERROR CRC
+02.11.2010 17:29:56 -FormUSBCopy- AddLastRecivedInfo:OK - ROZ_LICA.SDF
+02.11.2010 17:29:56 -FormUSBCopy- AddLastRecivedInfo:OK - T6.Base.FED_LICA.xml
+02.11.2010 17:29:57 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01062010.dat
+02.11.2010 17:29:57 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01072010.dat
+02.11.2010 17:29:57 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01092010.dat
+02.11.2010 17:29:58 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01102010.dat
+02.11.2010 17:29:58 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02062010.dat
+02.11.2010 17:29:59 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02072010.dat
+02.11.2010 17:29:59 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02082010.dat
+02.11.2010 17:30:00 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02092010.dat
+02.11.2010 17:30:00 -FormUSBCopy- AddLastRecivedInfo:OK - IZM03062010.dat
+02.11.2010 17:30:00 -FormUSBCopy- AddLastRecivedInfo:OK - IZM03082010.dat
+02.11.2010 17:30:01 -FormUSBCopy- AddLastRecivedInfo:OK - IZM03092010.dat
+02.11.2010 17:30:01 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04052010.dat
+02.11.2010 17:30:02 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04062010.dat
+02.11.2010 17:30:02 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04082010.dat
+02.11.2010 17:30:02 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04102010.dat
+02.11.2010 17:30:03 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05052010.dat
+02.11.2010 17:30:03 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05072010.dat
+02.11.2010 17:30:03 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05082010.dat
+02.11.2010 17:30:04 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05102010.dat
+02.11.2010 17:30:04 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06052010.dat
+02.11.2010 17:30:05 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06072010.dat
+02.11.2010 17:30:05 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06082010.dat
+02.11.2010 17:30:06 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06092010.dat
+02.11.2010 17:30:06 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06102010.dat
+02.11.2010 17:30:06 -FormUSBCopy- AddLastRecivedInfo:OK - IZM07052010.dat
+02.11.2010 17:30:06 -FormUSBCopy- CopyAll.exit
+02.11.2010 17:54:41 -FormUSBCopy- CopyAll.start
+02.11.2010 17:54:42 -TermExchange- ReadPic:ERROR CRC
+02.11.2010 17:56:12 -TermExchange- ReadPic:ERROR CRC
+02.11.2010 17:56:18 -FormUSBCopy- AddLastRecivedInfo:OK - ROZ_LICA.SDF
+02.11.2010 17:56:19 -FormUSBCopy- AddLastRecivedInfo:OK - T6.Base.FED_LICA.xml
+02.11.2010 17:56:19 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01062010.dat
+02.11.2010 17:56:19 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01072010.dat
+02.11.2010 17:56:20 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01092010.dat
+02.11.2010 17:56:20 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01102010.dat
+02.11.2010 17:56:21 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02062010.dat
+02.11.2010 17:56:21 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02072010.dat
+02.11.2010 17:56:22 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02082010.dat
+02.11.2010 17:56:22 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02092010.dat
+02.11.2010 17:56:23 -FormUSBCopy- AddLastRecivedInfo:OK - IZM03062010.dat
+02.11.2010 17:56:23 -FormUSBCopy- AddLastRecivedInfo:OK - IZM03082010.dat
+02.11.2010 17:56:23 -FormUSBCopy- AddLastRecivedInfo:OK - IZM03092010.dat
+02.11.2010 17:56:24 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04052010.dat
+02.11.2010 17:56:24 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04062010.dat
+02.11.2010 17:56:24 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04082010.dat
+02.11.2010 17:56:25 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04102010.dat
+02.11.2010 17:56:25 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05052010.dat
+02.11.2010 17:56:26 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05072010.dat
+02.11.2010 17:56:26 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05082010.dat
+02.11.2010 17:56:26 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05102010.dat
+02.11.2010 17:56:27 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06052010.dat
+02.11.2010 17:56:27 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06072010.dat
+02.11.2010 17:56:27 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06082010.dat
+02.11.2010 17:56:28 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06092010.dat
+02.11.2010 17:56:28 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06102010.dat
+02.11.2010 17:56:29 -FormUSBCopy- AddLastRecivedInfo:OK - IZM07052010.dat
+02.11.2010 17:56:29 -FormUSBCopy- CopyAll.exit
+02.11.2010 18:16:14 -FormUSBCopy- CopyAll.start
+02.11.2010 18:17:20 -TermExchange- ReadPic:ERROR CRC
+02.11.2010 18:17:20 -TermExchange- ReadPic:ERROR CRC
+02.11.2010 18:17:20 -TermExchange- ReadPic:ERROR CRC
+02.11.2010 18:17:20 -TermExchange- ReadPic:ERROR CRC
+02.11.2010 18:17:44 -TermExchange- ReadPic:ERROR CRC
+02.11.2010 18:17:52 -FormUSBCopy- AddLastRecivedInfo:OK - ROZ_LICA.SDF
+02.11.2010 18:17:52 -FormUSBCopy- AddLastRecivedInfo:OK - T6.Base.FED_LICA.xml
+02.11.2010 18:17:52 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01062010.dat
+02.11.2010 18:17:52 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01072010.dat
+02.11.2010 18:17:53 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01092010.dat
+02.11.2010 18:17:53 -FormUSBCopy- AddLastRecivedInfo:OK - IZM01102010.dat
+02.11.2010 18:17:54 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02062010.dat
+02.11.2010 18:17:54 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02072010.dat
+02.11.2010 18:17:55 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02082010.dat
+02.11.2010 18:17:55 -FormUSBCopy- AddLastRecivedInfo:OK - IZM02092010.dat
+02.11.2010 18:17:55 -FormUSBCopy- AddLastRecivedInfo:OK - IZM03062010.dat
+02.11.2010 18:17:56 -FormUSBCopy- AddLastRecivedInfo:OK - IZM03082010.dat
+02.11.2010 18:17:56 -FormUSBCopy- AddLastRecivedInfo:OK - IZM03092010.dat
+02.11.2010 18:17:57 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04052010.dat
+02.11.2010 18:17:57 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04062010.dat
+02.11.2010 18:17:57 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04082010.dat
+02.11.2010 18:17:58 -FormUSBCopy- AddLastRecivedInfo:OK - IZM04102010.dat
+02.11.2010 18:17:58 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05052010.dat
+02.11.2010 18:17:59 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05072010.dat
+02.11.2010 18:17:59 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05082010.dat
+02.11.2010 18:17:59 -FormUSBCopy- AddLastRecivedInfo:OK - IZM05102010.dat
+02.11.2010 18:18:00 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06052010.dat
+02.11.2010 18:18:00 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06072010.dat
+02.11.2010 18:18:00 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06082010.dat
+02.11.2010 18:18:01 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06092010.dat
+02.11.2010 18:18:01 -FormUSBCopy- AddLastRecivedInfo:OK - IZM06102010.dat
+02.11.2010 18:18:02 -FormUSBCopy- AddLastRecivedInfo:OK - IZM07052010.dat
+02.11.2010 18:18:02 -FormUSBCopy- CopyAll:WARNING - found CONFIG file
+02.11.2010 18:18:02 -FormUSBCopy- CopyAll:CONFIG file changed FROM:\Жесткий диск\Config\StationSyncroCE.xml  TO:\Storage Card\SSCE\StationSyncroCE.xml
+02.11.2010 18:18:02 -FormUSBCopy- AddLastRecivedInfo:OK - StationSyncroCE.xml
+02.11.2010 18:18:02 -FormUSBCopy- CopyAll.exit
+02.11.2010 18:18:07 #RebootNow:WARNING - system shutdown. Reboot after 10 seconds.
+02.11.2010 18:18:08 -GetFilesService- Stop:OK
+02.11.2010 18:18:09 -GetFilesService- Start.Exit:OK
+02.11.2010 18:18:09 -GetFilesService- ===========================
+02.11.2010 18:18:09 -TermExchange- Stop:OK
+02.11.2010 18:18:09 -StatisticService- Stop:OK
+02.11.2010 18:18:09 -WEBService- Stop:OK
+02.11.2010 18:18:09 -WEBService- StartListen:ERROR - Нельзя показать сообщение об ошибке, так как не удается найти содержащую его дополнительную сборку ресурсов
+02.11.2010 18:18:09 -WEBService- Start.Exit:OK
+02.11.2010 18:18:09 -WEBService- ===========================
+02.11.2010 18:18:09 -StatisticService- Start.Exit:OK
+02.11.2010 18:18:09 -StatisticService- ===========================
+02.11.2010 18:18:11 -TermExchange- Start.Exit:OK
+02.11.2010 18:18:11 -TermExchange- ===========================
+02.11.2010 20:13:17 #CutLogFile(\Storage Card\SSCE\StationSyncroCE.log):OK
+02.11.2010 20:13:17 #FindConfigFile: config use - \Storage Card\SSCE\StationSyncroCE.xml
+02.11.2010 20:13:20 -GetFilesService- ---------------------------
+02.11.2010 20:13:20 -GetFilesService- Init:OK
+02.11.2010 20:13:20 -GetFilesService- Init.Dialup:DISABLE
+02.11.2010 20:13:20 -TermExchange- ---------------------------
+02.11.2010 20:13:20 -TermExchange- Init:OK
+02.11.2010 20:13:20 -StatisticService- ---------------------------
+02.11.2010 20:13:20 -StatisticService- Init:OK
+02.11.2010 20:13:20 -WEBService- ---------------------------
+02.11.2010 20:13:20 -WEBService- Init:OK
+02.11.2010 20:13:20 -WEBService- Start.Entrance:OK
+02.11.2010 20:13:20 -TermExchange- Start.Entrance:OK
+02.11.2010 20:13:21 -StatisticService- MakeStatFile.Entrance:OK

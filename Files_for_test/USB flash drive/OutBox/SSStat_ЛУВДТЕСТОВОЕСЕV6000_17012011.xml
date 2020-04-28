@@ -1,0 +1,721 @@
+<?xml version="1.0"?>
+<ArrayOfStOneTermStatistic xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <stOneTermStatistic>
+    <sNamePodrazdelenie>ЛУВД Тестовое СЕ v6.0.0.0</sNamePodrazdelenie>
+    <sNameTerminal>219-4</sNameTerminal>
+    <sDeviceID>2dbd30003273080108519a01fe486836</sDeviceID>
+    <sDateTimeLastSyncronisation>15.07.2010 10:30:28</sDateTimeLastSyncronisation>
+    <iCountBases>1</iCountBases>
+    <iCountSearch>9</iCountSearch>
+    <stVersions>
+      <sVersionStarter>6.0.0.9</sVersionStarter>
+      <sVersionTerminal>6.0.0.2</sVersionTerminal>
+    </stVersions>
+    <arSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>09.07.2010 14:10:24</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ИВАНОВ|И|И|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>09.07.2010 14:39:22</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ПЕТРОВ|А|Н|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>09.07.2010 14:51:55</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>|||505152</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>09.07.2010 14:56:25</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ИВАНОВ|В|Р|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>09.07.2010 14:58:33</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ШИЛКОВА|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>09.07.2010 14:59:12</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КИЧКАЕВ|А|С|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>09.07.2010 17:16:40</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КАРГОДИН|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>09.07.2010 17:17:11</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ХАИЗОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>09.07.2010 17:18:24</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>МОРОЗОВ|||</sParamSearch>
+      </stOneSearch>
+    </arSearch>
+    <arBaseStat>
+      <stOneBaseStat>
+        <sTypeBase>FED_LICA</sTypeBase>
+        <sComment>Федеральный розыск лиц</sComment>
+        <bIsBase>true</bIsBase>
+        <bCheckBase>true</bCheckBase>
+        <sDateLastUpdates>07.07.2010</sDateLastUpdates>
+        <sVerFileDll>6.0.0.7</sVerFileDll>
+      </stOneBaseStat>
+    </arBaseStat>
+  </stOneTermStatistic>
+  <stOneTermStatistic>
+    <sNamePodrazdelenie>ЛУВД Тестовое СЕ v6.0.0.0</sNamePodrazdelenie>
+    <sNameTerminal>219-5</sNameTerminal>
+    <sDeviceID>2dbd30003273080104519a01fe48ec47</sDeviceID>
+    <sDateTimeLastSyncronisation>19.08.2010 13:53:00</sDateTimeLastSyncronisation>
+    <iCountBases>1</iCountBases>
+    <iCountSearch>51</iCountSearch>
+    <stVersions>
+      <sVersionStarter>6.0.0.9</sVersionStarter>
+      <sVersionTerminal>6.0.0.2</sVersionTerminal>
+    </stVersions>
+    <arSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>09.07.2010 14:23:24</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ИВАНОВ|И|И|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>15.07.2010 09:30:22</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ПЕТРОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>15.07.2010 09:31:15</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>СИДОРОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 10:59:31</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ЛЫКОВ|Г|Г|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:00:51</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ЧЕРКАСОВ|Н|Н|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:05:12</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>РЕУТ|Е|М|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:08:01</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>РЕУТ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:49:03</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>МОРМЫГА|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:49:41</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КОРШУНОВ|В|П|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:50:02</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>БОНДИК|А|Н|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:50:33</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>МОВМЫГА|Т|В|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:55:39</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ЦИРУЛЬНИК|О|И|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:59:23</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ГЛУШКОВА|Е|Л|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:59:43</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КОСОЛАПОВ|П|П|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 12:01:07</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ОНЕГИН|А|И|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 12:01:38</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>МАЛАХОВА|Я|С|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 13:16:00</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КОСЫРЕВА|Ю|С|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 15:51:21</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КЛИМОВ|И|А|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 21:52:41</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ТЮЛЯПИН|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>27.07.2010 11:12:01</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ГАСАНОВ||У|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>27.07.2010 11:18:28</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ГУДЗЬ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>28.07.2010 11:52:15</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>НОВИКОВ|М|А|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>28.07.2010 11:52:56</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>БУРАНОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>28.07.2010 11:54:41</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>НОВИКОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>28.07.2010 11:55:31</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КРАСОВСКИЙ|В|В|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>28.07.2010 11:55:47</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>БОРОДКИН|Н|В|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>28.07.2010 13:35:23</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>НОВИКОВ|С|А|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>28.07.2010 13:36:49</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>НОВИКОВ|М|А|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>28.07.2010 13:37:33</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>|||166488</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>28.07.2010 13:37:53</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>|||470816</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>28.07.2010 13:38:12</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>АНТОНЕНКО|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>28.07.2010 13:38:48</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>АНТОНЕНКО|О|И|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>28.07.2010 13:39:29</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>РАЙСКИЙ|К|М|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>28.07.2010 13:41:22</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>НЕДОДАЕВ|Е||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>28.07.2010 13:43:13</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ЛЫКОВ|Г|Г|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>28.07.2010 13:43:56</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>СОТНИКОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>30.07.2010 10:39:06</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ЖУКОВА|О|А|746416</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>30.07.2010 10:39:34</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>АМРАХОВА|И|В|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>30.07.2010 23:49:53</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>СМИРНОВ|А|А|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>01.08.2010 22:01:46</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ЛЫКОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>01.08.2010 22:02:34</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>БОЛГОВ|А||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>02.08.2010 12:56:26</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>СЕМИН|И|С|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>02.08.2010 12:56:40</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>РАДУЕВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>02.08.2010 12:57:45</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ИВАНОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>02.08.2010 12:58:23</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ЯНОВИЧ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>02.08.2010 12:59:01</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>УБОЖЕНКО|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>02.08.2010 12:59:24</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КОСТЮЧЕНКОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>02.08.2010 12:59:48</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>РУСАКОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>02.08.2010 13:00:18</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ШИШКИН|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>02.08.2010 13:00:30</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ГАРАНКИН|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>02.08.2010 13:00:46</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>СЕМИН|||</sParamSearch>
+      </stOneSearch>
+    </arSearch>
+    <arBaseStat>
+      <stOneBaseStat>
+        <sTypeBase>FED_LICA</sTypeBase>
+        <sComment>Федеральный розыск лиц</sComment>
+        <bIsBase>true</bIsBase>
+        <bCheckBase>true</bCheckBase>
+        <sDateLastUpdates>20.07.2010</sDateLastUpdates>
+        <sVerFileDll>6.0.0.7</sVerFileDll>
+      </stOneBaseStat>
+    </arBaseStat>
+  </stOneTermStatistic>
+  <stOneTermStatistic>
+    <sNamePodrazdelenie>ЛУВД Тестовое СЕ v6.0.0.0</sNamePodrazdelenie>
+    <sNameTerminal>219-2</sNameTerminal>
+    <sDeviceID>2dbd3000327308010701b3010049a5c5</sDeviceID>
+    <sDateTimeLastSyncronisation>19.08.2010 11:35:24</sDateTimeLastSyncronisation>
+    <iCountBases>1</iCountBases>
+    <iCountSearch>0</iCountSearch>
+    <stVersions>
+      <sVersionStarter>6.0.0.9</sVersionStarter>
+      <sVersionTerminal>6.0.0.2</sVersionTerminal>
+    </stVersions>
+    <arSearch />
+    <arBaseStat>
+      <stOneBaseStat>
+        <sTypeBase>FED_LICA</sTypeBase>
+        <sComment>Федеральный розыск лиц</sComment>
+        <bIsBase>true</bIsBase>
+        <bCheckBase>true</bCheckBase>
+        <sDateLastUpdates>11.08.2010</sDateLastUpdates>
+        <sVerFileDll>6.0.0.7</sVerFileDll>
+      </stOneBaseStat>
+    </arBaseStat>
+  </stOneTermStatistic>
+  <stOneTermStatistic>
+    <sNamePodrazdelenie>ЛУВД Тестовое СЕ v6.0.0.0</sNamePodrazdelenie>
+    <sNameTerminal>219-1</sNameTerminal>
+    <sDeviceID>2dbd3000327308010d519a01fe482069</sDeviceID>
+    <sDateTimeLastSyncronisation>19.08.2010 11:35:06</sDateTimeLastSyncronisation>
+    <iCountBases>1</iCountBases>
+    <iCountSearch>0</iCountSearch>
+    <stVersions>
+      <sVersionStarter>6.0.0.9</sVersionStarter>
+      <sVersionTerminal>6.0.0.2</sVersionTerminal>
+    </stVersions>
+    <arSearch />
+    <arBaseStat>
+      <stOneBaseStat>
+        <sTypeBase>FED_LICA</sTypeBase>
+        <sComment>Федеральный розыск лиц</sComment>
+        <bIsBase>true</bIsBase>
+        <bCheckBase>true</bCheckBase>
+        <sDateLastUpdates>11.08.2010</sDateLastUpdates>
+        <sVerFileDll>6.0.0.7</sVerFileDll>
+      </stOneBaseStat>
+    </arBaseStat>
+  </stOneTermStatistic>
+  <stOneTermStatistic>
+    <sNamePodrazdelenie>ЛУВД Тестовое СЕ v6.0.0.0</sNamePodrazdelenie>
+    <sNameTerminal>219-3</sNameTerminal>
+    <sDeviceID>2dbd3000327308010e519a01fe48564f</sDeviceID>
+    <sDateTimeLastSyncronisation>19.08.2010 19:04:02</sDateTimeLastSyncronisation>
+    <iCountBases>1</iCountBases>
+    <iCountSearch>40</iCountSearch>
+    <stVersions>
+      <sVersionStarter>6.0.0.9</sVersionStarter>
+      <sVersionTerminal>6.0.0.2</sVersionTerminal>
+    </stVersions>
+    <arSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>20.07.2010 16:10:49</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ДЫШЛИВЕНКО|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>20.07.2010 16:11:18</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ШАМРАЙ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>20.07.2010 16:14:23</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ТАЙГИРОВ|А||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 10:45:26</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>МАХОНИН|С|С|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 10:46:48</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ЛЫКОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 10:47:36</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>БУРАНОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:06:39</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>СОМОВ||С|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:38:51</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ТЮЛЯПИН|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:39:34</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>МЕЛЬНИКОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:41:10</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ЛЕБЕДЬКО|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:54:20</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>МАЧУЛИН|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:56:14</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ВЫУЧЕЙСКИЙ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:56:39</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КОРНИЛОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:57:24</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КОРНИЛОВ|Д||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:58:45</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КУЛИК|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 11:59:20</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ШИЛЬДЯКОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 12:01:35</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ПЕТРОВ|В|А|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 12:02:41</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>МИТРОФАНОВ|А|Н|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 12:10:34</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>РЕБРИКОВА|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 12:32:56</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ЛЕБЕДЬКО|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 17:29:07</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КУМСКОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 22:42:59</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КОСОЛАПОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 23:20:08</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КОЛТАКОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 23:20:38</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>БОХАНОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 23:21:13</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ГРИШИНА|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 23:21:36</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КУШНЕПИЙ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 23:21:48</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КУШНЕКИЙ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 23:22:07</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>АНДРЕЕВА|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 23:22:40</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>АНДРЕЕВА|В|А|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 23:23:18</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>АНДРЕЕВ|С|В|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 23:24:04</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>АБЕЛЬХАНОВ|Ф|Г|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 23:24:19</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>МИТРОФАНОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 23:24:52</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>МИТРОФАНОВ|А|Н|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 23:26:26</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ПЕТРОВ|В|А|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 23:26:50</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ШИЛЬДЯКОВ|Е|Р|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 23:27:10</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КУЛИК|С|Н|</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>26.07.2010 23:27:36</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ВЫУЧЕСКИЙ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>27.07.2010 09:19:45</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>КУРЕНКОВ|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>27.07.2010 09:26:25</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ГАВРИЛЬЧЕНКО|||</sParamSearch>
+      </stOneSearch>
+      <stOneSearch>
+        <sComment>Федеральный розыск лиц</sComment>
+        <sDateTime>27.07.2010 19:10:39</sDateTime>
+        <bResult>false</bResult>
+        <sParamSearch>ИВАНОВ|И|Р|</sParamSearch>
+      </stOneSearch>
+    </arSearch>
+    <arBaseStat>
+      <stOneBaseStat>
+        <sTypeBase>FED_LICA</sTypeBase>
+        <sComment>Федеральный розыск лиц</sComment>
+        <bIsBase>true</bIsBase>
+        <bCheckBase>true</bCheckBase>
+        <sDateLastUpdates>17.08.2010</sDateLastUpdates>
+        <sVerFileDll>6.0.0.7</sVerFileDll>
+      </stOneBaseStat>
+    </arBaseStat>
+  </stOneTermStatistic>
+</ArrayOfStOneTermStatistic>
