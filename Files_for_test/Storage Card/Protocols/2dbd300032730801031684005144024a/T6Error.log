@@ -1,0 +1,102 @@
+01.01.2000 00:00:18 ---  CheckFirstLoadProgram:OK
+01.01.2000 00:00:18 ---  CheckNewFiles(exe):OK
+01.01.2000 00:00:18 ---  CheckNewFiles(dll):OK
+01.01.2000 00:00:18 ---  MakeIniFile:stConfig.stPaths.sPathToBase = \Storage Card
+01.01.2000 00:00:18 ---  LoadOneBase:OK file: \Storage Card\T6.Base.MESTN_LICA.xml
+01.01.2000 00:00:18 ---  LoadOneBase:OK file: \Storage Card\T6.Base.FED_LICA.xml
+01.01.2000 00:00:19 ---  SaveIniFile:OK
+01.01.2000 00:00:19 ---  LoadIniFile:OK
+01.01.2000 00:00:20 ---  LoadRozBaseInfo:OK
+05.10.2009 16:09:26 ---  CheckFirstLoadProgram:OK
+05.10.2009 16:09:26 ---  LoadRozBaseInfo:OK
+05.10.2009 16:09:27 ---  LoadFormDll:OK
+05.10.2009 16:44:10 ---  RunAutoUpdate:OK
+05.10.2009 16:45:12 ---  CutLogFile(\Storage Card\Files\T6Error.log):OK
+05.10.2009 16:45:12 ---  ResizeLogFiles:OK
+05.10.2009 17:23:32 ---  LoadFormDll:OK
+06.10.2009 10:33:04 ---  LoadFormDll:OK
+01.01.2000 00:00:13 ---  LoadIniFile:OK
+01.01.2000 00:00:16 ---  CheckFirstLoadProgram:OK
+01.01.2000 00:00:16 ---  CheckNewFiles(exe):OK
+01.01.2000 00:00:16 ---  CheckNewFiles(dll):OK
+01.01.2000 00:00:16 ---  MakeIniFile:stConfig.stPaths.sPathToBase = \Storage Card
+01.01.2000 00:00:16 ---  LoadOneBase:OK file: \Storage Card\T6.Base.MESTN_LICA.xml
+01.01.2000 00:00:16 ---  LoadOneBase:OK file: \Storage Card\T6.Base.FED_LICA.xml
+01.01.2000 00:00:17 ---  SaveIniFile:OK
+01.01.2000 00:00:18 ---  LoadIniFile:OK
+01.01.2000 00:00:18 ---  LoadRozBaseInfo:OK
+01.01.2000 04:19:42 ---  LoadIniFile:OK
+01.01.2000 04:19:45 ---  CheckFirstLoadProgram:OK
+01.01.2000 04:19:45 ---  LoadRozBaseInfo:OK
+01.01.2000 04:38:49 ---  LoadIniFile:OK
+01.01.2000 04:38:52 ---  CheckFirstLoadProgram:OK
+01.01.2000 04:38:52 ---  LoadRozBaseInfo:OK
+06.10.2009 16:10:59 ---  LoadFormDll:OK
+06.10.2009 16:11:55 ---  LoadFormDll:OK
+06.10.2009 16:26:37 ---  LoadFormDll:OK
+06.10.2009 17:00:24 ---  LoadFormDll:OK
+06.10.2009 17:07:54 ---  LoadFormDll:OK
+01.01.2000 01:18:10 ---  LoadFormDll:OK
+02.01.2000 00:49:02 ---  RunAutoUpdate:OK
+02.01.2000 02:18:35 ---  LoadFormDll:OK
+02.01.2000 19:57:16 ---  CheckFirstLoadProgram:OK
+02.01.2000 19:57:16 ---  LoadRozBaseInfo:OK
+22.01.2010 21:40:02 ---  LoadFormDll:OK
+22.01.2010 21:47:20 ---  LoadFormDll:OK
+22.01.2010 23:23:44 ---  LoadFormDll:OK
+01.01.2000 00:00:13 ---  LoadIniFile:OK
+01.01.2000 00:00:16 ---  CheckFirstLoadProgram:OK
+01.01.2000 00:00:17 ---  CheckNewFiles(exe):OK
+01.01.2000 00:00:17 ---  CheckNewFiles(dll):OK
+01.01.2000 00:00:17 ---  MakeIniFile:stConfig.stPaths.sPathToBase = \Storage Card
+01.01.2000 00:00:17 ---  LoadOneBase:OK file: \Storage Card\T6.Base.MESTN_LICA.xml
+01.01.2000 00:00:17 ---  LoadOneBase:OK file: \Storage Card\T6.Base.FED_LICA.xml
+01.01.2000 00:00:17 ---  SaveIniFile:OK
+01.01.2000 00:00:18 ---  LoadIniFile:OK
+01.01.2000 00:00:18 ---  LoadRozBaseInfo:OK
+01.01.2000 00:04:31 ---  LoadIniFile:OK
+01.01.2000 00:04:34 ---  CheckFirstLoadProgram:OK
+01.01.2000 00:04:34 ---  LoadRozBaseInfo:OK
+09.10.2009 20:39:35 ---  RunAutoUpdate:OK
+09.10.2009 20:40:37 ---  CutLogFile(\Storage Card\Files\T6Error.log):OK
+09.10.2009 20:40:37 ---  ResizeLogFiles:OK
+12.10.2009 09:04:13 ---  CheckFirstLoadProgram:OK
+12.10.2009 09:04:13 ---  LoadRozBaseInfo:OK
+12.10.2009 10:21:42 ---  SaveIniFile:OK
+12.10.2009 10:21:42 ---  CheckFirstLoadProgram:OK
+12.10.2009 10:21:42 ---  LoadRozBaseInfo:OK
+12.10.2009 10:23:40 ---  LoadFormDll:OK
+12.10.2009 11:12:57 ---  LoadIniFile:OK
+12.10.2009 11:12:58 ---  CheckFirstLoadProgram:OK
+12.10.2009 11:12:58 ---  LoadRozBaseInfo:OK
+12.10.2009 11:19:06 ---  LoadFormDll:OK
+12.10.2009 11:21:07 ---  RunAutoUpdate:OK
+12.10.2009 11:22:08 ---  VerifyUpdatesFileName(IZM17092007.dat=False):OK
+12.10.2009 11:22:08 ---  VerifyUpdatesFileName(IZM18092007.dat=False):OK
+12.10.2009 11:22:11 ---  IncertRow.ExecuteNonQuery(*** FED_LICA):ERROR - There was an error parsing the query. [ Token line number = 1,Token line offset = 1,Token in error = * ]
+12.10.2009 11:22:11 ---  IncertRow.ExecuteNonQuery(*** 17.06.2009|10:21 file: c:\Server_UVD\WorkDir\cba5dd38-4294-4ec3-9259-2da8d6fe52d9\NewUpd\FRO1709):ERROR - There was an error parsing the query. [ Token line number = 1,Token line offset = 1,Token in error = * ]
+12.10.2009 11:23:34 ---  IncertRow.ExecuteNonQuery(*** 17.06.2009|10:21 count: 1051):ERROR - There was an error parsing the query. [ Token line number = 1,Token line offset = 1,Token in error = * ]
+12.10.2009 11:23:43 ---  SaveIniFile:OK
+12.10.2009 11:23:44 ---  IncertRow.GET_lCountRowAll:ERROR - Нельзя показать сообщение об ошибке, так как не удается найти содержащую его дополнительную сборку ресурсов
+12.10.2009 11:23:45 ---  IncertRow.ConnOpen(Data Source = \Storage Card\ROZ_LICA.sdf):ERROR - Нельзя показать сообщение об ошибке, так как не удается найти содержащую его дополнительную сборку ресурсов
+12.10.2009 11:23:45 ---  UpdateBase.Run.FileDelete:ERROR - Нельзя показать сообщение об ошибке, так как не удается найти содержащую его дополнительную сборку ресурсов
+12.10.2009 11:23:47 ---  CutLogFile(\Storage Card\Files\T6Error.log):OK
+12.10.2009 11:23:47 ---  ResizeLogFiles:OK
+12.10.2009 11:46:08 ---  RunAutoUpdate:OK
+12.10.2009 11:47:09 ---  VerifyUpdatesFileName(IZM18092007.dat=False):OK
+12.10.2009 11:47:11 ---  IncertRow.ExecuteNonQuery(*** FED_LICA):ERROR - There was an error parsing the query. [ Token line number = 1,Token line offset = 1,Token in error = * ]
+12.10.2009 11:47:11 ---  IncertRow.ExecuteNonQuery(*** 17.06.2009|10:21 file: c:\Server_UVD\WorkDir\cba5dd38-4294-4ec3-9259-2da8d6fe52d9\NewUpd\FRO1809):ERROR - There was an error parsing the query. [ Token line number = 1,Token line offset = 1,Token in error = * ]
+12.10.2009 11:48:35 ---  IncertRow.ExecuteNonQuery(*** 17.06.2009|10:21 count: 1132):ERROR - There was an error parsing the query. [ Token line number = 1,Token line offset = 1,Token in error = * ]
+12.10.2009 11:48:40 ---  SaveIniFile:OK
+12.10.2009 11:48:42 ---  CutLogFile(\Storage Card\Files\T6Error.log):OK
+12.10.2009 11:48:43 ---  ResizeLogFiles:OK
+12.10.2009 13:07:35 ---  RunAutoUpdate:OK
+12.10.2009 13:08:38 ---  CutLogFile(\Storage Card\Files\T6Error.log):OK
+12.10.2009 13:08:38 ---  ResizeLogFiles:OK
+13.10.2009 10:20:08 ---  LoadFormDll:OK
+13.10.2009 10:26:28 ---  RunAutoUpdate:OK
+13.10.2009 10:27:30 ---  CutLogFile(\Storage Card\Files\T6Error.log):OK
+13.10.2009 10:27:31 ---  ResizeLogFiles:OK
+13.10.2009 15:47:31 ---  RunAutoUpdate:OK
+13.10.2009 15:48:34 ---  CutLogFile(\Storage Card\Files\T6Error.log):OK
+13.10.2009 15:48:34 ---  ResizeLogFiles:OK

@@ -1,0 +1,64 @@
+01.01.2000 00:56:36 ---  MakeIniFile:stConfig.stPaths.sPathToBase = \Storage Card
+01.01.2000 00:56:37 ---  LoadOneBase:OK file: \Storage Card\T6.Base.FED_LICA.xml
+01.01.2000 00:56:37 ---  SaveIniFile:OK
+01.01.2000 00:57:33 ---  CheckFirstLoadProgram:OK
+01.01.2000 00:57:34 ---  CheckNewFiles(exe):OK
+01.01.2000 00:57:34 ---  CheckNewFiles(dll):OK
+01.01.2000 00:57:34 ---  MakeIniFile:stConfig.stPaths.sPathToBase = \Storage Card
+01.01.2000 00:57:34 ---  LoadOneBase:OK file: \Storage Card\T6.Base.FED_LICA.xml
+01.01.2000 00:57:34 ---  SaveIniFile:OK
+01.01.2000 00:57:35 ---  LoadIniFile:OK
+01.01.2000 00:57:35 ---  LoadRozBaseInfo:OK
+01.01.2000 00:58:00 ---  SaveIniFile:OK
+01.01.2000 00:58:00 ---  CheckFirstLoadProgram:OK
+01.01.2000 00:58:00 ---  LoadRozBaseInfo:OK
+01.01.2000 01:05:57 ---  LoadIniFile:OK
+01.01.2000 01:06:08 ---  CheckFirstLoadProgram:OK
+01.01.2000 01:06:09 ---  LoadRozBaseInfo:OK
+09.10.2009 17:13:59 ---  RunAutoUpdate:OK
+09.10.2009 17:15:01 ---  ResizeLogFiles:OK
+09.10.2009 18:13:57 ---  LoadFormDll:OK
+12.10.2009 10:23:39 ---  LoadFormDll:OK
+12.10.2009 10:42:56 ---  SaveIniFile:OK
+12.10.2009 10:42:56 ---  CheckFirstLoadProgram:OK
+12.10.2009 10:42:56 ---  LoadRozBaseInfo:OK
+12.10.2009 11:13:01 ---  LoadIniFile:OK
+12.10.2009 11:13:02 ---  CheckFirstLoadProgram:OK
+12.10.2009 11:13:02 ---  LoadRozBaseInfo:OK
+12.10.2009 11:21:07 ---  RunAutoUpdate:OK
+12.10.2009 11:22:10 ---  ResizeLogFiles:OK
+12.10.2009 11:29:51 ---  LoadFormDll:OK
+12.10.2009 11:30:50 ---  RunAutoUpdate:OK
+12.10.2009 11:44:55 ---  RunAutoUpdate:OK
+12.10.2009 11:45:57 ---  ResizeLogFiles:OK
+12.10.2009 13:07:26 ---  RunAutoUpdate:OK
+12.10.2009 13:08:28 ---  ResizeLogFiles:OK
+13.10.2009 09:40:54 ---  LoadFormDll:OK
+01.01.2000 00:00:12 ---  LoadIniFile:OK
+13.10.2009 10:01:08 ---  CheckFirstLoadProgram:OK
+13.10.2009 10:01:08 ---  CheckNewFiles(exe):OK
+13.10.2009 10:01:08 ---  CheckNewFiles(dll):OK
+13.10.2009 10:01:08 ---  MakeIniFile:stConfig.stPaths.sPathToBase = \Storage Card
+13.10.2009 10:01:09 ---  LoadOneBase:OK file: \Storage Card\T6.Base.FED_LICA.xml
+13.10.2009 10:01:09 ---  LoadOneBase:OK file: \Storage Card\T6.Base.MESTN_LICA.xml
+13.10.2009 10:01:09 ---  SaveIniFile:OK
+13.10.2009 10:01:09 ---  LoadIniFile:OK
+13.10.2009 10:01:09 ---  LoadRozBaseInfo:OK
+13.10.2009 10:06:10 ---  RunAutoUpdate:OK
+13.10.2009 10:07:12 ---  ResizeLogFiles:OK
+13.10.2009 10:07:54 ---  LoadFormDll:OK
+13.10.2009 10:12:33 ---  LoadIniFile:OK
+13.10.2009 10:12:33 ---  CheckFirstLoadProgram:OK
+13.10.2009 10:12:33 ---  LoadRozBaseInfo:OK
+13.10.2009 10:19:38 ---  RunAutoUpdate:OK
+13.10.2009 10:20:42 ---  IncertRow.ExecuteNonQuery(*** FED_LICA):ERROR - There was an error parsing the query. [ Token line number = 1,Token line offset = 1,Token in error = * ]
+13.10.2009 10:20:42 ---  IncertRow.ExecuteNonQuery(*** 17.06.2009|10:21 file: c:\Server_UVD\WorkDir\cba5dd38-4294-4ec3-9259-2da8d6fe52d9\NewUpd\FRO1709):ERROR - There was an error parsing the query. [ Token line number = 1,Token line offset = 1,Token in error = * ]
+13.10.2009 10:21:46 ---  IncertRow.ExecuteNonQuery(*** 17.06.2009|10:21 count: 1051):ERROR - There was an error parsing the query. [ Token line number = 1,Token line offset = 1,Token in error = * ]
+13.10.2009 10:21:56 ---  SaveIniFile:OK
+13.10.2009 10:21:56 ---  IncertRow.ExecuteNonQuery(*** FED_LICA):ERROR - There was an error parsing the query. [ Token line number = 1,Token line offset = 1,Token in error = * ]
+13.10.2009 10:21:56 ---  IncertRow.ExecuteNonQuery(*** 17.06.2009|10:21 file: c:\Server_UVD\WorkDir\cba5dd38-4294-4ec3-9259-2da8d6fe52d9\NewUpd\FRO1809):ERROR - There was an error parsing the query. [ Token line number = 1,Token line offset = 1,Token in error = * ]
+13.10.2009 10:23:16 ---  IncertRow.ExecuteNonQuery(*** 17.06.2009|10:21 count: 1132):ERROR - There was an error parsing the query. [ Token line number = 1,Token line offset = 1,Token in error = * ]
+13.10.2009 10:23:20 ---  SaveIniFile:OK
+13.10.2009 10:23:22 ---  ResizeLogFiles:OK
+13.10.2009 15:47:33 ---  RunAutoUpdate:OK
+13.10.2009 15:48:35 ---  ResizeLogFiles:OK

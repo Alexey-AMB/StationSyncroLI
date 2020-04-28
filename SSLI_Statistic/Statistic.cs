@@ -6,10 +6,11 @@ using System.IO;
 using System.Xml.Serialization;
 using System.Collections;
 
-namespace SSCE
+namespace SSLI
 {
-    public class Statistic : SSCE.ClassAMBRenewedService
+    public class Statistic : SSLI.ClassAMBRenewedService
     {
+        private string sPd = Path.DirectorySeparatorChar.ToString();
         private string sPathToProtocol = null;
         private string sPathExecute = null;
         private string sPathToOutBox = null;
@@ -33,9 +34,9 @@ namespace SSCE
             {
                 lock (Utils.oSyncroLoadSaveInit)
                 {
-                    sPathToProtocol = Utils.strConfig.sPathToProtocol;
+                    sPathToProtocol = Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToProtocol;
                     sPathExecute = Utils.strConfig.sPathToExecute;
-                    sPathToOutBox = Utils.strConfig.sPathToOutBox;
+                    sPathToOutBox = Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToOutBox;
                     sNamePodrazdelenie = Utils.strConfig.sNamePodrazdelenie;
                     iDebugLevel = Utils.strConfig.iDebugLevel;
                     dtNextSave = Convert.ToDateTime(Utils.strConfig.strStatistic.sNextSave + " " + Utils.strConfig.strStatistic.sHoursSave);
@@ -80,7 +81,7 @@ namespace SSCE
                     else
                     {
                         i++;
-                        if (i >= 600)   //ждем 10 минут, потом снимаем маркер занятости папки. Ну что там можно столько времени делать???
+                        if (i >= 600)   //ждем 10 минут, потом снимаем маркер занятости папки. Ну что там можно столько времени делать?
                         {
                             i = 0;
                             Utils.DeleteMarkerDirBusy(sPathToOutBox);
@@ -171,7 +172,7 @@ namespace SSCE
                 {
                     try
                     {
-                        File.Copy(sPathExecute + "\\" + Utils.sFileNameLog, sPathToOutBox + "\\" + sTmpNamePodr + Utils.sFileNameLog);
+                        File.Copy(sPathExecute + sPd + Utils.sFileNameLog, sPathToOutBox + sPd + sTmpNamePodr + Utils.sFileNameLog);
                     }
                     catch { }
                 }
@@ -196,16 +197,16 @@ namespace SSCE
                 {
                     try
                     {
-                        if (File.Exists(sPathExecute + "\\" + sFileNameCurProtocol)) File.Delete(sPathExecute + "\\" + sFileNameCurProtocol);   //копируем файлы протокола и конфигурации из текущей папки в рабочую
-                        if (File.Exists(sPathExecute + "\\" + sFileNameCurInit)) File.Delete(sPathExecute + "\\" + sFileNameCurInit);
+                        if (File.Exists(sPathExecute + sPd + sFileNameCurProtocol)) File.Delete(sPathExecute + sPd + sFileNameCurProtocol);   //копируем файлы протокола и конфигурации из текущей папки в рабочую
+                        if (File.Exists(sPathExecute + sPd + sFileNameCurInit)) File.Delete(sPathExecute + sPd + sFileNameCurInit);
                         FileInfo[] fiProt = di.GetFiles("*" + sProtocolFileName);
                         FileInfo[] fiInit = di.GetFiles(sRemoteNameFileT6Init);
-                        if (fiProt.Length > 0) File.Copy(fiProt[0].FullName, sPathExecute + "\\" + sFileNameCurProtocol);
+                        if (fiProt.Length > 0) File.Copy(fiProt[0].FullName, sPathExecute + sPd + sFileNameCurProtocol);
                         if (fiInit.Length > 0)
                         {
-                            File.Copy(fiInit[0].FullName, sPathExecute + "\\" + sFileNameCurInit);
+                            File.Copy(fiInit[0].FullName, sPathExecute + sPd + sFileNameCurInit);
                             DateTime dtChangeIni = fiInit[0].LastWriteTime;
-                            stOneTermStatistic stOTSCurr = WorkWithFiles(sPathExecute + "\\" + sFileNameCurInit, sPathExecute + "\\" + sFileNameCurProtocol, dtChangeIni.ToString("dd.MM.yyyy HH:mm:ss"));
+                            stOneTermStatistic stOTSCurr = WorkWithFiles(sPathExecute + sPd + sFileNameCurInit, sPathExecute + sPd + sFileNameCurProtocol, dtChangeIni.ToString("dd.MM.yyyy HH:mm:ss"));
                             if (stOTSCurr.sDeviceID != null)
                             {
                                 arTermStat[iCountTerm] = stOTSCurr;
@@ -218,9 +219,9 @@ namespace SSCE
                         WriteDebugString("MakeStatFile.WorkWithFiles:ERROR - " + ex.Message, 1);
                     }
                 }
-                SaveStatFile(sPathToOutBox + "\\" + sTmpFileRes);
-                if (File.Exists(sPathExecute + "\\" + sFileNameCurProtocol)) File.Delete(sPathExecute + "\\" + sFileNameCurProtocol);   //удаляем рабочие файлы
-                if (File.Exists(sPathExecute + "\\" + sFileNameCurInit)) File.Delete(sPathExecute + "\\" + sFileNameCurInit);
+                SaveStatFile(sPathToOutBox + sPd + sTmpFileRes);
+                if (File.Exists(sPathExecute + sPd + sFileNameCurProtocol)) File.Delete(sPathExecute + sPd + sFileNameCurProtocol);   //удаляем рабочие файлы
+                if (File.Exists(sPathExecute + sPd + sFileNameCurInit)) File.Delete(sPathExecute + sPd + sFileNameCurInit);
                 Utils.DeleteMarkerDirBusy(sPathToOutBox);
                 WriteDebugString("MakeStatFile.Exit:OK", 2);
             }

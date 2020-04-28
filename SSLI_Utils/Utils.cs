@@ -8,7 +8,7 @@ using System.Reflection;
 using System.Collections;
 using Ionic.Zip;
 
-namespace SSCE
+namespace SSLI
 {
     using DWORD = System.UInt32;
     public class ClassAMBRenewedService
@@ -544,7 +544,7 @@ namespace SSCE
     public struct stSSWEBServer
     {
         /// <summary>
-        /// Корневая папка WEB-сервера. Обычно в ОЗУ - например \\Temp
+        /// Корневая папка WEB-сервера. Обычно в ОЗУ - например Temp
         /// </summary>
         public string sWWWrootDir;
         /// <summary>
@@ -750,9 +750,9 @@ namespace SSCE
 
         #endregion
         /// <summary>
-        /// Версия файла SSCE.exe
+        /// Версия файла SSLI.exe
         /// </summary>
-        public static string sVersionSSCE = "0.0.0.0";
+        public static string sVersionSSLI = "0.0.0.0";
         /// <summary>
         /// Имя файла обозначающего, что данная директория занята монопольно
         /// </summary>
@@ -760,24 +760,25 @@ namespace SSCE
         /// <summary>
         /// Имя основного лог-файла службы
         /// </summary>
-        public const string sFileNameLog = "StationSyncroCE.log";
+        public const string sFileNameLog = "StationSyncroLI.log";
         /// <summary>
         /// Имя файла конфигурации станции
         /// </summary>
-        public const string sFileNameInit = "StationSyncroCE.xml";
+        public const string sFileNameInit = "StationSyncroLI.xml";
+
+        public const string sFolderNameMain = "Storage Card";   //!!
+        public const string sFolderNameSecond = "DaS_SSLI";
+
         /// <summary>
         /// Имя программы для настроек станции на ПК
         /// </summary>
-        public const string sFileNameProgrammConfig = "Config_SSCE.exe";
+        public const string sFileNameProgrammConfig = "Config_SSLI.exe";
         /// <summary>
         /// Имя файла программы для обмена с сервером с ПК
         /// </summary>
-        public const string sFileNameProgrammTransfer = "TransferFiles_SSCE.exe";
+        public const string sFileNameProgrammTransfer = "TransferFiles_SSLI.exe";
         public const string sIPLocalRNDIS = "192.168.56.119";// у хоста192.168.56.150, у клиента 192,168,56,119
         public const int iLoacalRNDISPort = 30000;
-
-        public static string pd = Path.DirectorySeparatorChar.ToString();
-
         /// <summary>
         /// Объект для синхронизации работы с файлом конфигурации.
         /// </summary>
@@ -822,7 +823,7 @@ namespace SSCE
 
                 try
                 {
-                    sw = new StreamWriter(sPathExecute + "\\" + sFileNameLog, true);
+                    sw = new StreamWriter(sPathExecute + Path.DirectorySeparatorChar.ToString() + sFileNameLog, true);
                     sw.WriteLine(DateTime.Now.ToLocalTime().ToString() + strWr);
                     bRet = true;
                 }
@@ -871,7 +872,7 @@ namespace SSCE
                         countTmp++;
                     }
 
-                    sw = File.CreateText(sPathExecute + "\\TempFile.tmp");
+                    sw = File.CreateText(sPathExecute + Path.DirectorySeparatorChar.ToString() + "TempFile.tmp");
                     do
                     {
                         readStr = sr.ReadLine();
@@ -882,7 +883,7 @@ namespace SSCE
                     sw.Close();
 
                     File.Delete(fileName);
-                    FileInfo fi = new FileInfo(sPathExecute + "\\TempFile.tmp");
+                    FileInfo fi = new FileInfo(sPathExecute + Path.DirectorySeparatorChar.ToString() + "TempFile.tmp");
                     fi.MoveTo(fileName);
                     WriteDebugString(sPathExecute, " #CutLogFile(" + fileName + "):OK");
                 }
@@ -905,9 +906,9 @@ namespace SSCE
             {
                 try
                 {
-                    if (!File.Exists(sNameFolder + "\\" + sFileNameFlagBusy))
+                    if (!File.Exists(sNameFolder + Path.DirectorySeparatorChar.ToString() + sFileNameFlagBusy))
                     {
-                        StreamWriter sw = File.CreateText(sNameFolder + "\\" + sFileNameFlagBusy);
+                        StreamWriter sw = File.CreateText(sNameFolder + Path.DirectorySeparatorChar.ToString() + sFileNameFlagBusy);
                         if (sw != null) sw.Close();
                     }
                 }
@@ -926,7 +927,7 @@ namespace SSCE
             {
                 try
                 {
-                    if (File.Exists(sNameFolder + "\\" + sFileNameFlagBusy)) return true;
+                    if (File.Exists(sNameFolder + Path.DirectorySeparatorChar.ToString() + sFileNameFlagBusy)) return true;
                     else return false;
                 }
                 catch { return true; }
@@ -943,7 +944,8 @@ namespace SSCE
             {
                 try
                 {
-                    if (File.Exists(sNameFolder + "\\" + sFileNameFlagBusy)) File.Delete(sNameFolder + "\\" + sFileNameFlagBusy);
+                    if (File.Exists(sNameFolder + Path.DirectorySeparatorChar.ToString() + sFileNameFlagBusy)) 
+                        File.Delete(sNameFolder + Path.DirectorySeparatorChar.ToString() + sFileNameFlagBusy);
                 }
                 catch { }
             }
@@ -1040,32 +1042,29 @@ namespace SSCE
         /// <returns>True - все ОК.</returns>
         public static bool SaveInit()
         {
-            return SaveInit(strConfig.sPathToExecute + "\\" + sFileNameInit);
+            return SaveInit(strConfig.sPathToExecute + Path.DirectorySeparatorChar.ToString() + sFileNameInit);
         }
         /// <summary>
         /// Получение серийника девайса. Вроде как уникальный.
         /// </summary>
         /// <returns>Строка с серийником.</returns>
-        public static string GetDeviceID()
+        public static string GetDeviceID()  
         {
             string sRet = "";
+            string sNameFile = "/proc/cpuinfo";
+            if (File.Exists(sNameFile))
+            {
+                string[] lines = File.ReadAllLines(sNameFile);
+                foreach (string s in lines)
+                {
+                    if(s.IndexOf("Serial") >= 0)
+                    {
+                        sRet = "0000000000000000" + s.Substring(10, 16);
+                        return sRet;
+                    }
+                }
+            }
 
-            //Int32 FILE_DEVICE_HAL = 0x00000101;
-            //Int32 FILE_ANY_ACCESS = 0x0;
-            //Int32 METHOD_BUFFERED = 0x0;
-
-            //Int32 IOCTL_HAL_GET_DEVICE_INFO =
-            //    ((FILE_DEVICE_HAL) << 16) | ((FILE_ANY_ACCESS) << 14)
-            //    | ((1) << 2) | (METHOD_BUFFERED);
-
-            //bool bRetVal = false;
-            //UInt32 uSPIValue = 263; //GetUUID
-            //UInt32 uBytesReturned = 0;
-            //Guid meUUID = new Guid();
-            //bRetVal = KernelIoControl(IOCTL_HAL_GET_DEVICE_INFO,
-            //       ref uSPIValue, Marshal.SizeOf(uSPIValue), ref meUUID, Marshal.SizeOf(meUUID), ref uBytesReturned);
-            //sRet = meUUID.ToString("N");
-            //if (bRetVal) return sRet;
             return "01020304050607080102030405060708";
         }
         /// <summary>
@@ -1075,6 +1074,7 @@ namespace SSCE
         /// <param name="iAvaib">Сколько памяти доступно для программы</param>
         public static void GetMemoryStatus(ref int iTotal, ref int iAvaib)
         {
+            // /proc/meminfo
             MEMORYSTATUS memStatus = new MEMORYSTATUS();
             GlobalMemoryStatus(memStatus);
 
@@ -1088,7 +1088,7 @@ namespace SSCE
         /// <returns>Если сработает, то уже не важно что он вернет.</returns>
         public static int SoftReset()
         {
-            // Though I guess this will never really return anything
+            // sudo /sbin/reboot
             return SetSystemPowerState(null, POWER_STATE_RESET, POWER_FORCE);
         }
         /// <summary>
@@ -1103,10 +1103,11 @@ namespace SSCE
         {
             try
             {
+                string sPd = Path.DirectorySeparatorChar.ToString();
                 Version vCurrVersion = null, vNewVersion = null;
                 Assembly asmCurr = null;
-                string sNameNewFile = sNewSoftPath + "\\" + sNameDll + ".dll";
-                string sNameCurrFile = sExecutePath + "\\" + sNameDll + ".dll";
+                string sNameNewFile = sNewSoftPath + sPd + sNameDll + ".dll";
+                string sNameCurrFile = sExecutePath + sPd + sNameDll + ".dll";
 
                 vNewVersion = NativeFile.GetFileInfo(sNameNewFile);
                 vCurrVersion = NativeFile.GetFileInfo(sNameCurrFile);
@@ -1130,9 +1131,9 @@ namespace SSCE
                     }
                     try
                     {
-                        File.Delete(sNameNewFile);
+                        if(File.Exists(sNameNewFile)) File.Delete(sNameNewFile);
                     }
-                    catch //(Exception ex)
+                    catch (Exception ex)
                     {  }
                 }
                 //с версиями разобрались
@@ -1222,7 +1223,7 @@ namespace SSCE
                     zip.CompressionLevel = Ionic.Zlib.CompressionLevel.BestSpeed;
                     ZipEntry ze1 = zip.AddFile(sFullFileName, "");
                     zip.Comment = sZipComment;
-                    zip.TempFileFolder = "\\Temp";
+                    zip.TempFileFolder = sFolderNameMain +  Path.DirectorySeparatorChar.ToString() + "Temp";
                     zip.Save(sFullZipName);
                     bRet = true;
                 }
@@ -1270,6 +1271,7 @@ namespace SSCE
     {
         private const string sRemoteNameFileT6Init = "T6Init.xml";
         private const string sProtocolFileName = "_protocol.log";
+        private string sPd = Path.DirectorySeparatorChar.ToString();
         /// <summary>
         /// Имя подразделения
         /// </summary>
@@ -1339,11 +1341,11 @@ namespace SSCE
         {
             bool bRet = true;
 
-            if (!Directory.Exists(Utils.strConfig.sPathToFullBase)) return false;
-            if (!Directory.Exists(Utils.strConfig.sPathToUpdTerm)) return false;
-            if (Utils.IsFolderBusy(Utils.strConfig.sPathToFullBase)) return false;
+            if (!Directory.Exists(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToFullBase)) return false;
+            if (!Directory.Exists(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm)) return false;
+            if (Utils.IsFolderBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToFullBase)) return false;
 
-            DirectoryInfo di = new DirectoryInfo(Utils.strConfig.sPathToFullBase);
+            DirectoryInfo di = new DirectoryInfo(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToFullBase);
             FileInfo[] fiXml = di.GetFiles("*.xml");
             FileInfo[] fiZip = di.GetFiles("*.zip");
             if ((fiXml.Length == 0)&&(fiZip.Length == 0)) return false;
@@ -1414,7 +1416,7 @@ namespace SSCE
                     {
                         //получить дату самого свежего обновления
                         ArrayList arFoundFiles = new ArrayList();
-                        DirectoryInfo updDir = new DirectoryInfo(Utils.strConfig.sPathToUpdTerm);
+                        DirectoryInfo updDir = new DirectoryInfo(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm);
                         FileInfo[] updFilesNotSort = updDir.GetFiles(stOb.sPrefUpdates + "*." + stOb.sExtUpdates);
                         foreach (FileInfo ufns in updFilesNotSort)
                         {
@@ -1438,9 +1440,9 @@ namespace SSCE
                             arFoundFiles.Sort();
                             stbiRet.sLUpd = ((MyInfoFile)arFoundFiles[arFoundFiles.Count - 1]).fileName;
                             stbiRet.dtLUpd = ((MyInfoFile)arFoundFiles[arFoundFiles.Count - 1]).dtFileDate;
-                            if ((arFoundFiles.Count > 15) && (!Utils.IsFolderBusy(Utils.strConfig.sPathToUpdTerm)))    //удаляем лишние файлы обновлений
+                            if ((arFoundFiles.Count > 15) && (!Utils.IsFolderBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm)))    //удаляем лишние файлы обновлений
                             {
-                                Utils.MarkedDirBusy(Utils.strConfig.sPathToUpdTerm);
+                                Utils.MarkedDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm);
                                 for (int i = 0; i < arFoundFiles.Count - 10; i++)
                                 {
                                     if (((MyInfoFile)arFoundFiles[i]).dtFileDate.AddDays(10) < DateTime.Parse(stOb.sDateLastUpdates))    //удаляем те, которые на 10 дней старше базы
@@ -1452,7 +1454,7 @@ namespace SSCE
                                         catch { }
                                     }
                                 }
-                                Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToUpdTerm);
+                                Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm);
                             }
                             return stbiRet;
                         }
@@ -1500,7 +1502,7 @@ namespace SSCE
                     {
                         //получить дату самого свежего обновления
                         ArrayList arFoundFiles = new ArrayList();
-                        DirectoryInfo updDir = new DirectoryInfo(Utils.strConfig.sPathToUpdTerm);
+                        DirectoryInfo updDir = new DirectoryInfo(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm);
                         FileInfo[] updFilesNotSort = updDir.GetFiles(stOb.sPrefUpdates + "*." + stOb.sExtUpdates);
                         foreach (FileInfo ufns in updFilesNotSort)
                         {
@@ -1524,9 +1526,9 @@ namespace SSCE
                             arFoundFiles.Sort();
                             stbiRet.sLUpd = ((MyInfoFile)arFoundFiles[arFoundFiles.Count - 1]).fileName;
                             stbiRet.dtLUpd = ((MyInfoFile)arFoundFiles[arFoundFiles.Count - 1]).dtFileDate;
-                            if ((arFoundFiles.Count > 15) && (!Utils.IsFolderBusy(Utils.strConfig.sPathToUpdTerm)))    //удаляем лишние файлы обновлений
+                            if ((arFoundFiles.Count > 15) && (!Utils.IsFolderBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm)))    //удаляем лишние файлы обновлений
                             {
-                                Utils.MarkedDirBusy(Utils.strConfig.sPathToUpdTerm);
+                                Utils.MarkedDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm);
                                 for (int i = 0; i < arFoundFiles.Count - 10; i++)
                                 {
                                     if (((MyInfoFile)arFoundFiles[i]).dtFileDate.AddDays(10) < DateTime.Parse(stOb.sDateLastUpdates))    //удаляем те, которые на 10 дней старше базы
@@ -1538,7 +1540,7 @@ namespace SSCE
                                         catch { }
                                     }
                                 }
-                                Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToUpdTerm);
+                                Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm);
                             }
                             return stbiRet;
                         }
@@ -1557,9 +1559,9 @@ namespace SSCE
         {
             bool bRet = true;
 
-            if (Utils.strConfig.sPathToProtocol == null) return false;
+            if (Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToProtocol == null) return false;
 
-            DirectoryInfo diProtocol = new DirectoryInfo(Utils.strConfig.sPathToProtocol);
+            DirectoryInfo diProtocol = new DirectoryInfo(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToProtocol);
             if (diProtocol.Exists)
             {
                 DirectoryInfo[] diCurrProtocol = diProtocol.GetDirectories();
@@ -1701,11 +1703,11 @@ namespace SSCE
         /// </summary>
         public NewSoftUpdates()
         {
-            if(!LoadIni(Utils.strConfig.sPathToExecute + "\\" + sNameFileBaseNewSoftUpdates)) arstUpdates = new stOneRow[1];
+            if(!LoadIni(Utils.strConfig.sPathToExecute + Path.DirectorySeparatorChar.ToString() + sNameFileBaseNewSoftUpdates)) arstUpdates = new stOneRow[1];
         }
         public void Close()
         {
-            SaveIni(Utils.strConfig.sPathToExecute + "\\" + sNameFileBaseNewSoftUpdates);
+            SaveIni(Utils.strConfig.sPathToExecute + Path.DirectorySeparatorChar.ToString() + sNameFileBaseNewSoftUpdates);
         }
         /// <summary>
         /// Проверить передавалось ли данное обновление данному терминалу.
@@ -2097,6 +2099,18 @@ namespace SSCE
     /// </summary>
     public static class NativeFile
     {
+
+        public unsafe static Version GetFileInfo(string FullPathToFile)
+        {
+            Version retV = new Version("0.0.0.0");
+            if (!File.Exists(FullPathToFile)) return retV;
+            System.Diagnostics.FileVersionInfo fvi;
+            fvi = System.Diagnostics.FileVersionInfo.GetVersionInfo(FullPathToFile);
+            retV = new Version(fvi.ProductVersion);
+            return retV;
+        }
+
+        /*
         public struct NativeFileInfo
         {
             public Version Version;
@@ -2110,12 +2124,13 @@ namespace SSCE
                 return new Version("0.0.0.0");
             }
 
-            IntPtr handle;
+            IntPtr handle, buffer = IntPtr.Zero; 
 
-            int size = GetFileVersionInfoSize(path, out handle);
-            IntPtr buffer = Marshal.AllocHGlobal(size);
             try
             {
+                int size = GetFileVersionInfoSize(path, out handle);
+                buffer = Marshal.AllocHGlobal(size);
+
                 if (!GetFileVersionInfo(path, handle, size, buffer))
                 {
                     throw new FileNotFoundException();
@@ -2123,7 +2138,7 @@ namespace SSCE
 
                 IntPtr pVersion;
                 int versionLength;
-                VerQueryValue(buffer, "\\", out pVersion, out versionLength);
+                VerQueryValue(buffer, Path.DirectorySeparatorChar.ToString(), out pVersion, out versionLength);
 
                 VS_FIXEDFILEINFO versionInfo = (VS_FIXEDFILEINFO)Marshal.PtrToStructure(pVersion, typeof(VS_FIXEDFILEINFO));
 
@@ -2142,7 +2157,7 @@ namespace SSCE
 
                 return version;
             }
-            catch //(Exception ex)
+            catch (Exception ex)
             {
 
             }
@@ -2255,5 +2270,6 @@ namespace SSCE
             VXD = 0x05,
             StaticLib = 0x07
         }
+        */
     }
 }

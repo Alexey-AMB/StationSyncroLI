@@ -5,7 +5,7 @@ using System.IO;
 using System.Threading;
 using System.Collections;
 using System.Xml.Serialization;
-using SSCE;
+using SSLI;
 
 namespace T6.FileCopy
 {

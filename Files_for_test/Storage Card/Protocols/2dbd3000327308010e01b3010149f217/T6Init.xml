@@ -1,0 +1,106 @@
+<?xml version="1.0"?>
+<stIni xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <iVersionIniFile>2</iVersionIniFile>
+  <Copyright>Алексей Ананенков @ 2009</Copyright>
+  <sNameTerminal>Test Terminal</sNameTerminal>
+  <bAutoLoadUpdates>true</bAutoLoadUpdates>
+  <bCheckAdminPass>false</bCheckAdminPass>
+  <sAdminPasswrd />
+  <sHashCode>нет</sHashCode>
+  <sDeviceID>2dbd3000327308010e01b3010149f217</sDeviceID>
+  <iShowFoundInBase>25</iShowFoundInBase>
+  <sLastSyncronisation>13.10.2009</sLastSyncronisation>
+  <stVersions>
+    <sVersionStarter>6.0.0.9</sVersionStarter>
+    <sVersionTerminal>6.0.0.2</sVersionTerminal>
+  </stVersions>
+  <stPaths>
+    <sPathToBase>\Storage Card</sPathToBase>
+    <sPathExecute>\Program Files\Terminal</sPathExecute>
+    <sPathUpdates>\Storage Card\Updates</sPathUpdates>
+    <sPathNewSoft>\Storage Card\NewSoft</sPathNewSoft>
+    <sPathStorageFiles>\Storage Card\Files</sPathStorageFiles>
+  </stPaths>
+  <stBlueT>
+    <bBlueToothSupported>false</bBlueToothSupported>
+    <bUseBlueTooth>false</bUseBlueTooth>
+  </stBlueT>
+  <iCountBases>1</iCountBases>
+  <arBases>
+    <stOneBase>
+      <sTypeBase>FED_LICA</sTypeBase>
+      <sNameFileBase>ROZ_LICA.sdf</sNameFileBase>
+      <sNameTable>ROZ_LICA</sNameTable>
+      <sComment>Федеральный розыск лиц</sComment>
+      <sNameButton>Розыск лиц</sNameButton>
+      <sPrefUpdates>IZM</sPrefUpdates>
+      <iNumCharPref>3</iNumCharPref>
+      <sExtUpdates>dat</sExtUpdates>
+      <bIsBase>true</bIsBase>
+      <bCheckBase>true</bCheckBase>
+      <sNameLastUpdates>FULL03042008.dat</sNameLastUpdates>
+      <sDateLastUpdates>03.04.2008</sDateLastUpdates>
+      <sVersion>3.5.0.1</sVersion>
+      <iPriority>1</iPriority>
+      <sTypeUpdate>UPDATE</sTypeUpdate>
+      <sTypeForm>FORM</sTypeForm>
+      <sNameAsmDll>Bases.ROZ_LICA</sNameAsmDll>
+      <sNameFileDll>Bases.ROZ_LICA.dll</sNameFileDll>
+      <sVerFileDll>6.0.0.7</sVerFileDll>
+    </stOneBase>
+    <stOneBase>
+      <iNumCharPref>0</iNumCharPref>
+      <bIsBase>false</bIsBase>
+      <bCheckBase>false</bCheckBase>
+      <iPriority>0</iPriority>
+    </stOneBase>
+    <stOneBase>
+      <iNumCharPref>0</iNumCharPref>
+      <bIsBase>false</bIsBase>
+      <bCheckBase>false</bCheckBase>
+      <iPriority>0</iPriority>
+    </stOneBase>
+    <stOneBase>
+      <iNumCharPref>0</iNumCharPref>
+      <bIsBase>false</bIsBase>
+      <bCheckBase>false</bCheckBase>
+      <iPriority>0</iPriority>
+    </stOneBase>
+    <stOneBase>
+      <iNumCharPref>0</iNumCharPref>
+      <bIsBase>false</bIsBase>
+      <bCheckBase>false</bCheckBase>
+      <iPriority>0</iPriority>
+    </stOneBase>
+    <stOneBase>
+      <iNumCharPref>0</iNumCharPref>
+      <bIsBase>false</bIsBase>
+      <bCheckBase>false</bCheckBase>
+      <iPriority>0</iPriority>
+    </stOneBase>
+    <stOneBase>
+      <iNumCharPref>0</iNumCharPref>
+      <bIsBase>false</bIsBase>
+      <bCheckBase>false</bCheckBase>
+      <iPriority>0</iPriority>
+    </stOneBase>
+    <stOneBase>
+      <iNumCharPref>0</iNumCharPref>
+      <bIsBase>false</bIsBase>
+      <bCheckBase>false</bCheckBase>
+      <iPriority>0</iPriority>
+    </stOneBase>
+    <stOneBase>
+      <iNumCharPref>0</iNumCharPref>
+      <bIsBase>false</bIsBase>
+      <bCheckBase>false</bCheckBase>
+      <iPriority>0</iPriority>
+    </stOneBase>
+    <stOneBase>
+      <iNumCharPref>0</iNumCharPref>
+      <bIsBase>false</bIsBase>
+      <bCheckBase>false</bCheckBase>
+      <iPriority>0</iPriority>
+    </stOneBase>
+  </arBases>
+</stIni>

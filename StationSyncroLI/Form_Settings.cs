@@ -1,13 +1,13 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using SSCE;
+using SSLI;
 
-namespace StationSyncroCE
+namespace StationSyncroLI
 {
     public partial class Form_Settings : Form
     {
@@ -40,7 +40,7 @@ namespace StationSyncroCE
 
         private void button1_Click(object sender, EventArgs e)
         {
-            Utils.TouchScreenCalibrate();
+            //Utils.TouchScreenCalibrate();
 
             //Registry.RegFlushKey(Registry.HKLM);
         }

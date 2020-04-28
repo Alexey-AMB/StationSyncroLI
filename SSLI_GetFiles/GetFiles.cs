@@ -9,13 +9,14 @@ using AMB_FTPCLIENT;
 using AMB_MAIL;
 using Ionic.Zip;
 
-namespace SSCE
+namespace SSLI
 {
-    public class GetFiles : SSCE.ClassAMBRenewedService
+    public class GetFiles : SSLI.ClassAMBRenewedService
     {
         private int iDebugLevel = 1;
         private bool bAbort = false;
 
+        private string sPd = Path.DirectorySeparatorChar.ToString();
         private string sPathExecute = null;
         private string sPathToOutBox = null;
         //private string sPathToInBox = null;
@@ -66,7 +67,7 @@ namespace SSCE
                 lock (Utils.oSyncroLoadSaveInit)
                 {
                     // ==== GFB ====
-                    sPathToFullBase = Utils.strConfig.sPathToFullBase;
+                    sPathToFullBase = Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToFullBase;
                     sIPServerUVD = Utils.strConfig.strGetFiles.sIPServerUVD;
                     sPortServerUVD = Utils.strConfig.strGetFiles.sPortServerUVD_FTP;
                     sUserFTP = Utils.strConfig.strGetFiles.sFTPUser;
@@ -82,15 +83,15 @@ namespace SSCE
                     dtGFBNextRecive = Convert.ToDateTime(Utils.strConfig.strGetFiles.sNextRecive);
 
                     // ==== MAIL ====
-                    sPathToOutBox = Utils.strConfig.sPathToOutBox;
+                    sPathToOutBox = Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToOutBox;
                     //sPathToInBox = Utils.strConfig.sPathToInBox;
                     sPathExecute = Utils.strConfig.sPathToExecute;
                     sNamePodrazdelenie = Utils.strConfig.sNamePodrazdelenie;
                     iDebugLevel = Utils.strConfig.iDebugLevel;
 
-                    sPathToNewSoftSS = Utils.strConfig.sPathToNewSoftSS;
-                    sPathToNewSoftTerminal = Utils.strConfig.sPathToNewSoftTerminal;
-                    sPathToUpdTerm = Utils.strConfig.sPathToUpdTerm;
+                    sPathToNewSoftSS = Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftSS;
+                    sPathToNewSoftTerminal = Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftTerminal;
+                    sPathToUpdTerm = Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm;
 
                     sSMTPServer = Utils.strConfig.strMail.sSMTPServer;
                     //sPOP3Server = Utils.strConfig.strMail.sPOP3Server;
@@ -167,8 +168,8 @@ namespace SSCE
                         if (!Utils.bRebootRequest)
                         {
                             GetFullBase();
-                            Utils.SaveInit("\\Storage Card" + "\\" + Utils.sFileNameInit + ".bak");
-                            Utils.SaveInit("\\Documents and Settings\\SSCE" + "\\" + Utils.sFileNameInit + ".bak");
+                            Utils.SaveInit(Utils.sFolderNameMain + sPd + Utils.sFileNameInit + ".bak");
+                            Utils.SaveInit(Utils.sFolderNameSecond + sPd + Utils.sFileNameInit + ".bak");
                         }
                     }
                 }
@@ -307,7 +308,7 @@ namespace SSCE
                 {
                     if (fi.Name != Utils.sFileNameFlagBusy)
                     {
-                        bZipOk = Utils.ZipFile(fi.FullName, sPathToOutBox + "\\" + Utils.GetDeviceID() + "_" + DateTime.Now.ToString("ddMMyyyy") + "_" + i.ToString() + ".zip", GetSubjectByName(fi.Name));
+                        bZipOk = Utils.ZipFile(fi.FullName, sPathToOutBox + sPd + Utils.GetDeviceID() + "_" + DateTime.Now.ToString("ddMMyyyy") + "_" + i.ToString() + ".zip", GetSubjectByName(fi.Name));
                         i++;
                         try
                         {
@@ -495,13 +496,14 @@ namespace SSCE
             ff.setRemoteUser(sUserFTP);
             ff.setRemotePass(sPassFTP);
             ff.setRemotePort(int.Parse(sPortServerUVD));
+            string sTmpFlName = Utils.sFolderNameMain + sPd + "Temp" + sPd + "List.xml";
             try
             {
                 ff.login();
                 ff.chdir(sPathOnServerToFullBase);
                 ff.setBinaryMode(true);
-                if (File.Exists("\\Temp\\List.xml")) File.Delete("\\Temp\\List.xml");
-                ff.download(sFileNameList, "\\Temp\\List.xml");
+                if (File.Exists(sTmpFlName)) File.Delete(sTmpFlName);
+                ff.download(sFileNameList, sTmpFlName);
             }
             catch (Exception ex)
             {
@@ -516,7 +518,7 @@ namespace SSCE
             stOneBaseFull[] stRemoteBase = null;
             try
             {
-                fs = new FileStream("\\Temp\\List.xml", FileMode.Open);
+                fs = new FileStream(sTmpFlName, FileMode.Open);
                 XmlSerializer sr = new XmlSerializer(typeof(stOneBaseFull[]));
                 stRemoteBase = (stOneBaseFull[])sr.Deserialize(fs);
                 fs.Close();
@@ -530,7 +532,7 @@ namespace SSCE
             }
             try
             {
-                if (File.Exists("\\Temp\\List.xml")) File.Delete("\\Temp\\List.xml");
+                if (File.Exists(sTmpFlName)) File.Delete(sTmpFlName);
             }
             catch (Exception ex)
             {
@@ -557,23 +559,23 @@ namespace SSCE
                     Utils.MarkedDirBusy(sPathToFullBase);
                     if (ob.sNameFileZipBase != null)    //если есть сжатый файл качаем его
                     {
-                        if (File.Exists(sPathToFullBase + "\\" + ob.sNameFileZipBase + "_old")) File.Delete(sPathToFullBase + "\\" + ob.sNameFileZipBase + "_old");
-                        if (File.Exists(sPathToFullBase + "\\" + ob.sNameFileZipBase)) File.Move(sPathToFullBase + "\\" + ob.sNameFileZipBase, sPathToFullBase + "\\" + ob.sNameFileZipBase + "_old");
+                        if (File.Exists(sPathToFullBase + sPd + ob.sNameFileZipBase + "_old")) File.Delete(sPathToFullBase + sPd + ob.sNameFileZipBase + "_old");
+                        if (File.Exists(sPathToFullBase + sPd + ob.sNameFileZipBase)) File.Move(sPathToFullBase + sPd + ob.sNameFileZipBase, sPathToFullBase + sPd + ob.sNameFileZipBase + "_old");
 
                         try
                         {
                             ff.login();
                             ff.chdir(ob.sPathToDownloadZip);
-                            ff.download(ob.sNameFileZipBase, sPathToFullBase + "\\" + ob.sNameFileZipBase);
+                            ff.download(ob.sNameFileZipBase, sPathToFullBase + sPd + ob.sNameFileZipBase);
                             ff.chdir("\\");
                             WriteDebugString("LoadFullBase:OK  - " + ob.sPathToDownloadZip + @"\" + ob.sNameFileZipBase, 2);
                             AddLastRecivedInfo(ob.sNameFileZipBase);
 
                             //если перекачали сжатую базу, то удаляем XML
-                            if (File.Exists(sPathToFullBase + "\\" + ob.sNameFileBase + "_old")) File.Delete(sPathToFullBase + "\\" + ob.sNameFileBase + "_old");
-                            if (File.Exists(sPathToFullBase + "\\" + ob.sNameFileBase)) File.Move(sPathToFullBase + "\\" + ob.sNameFileBase, sPathToFullBase + "\\" + ob.sNameFileBase + "_old");
-                            if (File.Exists(sPathToFullBase + "\\" + ob.sNameFileXML + "_old")) File.Delete(sPathToFullBase + "\\" + ob.sNameFileXML + "_old");
-                            if (File.Exists(sPathToFullBase + "\\" + ob.sNameFileXML)) File.Move(sPathToFullBase + "\\" + ob.sNameFileXML, sPathToFullBase + "\\" + ob.sNameFileXML + "_old");
+                            if (File.Exists(sPathToFullBase + sPd + ob.sNameFileBase + "_old")) File.Delete(sPathToFullBase + sPd + ob.sNameFileBase + "_old");
+                            if (File.Exists(sPathToFullBase + sPd + ob.sNameFileBase)) File.Move(sPathToFullBase + sPd + ob.sNameFileBase, sPathToFullBase + sPd + ob.sNameFileBase + "_old");
+                            if (File.Exists(sPathToFullBase + sPd + ob.sNameFileXML + "_old")) File.Delete(sPathToFullBase + sPd + ob.sNameFileXML + "_old");
+                            if (File.Exists(sPathToFullBase + sPd + ob.sNameFileXML)) File.Move(sPathToFullBase + sPd + ob.sNameFileXML, sPathToFullBase + sPd + ob.sNameFileXML + "_old");
                         }
                         catch (Exception ex)
                         {
@@ -587,14 +589,14 @@ namespace SSCE
                     }
                     else
                     {                                   //если нет, качаем не сжатый
-                        if (File.Exists(sPathToFullBase + "\\" + ob.sNameFileBase + "_old")) File.Delete(sPathToFullBase + "\\" + ob.sNameFileBase + "_old");
-                        if (File.Exists(sPathToFullBase + "\\" + ob.sNameFileBase)) File.Move(sPathToFullBase + "\\" + ob.sNameFileBase, sPathToFullBase + "\\" + ob.sNameFileBase + "_old");
+                        if (File.Exists(sPathToFullBase + sPd + ob.sNameFileBase + "_old")) File.Delete(sPathToFullBase + sPd + ob.sNameFileBase + "_old");
+                        if (File.Exists(sPathToFullBase + sPd + ob.sNameFileBase)) File.Move(sPathToFullBase + sPd + ob.sNameFileBase, sPathToFullBase + sPd + ob.sNameFileBase + "_old");
 
                         try
                         {
                             ff.login();
                             ff.chdir(ob.sPathToDownload);
-                            ff.download(ob.sNameFileBase, sPathToFullBase + "\\" + ob.sNameFileBase);
+                            ff.download(ob.sNameFileBase, sPathToFullBase + sPd + ob.sNameFileBase);
                             ff.chdir("\\");
                             WriteDebugString("LoadFullBase:OK  - " + ob.sPathToDownload + @"/" + ob.sNameFileBase, 2);
                             AddLastRecivedInfo(ob.sNameFileBase);
@@ -611,15 +613,15 @@ namespace SSCE
 
                         if (bErrorBase) throw new Exception("Error on download file");
 
-                        if (File.Exists(sPathToFullBase + "\\" + ob.sNameFileXML + "_old")) File.Delete(sPathToFullBase + "\\" + ob.sNameFileXML + "_old");
-                        if (File.Exists(sPathToFullBase + "\\" + ob.sNameFileXML)) File.Move(sPathToFullBase + "\\" + ob.sNameFileXML, sPathToFullBase + "\\" + ob.sNameFileXML + "_old");
+                        if (File.Exists(sPathToFullBase + sPd + ob.sNameFileXML + "_old")) File.Delete(sPathToFullBase + sPd + ob.sNameFileXML + "_old");
+                        if (File.Exists(sPathToFullBase + sPd + ob.sNameFileXML)) File.Move(sPathToFullBase + sPd + ob.sNameFileXML, sPathToFullBase + sPd + ob.sNameFileXML + "_old");
 
                         try
                         {
                             ff.login();
                             ff.chdir(ob.sPathToDownload);
                             ff.setBinaryMode(true);
-                            ff.download(ob.sNameFileXML, sPathToFullBase + "\\" + ob.sNameFileXML);
+                            ff.download(ob.sNameFileXML, sPathToFullBase + sPd + ob.sNameFileXML);
                             WriteDebugString("LoadFullBase:OK  - " + ob.sPathToDownload + @"/" + ob.sNameFileXML, 2);
                             AddLastRecivedInfo(ob.sNameFileXML);
                         }
@@ -650,13 +652,13 @@ namespace SSCE
                 {
                     if (ex.Message == "Error on download file")
                     {
-                        if (File.Exists(sPathToFullBase + "\\" + ob.sNameFileBase)) File.Delete(sPathToFullBase + "\\" + ob.sNameFileBase);
-                        if (File.Exists(sPathToFullBase + "\\" + ob.sNameFileBase + "_old")) File.Move(sPathToFullBase + "\\" + ob.sNameFileBase + "_old", sPathToFullBase + "\\" + ob.sNameFileBase);
+                        if (File.Exists(sPathToFullBase + sPd + ob.sNameFileBase)) File.Delete(sPathToFullBase + sPd + ob.sNameFileBase);
+                        if (File.Exists(sPathToFullBase + sPd + ob.sNameFileBase + "_old")) File.Move(sPathToFullBase + sPd + ob.sNameFileBase + "_old", sPathToFullBase + sPd + ob.sNameFileBase);
                     }
                     if (ex.Message == "Error on download xml-file")
                     {
-                        if (File.Exists(sPathToFullBase + "\\" + ob.sNameFileXML)) File.Delete(sPathToFullBase + "\\" + ob.sNameFileXML);
-                        if (File.Exists(sPathToFullBase + "\\" + ob.sNameFileXML + "_old")) File.Move(sPathToFullBase + "\\" + ob.sNameFileXML + "_old", sPathToFullBase + "\\" + ob.sNameFileXML);
+                        if (File.Exists(sPathToFullBase + sPd + ob.sNameFileXML)) File.Delete(sPathToFullBase + sPd + ob.sNameFileXML);
+                        if (File.Exists(sPathToFullBase + sPd + ob.sNameFileXML + "_old")) File.Move(sPathToFullBase + sPd + ob.sNameFileXML + "_old", sPathToFullBase + sPd + ob.sNameFileXML);
                     }
                     Utils.DeleteMarkerDirBusy(sPathToFullBase);
                 }
@@ -731,7 +733,7 @@ namespace SSCE
                     {
                         string sFN = sFtpFL.Substring(sFtpFL.LastIndexOf(" ") + 1);
                         if (sFN.Length < 8) continue;
-                        if (!File.Exists(sPathToUpdTerm + "\\" + sFN))  //если файл не существует
+                        if (!File.Exists(sPathToUpdTerm + sPd + sFN))  //если файл не существует
                         {
                             string tmpstr = sFN;
                             string tmpdFile = tmpstr.Substring(stOb.iNumCharPref, 2);
@@ -763,7 +765,7 @@ namespace SSCE
                     {
                         string sFN = sFtpFL.Substring(sFtpFL.LastIndexOf(" ") + 1);
                         if (sFN.Length < 8) continue;
-                        if (!File.Exists(sPathToUpdTerm + "\\" + sFN))  //если файл не существует
+                        if (!File.Exists(sPathToUpdTerm + sPd + sFN))  //если файл не существует
                         {
                             string tmpstr = sFN;
                             string tmpdFile = tmpstr.Substring(stOb.iNumCharPref, 2);
@@ -807,7 +809,7 @@ namespace SSCE
                 {
                     try
                     {
-                        ff.download(sN, sPathToUpdTerm + "\\" + sN);
+                        ff.download(sN, sPathToUpdTerm + sPd + sN);
                         iCount = 3;
                         bDownOk = true;
                         WriteDebugString("GetUpdates.FTP.DownLoad:OK  - File: " + sN, 2);
@@ -975,11 +977,11 @@ namespace SSCE
                 {
                     if (sN != "")
                     {
-                        if (File.Exists(sFolderLocal + "\\" + sN)) File.Delete(sFolderLocal + "\\" + sN);
-                        ff.download(sN, sFolderLocal + "\\" + sN);
+                        if (File.Exists(sFolderLocal + sPd + sN)) File.Delete(sFolderLocal + sPd + sN);
+                        ff.download(sN, sFolderLocal + sPd + sN);
                         WriteDebugString("GetAllFromFTPFolder.FTP.DownLoad:OK  - File: " + sN, 2);
                         AddLastRecivedInfo(sN);
-                        nsu.AddNewUpdates(sFolderLocal + "\\" + sN);
+                        nsu.AddNewUpdates(sFolderLocal + sPd + sN);
                     }
                     iRet++;
                 }

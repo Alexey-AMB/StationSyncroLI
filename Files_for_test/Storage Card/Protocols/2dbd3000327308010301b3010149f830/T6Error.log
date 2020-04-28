@@ -1,0 +1,33 @@
+01.01.2000 00:58:40 ---  MakeIniFile:stConfig.stPaths.sPathToBase = \Storage Card
+01.01.2000 00:58:41 ---  LoadOneBase:OK file: \Storage Card\T6.Base.FED_LICA.xml
+01.01.2000 00:58:41 ---  SaveIniFile:OK
+01.01.2000 00:00:13 ---  LoadIniFile:OK
+01.01.2000 00:59:32 ---  CheckFirstLoadProgram:OK
+01.01.2000 00:59:33 ---  CheckNewFiles(exe):OK
+01.01.2000 00:59:33 ---  CheckNewFiles(dll):OK
+01.01.2000 00:59:33 ---  MakeIniFile:stConfig.stPaths.sPathToBase = \Storage Card
+01.01.2000 00:59:33 ---  LoadOneBase:OK file: \Storage Card\T6.Base.FED_LICA.xml
+01.01.2000 00:59:33 ---  SaveIniFile:OK
+01.01.2000 00:59:34 ---  LoadIniFile:OK
+01.01.2000 00:59:34 ---  LoadRozBaseInfo:OK
+09.10.2009 17:07:04 ---  RunAutoUpdate:OK
+09.10.2009 17:08:06 ---  ResizeLogFiles:OK
+09.10.2009 20:51:29 ---  LoadFormDll:OK
+12.10.2009 10:23:14 ---  LoadFormDll:OK
+12.10.2009 10:44:05 ---  SaveIniFile:OK
+12.10.2009 10:44:05 ---  CheckFirstLoadProgram:OK
+12.10.2009 10:44:05 ---  LoadRozBaseInfo:OK
+12.10.2009 11:15:30 ---  LoadIniFile:OK
+12.10.2009 11:15:30 ---  CheckFirstLoadProgram:OK
+12.10.2009 11:15:30 ---  LoadRozBaseInfo:OK
+12.10.2009 11:22:03 ---  LoadFormDll:OK
+12.10.2009 11:30:58 ---  RunAutoUpdate:OK
+12.10.2009 11:44:33 ---  RunAutoUpdate:OK
+12.10.2009 11:45:35 ---  ResizeLogFiles:OK
+12.10.2009 13:07:37 ---  RunAutoUpdate:OK
+12.10.2009 13:08:39 ---  ResizeLogFiles:OK
+13.10.2009 10:12:47 ---  LoadFormDll:OK
+13.10.2009 10:21:28 ---  RunAutoUpdate:OK
+13.10.2009 10:22:30 ---  ResizeLogFiles:OK
+13.10.2009 14:50:25 ---  RunAutoUpdate:OK
+13.10.2009 14:51:27 ---  ResizeLogFiles:OK

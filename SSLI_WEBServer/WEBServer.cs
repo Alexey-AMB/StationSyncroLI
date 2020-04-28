@@ -6,16 +6,18 @@ using System.Net;
 using System.Net.Sockets;
 using System.Threading;
 
-namespace SSCE
+namespace SSLI
 {
-    class WEBServer : SSCE.ClassAMBRenewedService
+    class WEBServer : SSLI.ClassAMBRenewedService
     {
+        private string sPd = Path.DirectorySeparatorChar.ToString();
         private TcpListener myListener = null;
         private Socket mySocket = null;
-        private string sMyWebServerRoot = "\\Storage card\\WWW";
+        private string sMyWebServerRoot = null;
         private bool bAbort = false;
         private string sExecutePath = "";
         private int iDebugLevel = 2;
+        private string sPathToWebTemp = null;
 
         public override bool Init()
         {
@@ -23,16 +25,27 @@ namespace SSCE
             {
                 sExecutePath = Utils.strConfig.sPathToExecute;
                 iDebugLevel = Utils.strConfig.iDebugLevel;
+                sPathToWebTemp = Utils.sFolderNameMain + sPd + Utils.strConfig.strWebServer.sWWWrootDir;
             }
             WriteDebugString("---------------------------", 1);
-            if (!Directory.Exists(sExecutePath + "\\WWWdata"))
+            if (Directory.Exists(sExecutePath + sPd + "WWWdata"))
             {
-                if (Directory.Exists("\\Storage card\\WWW\\WWWdata"))
+                WriteDebugString("Init:OK - Found WWWdata directory.", 2);
+                if (!Directory.Exists(sPathToWebTemp))
                 {
-                    Directory.CreateDirectory(sExecutePath + "\\WWWdata");
-                    DirectoryInfo di = new DirectoryInfo("\\Storage card\\WWW\\WWWdata");
+                    Directory.CreateDirectory(sPathToWebTemp);
+                    Directory.CreateDirectory(sPathToWebTemp + sPd + "image");
+                    File.Copy(sExecutePath + sPd + "WWWdata" + sPd + "image" + sPd + "TR_1.jpg", sPathToWebTemp + sPd + "image" + sPd + "TR_1.jpg");
+                }
+            }
+            else
+            {
+                if (Directory.Exists(Utils.sFolderNameMain + sPd + "WWW" + sPd + "WWWdata"))    //!!
+                {
+                    Directory.CreateDirectory(sExecutePath + sPd + "WWWdata");
+                    DirectoryInfo di = new DirectoryInfo(Utils.sFolderNameMain + sPd + "WWW" + sPd + "WWWdata");
                     FileInfo[] fi = di.GetFiles();
-                    foreach (FileInfo f in fi) File.Copy(f.FullName, sExecutePath + "\\WWWdata\\" + f.Name);
+                    foreach (FileInfo f in fi) File.Copy(f.FullName, sExecutePath + sPd + "WWWdata" + sPd + f.Name);
                 }
                 else
                 {
@@ -40,7 +53,7 @@ namespace SSCE
                     return false;
                 }
             }
-            if (WEBServerInit(Utils.strConfig.strNet.sIPAdressLocal, Utils.strConfig.strWebServer.iPortWWWserver, Utils.strConfig.strWebServer.sWWWrootDir))
+            if (WEBServerInit(Utils.strConfig.strNet.sIPAdressLocal, Utils.strConfig.strWebServer.iPortWWWserver, sPathToWebTemp))
             {
                 WriteDebugString("Init:OK", 2);
                 return true;
@@ -136,7 +149,7 @@ namespace SSCE
             try
             {
                 if ((sRootDir != "") && (sRootDir != null)) sMyWebServerRoot = sRootDir;
-                if (!Directory.Exists(sMyWebServerRoot)) return false;
+                if (!Directory.Exists(sMyWebServerRoot)) Directory.CreateDirectory(sMyWebServerRoot);
                 IPAddress ipAdr = IPAddress.Parse(IPserver);
                 myListener = new TcpListener(ipAdr, port);
                 
@@ -156,10 +169,10 @@ namespace SSCE
 
             try
             {
-                sr = new StreamReader(sExecutePath + "\\" + "WWWdata\\Default.Dat");
+                sr = new StreamReader(sExecutePath + sPd + "WWWdata" + sPd + "Default.Dat");
                 while ((sLine = sr.ReadLine()) != null)
                 {
-                    if (File.Exists(sLocalDirectory + "\\" + sLine) == true)
+                    if (File.Exists(sLocalDirectory + sPd + sLine) == true)
                         break;
                 }
             }
@@ -170,7 +183,7 @@ namespace SSCE
             {
                 if (sr != null) sr.Close();
             }
-            if (File.Exists(sLocalDirectory + "\\" + sLine) == true)
+            if (File.Exists(sLocalDirectory + sPd + sLine) == true)
                 return sLine;
             else
                 return "";
@@ -188,7 +201,7 @@ namespace SSCE
             sFileExt = sRequestedFile.Substring(iStartPos);
             try
             {
-                sr = new StreamReader(sExecutePath + "\\WWWdata\\Mime.Dat");
+                sr = new StreamReader(sExecutePath + sPd + "WWWdata" + sPd + "mime.dat");
                 while ((sLine = sr.ReadLine()) != null)
                 {
                     sLine.Trim();
@@ -203,7 +216,7 @@ namespace SSCE
                     }
                 }
             }
-            catch //(Exception e)
+            catch (Exception e)
             {
             }
             finally
@@ -228,14 +241,14 @@ namespace SSCE
             sDirName = sDirName.ToLower();
             try
             {
-                sr = new StreamReader(sExecutePath + "\\WWWdata\\VDirs.Dat");
+                sr = new StreamReader(sExecutePath + sPd + "WWWdata" + sPd + "vdirs.dat");
                 while ((sLine = sr.ReadLine()) != null)
                 {
                     sLine.Trim();
                     if (sLine.Length > 0)
                     {
                         iStartPos = sLine.IndexOf(";");
-                        sLine = sLine.ToLower();
+                        //sLine = sLine.ToLower();
                         sVirtualDir = sLine.Substring(0, iStartPos);
                         sRealDir = sLine.Substring(iStartPos + 1);
                         if (sVirtualDir == sDirName)
@@ -397,7 +410,7 @@ namespace SSCE
                 String sMimeType = GetMimeType(sRequestedFile);
 
                 //Build the physical path
-                sPhysicalFilePath = sLocalDir + "\\" + sRequestedFile;
+                sPhysicalFilePath = sLocalDir + sPd + sRequestedFile;
                 if (File.Exists(sPhysicalFilePath) == false)
                 {
                     sErrorMessage = "<H2>404 Error! File Does Not Exists...</H2>";
@@ -444,11 +457,11 @@ namespace SSCE
         private void WorkWithHTMLFile()
         {
             WriteDebugString("WorkWithHTMLFile.Entrance:OK", 2);
-            if (File.Exists(sMyWebServerRoot + "\\index.htm")) File.Delete(sMyWebServerRoot + "\\index.htm");
-            MakeHTMLFile(sMyWebServerRoot + "\\index.htm");
+            if (File.Exists(sMyWebServerRoot + sPd + "index.htm")) File.Delete(sMyWebServerRoot + sPd + "index.htm");
+            MakeHTMLFile(sMyWebServerRoot + sPd + "index.htm");
 
-            if (File.Exists(sMyWebServerRoot + "\\SSCE.txt")) File.Delete(sMyWebServerRoot + "\\SSCE.txt");
-            File.Copy(Utils.strConfig.sPathToExecute + "\\" + Utils.sFileNameLog, sMyWebServerRoot + "\\SSCE.txt");
+            if (File.Exists(sMyWebServerRoot + sPd + "SSLI.txt")) File.Delete(sMyWebServerRoot + sPd + "SSLI.txt");
+            File.Copy(Utils.strConfig.sPathToExecute + sPd + Utils.sFileNameLog, sMyWebServerRoot + sPd + "SSLI.txt");
 
             WriteDebugString("WorkWithHTMLFile.Exit:OK", 2);
         }
@@ -470,26 +483,29 @@ namespace SSCE
                     sw.WriteLine("<Meta name=\"Reply-to\" Content=\"alexey@ambintech.ru\">");
                     sw.WriteLine("</head>");
                     sw.WriteLine("<body>");
-                    sw.WriteLine("<img src=\"\\image\\TR_1.jpg\" width=\"200\" height=\"195\" alt=\"Транспортная милиция\">");
+                    sw.WriteLine("<img src=\"/image/TR_1.jpg\" width=\"200\" height=\"195\" alt=\"Транспортная милиция\">");  //!!
                     sw.WriteLine("<h2>Это страница станции синхронизации</h2>");
 
                     sw.WriteLine("<h1>" + Utils.cCurrStatus.sNamePodrazdelenie + "</h1>");
                     sw.WriteLine("<hr>");
 
-                    if (Utils.cCurrStatus.arBaseInfo.Length > 0)
+                    if (Utils.cCurrStatus.arBaseInfo != null)
                     {
-                        sw.WriteLine("<h3>Розыскные базы на станции</h3>");
-                        sw.WriteLine("<OL>");
-                        foreach (stBaseInfo sB in Utils.cCurrStatus.arBaseInfo)
+                        if (Utils.cCurrStatus.arBaseInfo.Length > 0)
                         {
-                            if (sB.sName != null)
+                            sw.WriteLine("<h3>Розыскные базы на станции</h3>");
+                            sw.WriteLine("<OL>");
+                            foreach (stBaseInfo sB in Utils.cCurrStatus.arBaseInfo)
                             {
-                                sw.WriteLine("<LI>" + sB.sName);
-                                sw.WriteLine("<ul><li> Дата актуальности: " + sB.sDate + "<li> Последнее обновление: " + sB.sLUpd + "</ul>");
+                                if (sB.sName != null)
+                                {
+                                    sw.WriteLine("<LI>" + sB.sName);
+                                    sw.WriteLine("<ul><li> Дата актуальности: " + sB.sDate + "<li> Последнее обновление: " + sB.sLUpd + "</ul>");
+                                }
                             }
+                            sw.WriteLine("</OL>");
+                            sw.WriteLine("<br>");
                         }
-                        sw.WriteLine("</OL>");
-                        sw.WriteLine("<br>");
                     }
 
                     if (Utils.cCurrStatus.arstTermInMemory.Length > 0)
@@ -515,14 +531,14 @@ namespace SSCE
                     sw.WriteLine("<br><br>");
                     sw.WriteLine("Версии программ: ");
                     sw.WriteLine("<ul>");
-                    sw.WriteLine("<li>Оболочка: SSCE.exe  Версия: " + Utils.sVersionSSCE);
+                    sw.WriteLine("<li>Оболочка: SSLI.exe  Версия: " + Utils.sVersionSSLI);
                     for (int i = 0; i < Utils.strConfig.arstTasks.Length; i++)
                     {
                        sw.WriteLine("<li>Задача: " + Utils.strConfig.arstTasks[i].sNameTask + "  Версия: " + Utils.strConfig.arstTasks[i].sCurrentVersion);
                     }
                     sw.WriteLine("</ul>");
                     sw.WriteLine("<br>");
-                    sw.WriteLine("<a href=\"" + "SSCE.txt" + "\">Протокол работы станции (для администратора)</a>");    //
+                    sw.WriteLine("<a href=\"" + "SSLI.txt" + "\">Протокол работы станции (для администратора)</a>");    //
                     sw.WriteLine("<br>");
                     sw.WriteLine("<a href=\"http://www.ambintech.ru\">Связь с разработчиками ООО \"АМБ ИнТех\"</a>");
                     sw.WriteLine("</body>");

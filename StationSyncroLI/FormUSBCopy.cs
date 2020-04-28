@@ -1,15 +1,15 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
-using SSCE;
+using SSLI;
 using System.IO;
 using System.Threading;
 
-namespace StationSyncroCE
+namespace StationSyncroLI
 {
     public partial class FormUSBCopy : Form
     {
@@ -42,14 +42,14 @@ namespace StationSyncroCE
         {
             if (!Utils.bInizialised)
             {
-                if (File.Exists("\\Documents and Settings\\SSCE" + "\\" + Utils.sFileNameInit + ".bak"))
+                if (File.Exists("\\Documents and Settings\\SSLI" + "\\" + Utils.sFileNameInit + ".bak"))
                 {
-                    File.Delete("\\Documents and Settings\\SSCE" + "\\" + Utils.sFileNameInit + ".bak");
+                    File.Delete("\\Documents and Settings\\SSLI" + "\\" + Utils.sFileNameInit + ".bak");
                 }
 
                 if (File.Exists(sRootFolder + "\\CurrentConfig\\" + Utils.GetDeviceID() + "\\" + Utils.sFileNameInit))
                 {
-                    File.Copy(sRootFolder + "\\CurrentConfig\\" + Utils.GetDeviceID() + "\\" + Utils.sFileNameInit, "\\Documents and Settings\\SSCE" + "\\" + Utils.sFileNameInit + ".bak");
+                    File.Copy(sRootFolder + "\\CurrentConfig\\" + Utils.GetDeviceID() + "\\" + Utils.sFileNameInit, "\\Documents and Settings\\SSLI" + "\\" + Utils.sFileNameInit + ".bak");
                     bRequestReboot = true;
                     sNameCurFile = "Жду перезагрузку...";
                     bVisibleLabelEnd = true;
@@ -59,7 +59,7 @@ namespace StationSyncroCE
 
                 if (File.Exists(sRootFolder + "\\CurrentConfig" + "\\" + Utils.sFileNameInit))
                 {
-                    File.Copy(sRootFolder + "\\CurrentConfig" + "\\" + Utils.sFileNameInit, "\\Documents and Settings\\SSCE" + "\\" + Utils.sFileNameInit + ".bak");
+                    File.Copy(sRootFolder + "\\CurrentConfig" + "\\" + Utils.sFileNameInit, "\\Documents and Settings\\SSLI" + "\\" + Utils.sFileNameInit + ".bak");
                     bRequestReboot = true;
                     sNameCurFile = "Жду перезагрузку...";
                     bVisibleLabelEnd = true;
@@ -262,7 +262,7 @@ namespace StationSyncroCE
                         stSSConfig stC = new stSSConfig();
                         if(Utils.LoadInitFile(fi.FullName, ref stC))
                         {
-                            //int result = Registry.CreateValueString(Registry.HKLM, @"Comm\SMSC91181\Parms\TcpIp", "IpAddress", stC.strNet.sIPAdressLocal);
+                            //!!!int result = Registry.CreateValueString(Registry.HKLM, @"Comm\SMSC91181\Parms\TcpIp", "IpAddress", stC.strNet.sIPAdressLocal);
                             //result = Registry.CreateValueString(Registry.HKLM, @"Comm\SMSC91181\Parms\TcpIp", "Subnetmask", stC.strNet.sMask);
                             //result = Registry.CreateValueString(Registry.HKLM, @"Comm\SMSC91181\Parms\TcpIp", "DefaultGateway", stC.strNet.sGateway);
                             //result = Registry.CreateValueDWORD(Registry.HKLM, @"Comm\SMSC91181\Parms", "MacAddressHi", Convert.ToUInt32(stC.strNet.sMAC_hi));

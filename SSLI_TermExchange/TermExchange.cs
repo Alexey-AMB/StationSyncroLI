@@ -4,12 +4,13 @@ using System.Text;
 using System.Collections;
 using System.Threading;
 
-namespace SSCE
+namespace SSLI
 {
-    public class TermExchange : SSCE.ClassAMBRenewedService
+    public class TermExchange : SSLI.ClassAMBRenewedService
     {
+        private string sPd = System.IO.Path.DirectorySeparatorChar.ToString();
         private const string sNameNDISCard = "USB80231";
-        AMB_NDISNOTI.AMB_NDISNotification nn = null;
+        AMB_NDISNOTI.AMB_NDISNotification nn = null;	//!! /sys/class/net/enp0s?/operstate == up or == down
         T6.FileCopy.ClassFileCopy cfc = null;
         private bool bTermIsConnected = false;
         private int iDebugLevel = 2;
@@ -37,10 +38,10 @@ namespace SSCE
                 lock (Utils.oSyncroLoadSaveInit)
                 {
                     sPathExecute = Utils.strConfig.sPathToExecute;
-                    sPathToFullBase = Utils.strConfig.sPathToFullBase;
-                    sPathToNewSoftTerminal = Utils.strConfig.sPathToNewSoftTerminal;
-                    sPathToUpdTerm = Utils.strConfig.sPathToUpdTerm;
-                    sPathToProtocol = Utils.strConfig.sPathToProtocol;
+                    sPathToFullBase = Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToFullBase;
+                    sPathToNewSoftTerminal = Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftTerminal;
+                    sPathToUpdTerm = Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm;
+                    sPathToProtocol = Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToProtocol;
                 }
                 bRet = true;
             }
@@ -53,7 +54,7 @@ namespace SSCE
             try
             {
                 WriteDebugString("---------------------------", 1);
-                nn = new AMB_NDISNOTI.AMB_NDISNotification();
+                nn = new AMB_NDISNOTI.AMB_NDISNotification();   //!!
                 AMB_NDISNOTI.AMB_NDISNotification.NewNotification += new AMB_NDISNOTI.AMB_NDISNotification.MyEv_NewNotifi(AMB_NDISNotification_NewNotification);
                 if (nn.Init()) nn.Run();
                 else

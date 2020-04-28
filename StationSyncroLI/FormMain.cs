@@ -7,13 +7,14 @@ using System.Text;
 using System.Windows.Forms;
 using System.Threading;
 using System.IO;
-using SSCE;
+using SSLI;
 
-namespace StationSyncroCE
+namespace StationSyncroLI
 {
     public partial class FormMain : Form
     {
         private string sExecutePath = null;
+        private string sPd = Path.DirectorySeparatorChar.ToString();
         private ClassAMBRenewedService[] arRS = null;
         private Thread[] arThreadRS = null;
 
@@ -28,7 +29,7 @@ namespace StationSyncroCE
         public FormMain()
         {
             InitializeComponent();
-            OnStart();
+            //!!OnStart();
             this.timer4.Enabled = true;
             amUFN = new AMB_USBFLASHNOTY.AMB_USBFlashNotification();
             AMB_USBFLASHNOTY.AMB_USBFlashNotification.NewNotification += new AMB_USBFLASHNOTY.AMB_USBFlashNotification.MyEv_NewNotifi(AMB_USBFlashNotification_NewNotification);
@@ -46,64 +47,60 @@ namespace StationSyncroCE
                 }
             }
 
-            sExecutePath = (System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase)).Replace("file:", "");
+            sExecutePath = System.IO.Path.GetDirectoryName(System.Reflection.Assembly.GetExecutingAssembly().GetName().CodeBase);
+            sExecutePath = sExecutePath.Replace("file:", "");
+            Utils.CutLogFile(sExecutePath + sPd + Utils.sFileNameLog, sExecutePath, 2000);
 
-            Utils.CutLogFile(sExecutePath + Utils.pd + Utils.sFileNameLog, sExecutePath, 2000);
+            if (!Directory.Exists(Utils.sFolderNameMain)) Directory.CreateDirectory(Utils.sFolderNameMain);
+            if (!Directory.Exists(Utils.sFolderNameSecond)) Directory.CreateDirectory(Utils.sFolderNameSecond);
 
-            if (!Directory.Exists(".//Documents and Settings//SSCE")) Directory.CreateDirectory(".//Documents and Settings//SSCE");
-
-            if(FindConfigFile() != null) Utils.LoadInit(sExecutePath + Utils.pd + Utils.sFileNameInit);
-            Utils.sVersionSSCE = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
-            //!!!this.labelVersionOS.Text = "Ver. OS: " + new FileInfo("\\Windows\\nk.exe").CreationTime.ToString("ddMMyyyy");
+            if (FindConfigFile() != null) Utils.LoadInit(sExecutePath + sPd + Utils.sFileNameInit);
+            Utils.sVersionSSLI = System.Reflection.Assembly.GetExecutingAssembly().GetName().Version.ToString();
+            this.labelVersionOS.Text = "Ver. OS: " + Environment.OSVersion.VersionString;
             if (Utils.bInizialised)
             {
                 try
                 {
-                    if (!Directory.Exists(Utils.strConfig.sPathToUpdTerm)) Directory.CreateDirectory(Utils.strConfig.sPathToUpdTerm);
-                    if (!Directory.Exists(Utils.strConfig.sPathToNewSoftTerminal)) Directory.CreateDirectory(Utils.strConfig.sPathToNewSoftTerminal);
-                    if (!Directory.Exists(Utils.strConfig.sPathToProtocol)) Directory.CreateDirectory(Utils.strConfig.sPathToProtocol);
-                    if (!Directory.Exists(Utils.strConfig.sPathToFullBase)) Directory.CreateDirectory(Utils.strConfig.sPathToFullBase);
-                    if (!Directory.Exists(Utils.strConfig.sPathToOutBox)) Directory.CreateDirectory(Utils.strConfig.sPathToOutBox);
-                    if (!Directory.Exists(Utils.strConfig.sPathToNewSoftSS)) Directory.CreateDirectory(Utils.strConfig.sPathToNewSoftSS);
-                    if (!Directory.Exists(Utils.strConfig.sPathToInBox)) Directory.CreateDirectory(Utils.strConfig.sPathToInBox);
-
-                    //int result = Registry.CreateValueDWORD(Registry.HKLM, @"SOFTWARE\AMB InTech\AmbStarter", "AmbAngle", 180);
-                    //result = Registry.CreateValueString(Registry.HKLM, @"SOFTWARE\AMB InTech\AmbStarter", "AutoRunFileName", sExecutePath + Utils.pd + "StationSyncroCE.exe");
-                    //result = Registry.CreateKey(@"SOFTWARE\AMB InTech\SSCE");
-                    //result = Registry.CreateValueString(Registry.HKLM, @"SOFTWARE\AMB InTech\SSCE", "PathToNewSoftSS", Utils.strConfig.sPathToNewSoftSS); //это потом читает стартер
-                    //result = Registry.CreateValueString(Registry.HKLM, @"SOFTWARE\AMB InTech\SSCE", "VersionSSCE_Main", Utils.sVersionSSCE);
-                    //result = Registry.CreateValueString(Registry.HKLM, @"SOFTWARE\AMB InTech\SSCE", "PathToExecute", sExecutePath);
-
-                    //result = Registry.RegFlushKey(Registry.HKLM);
+                    if (!Directory.Exists(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm)) Directory.CreateDirectory(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm);
+                    if (!Directory.Exists(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftTerminal)) Directory.CreateDirectory(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftTerminal);
+                    if (!Directory.Exists(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToProtocol)) Directory.CreateDirectory(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToProtocol);
+                    if (!Directory.Exists(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToFullBase)) Directory.CreateDirectory(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToFullBase);
+                    if (!Directory.Exists(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToOutBox)) Directory.CreateDirectory(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToOutBox);
+                    if (!Directory.Exists(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftSS)) Directory.CreateDirectory(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftSS);
+                    if (!Directory.Exists(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToInBox)) Directory.CreateDirectory(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToInBox);
                 }
                 catch (Exception ex)
                 {
                     Utils.WriteDebugString(sExecutePath, "- ONSTART - ERROR:" + ex.Message);
                 }
 
+                Utils.strConfig.sPathToExecute = sExecutePath;
                 //если были закачаны новые версии файлов копируем их в рабочую папку с контролем версий
-                DirectoryInfo di = new DirectoryInfo(Utils.strConfig.sPathToNewSoftSS);
+                DirectoryInfo di = new DirectoryInfo(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftSS);
                 FileInfo[] arFi = di.GetFiles("*.*");
                 foreach (FileInfo fi in arFi)
                 {
                     try
                     {
-                        if (SSCE.NativeFile.GetFileInfo(fi.FullName) >= SSCE.NativeFile.GetFileInfo(Utils.strConfig.sPathToExecute + Utils.pd + fi.Name))
+                        if (SSLI.NativeFile.GetFileInfo(fi.FullName) >= SSLI.NativeFile.GetFileInfo(Utils.strConfig.sPathToExecute + sPd + fi.Name))
                         {
-                            if (File.Exists(Utils.strConfig.sPathToExecute + Utils.pd + fi.Name)) File.Delete(Utils.strConfig.sPathToExecute + Utils.pd + fi.Name);
-                            File.Copy(fi.FullName, Utils.strConfig.sPathToExecute + Utils.pd + fi.Name);
+                            if (File.Exists(Utils.strConfig.sPathToExecute + sPd + fi.Name)) File.Delete(Utils.strConfig.sPathToExecute + sPd + fi.Name);
+                            File.Copy(fi.FullName, Utils.strConfig.sPathToExecute + sPd + fi.Name);
                         }
 
                         File.Delete(fi.FullName);
                     }
-                    catch { }
+                    catch(Exception ex)
+                    {
+
+                    }
                 }
 
                 //Загружаем задачи
                 arRS = new ClassAMBRenewedService[Utils.strConfig.arstTasks.Length];
                 for (int i = 0; i < Utils.strConfig.arstTasks.Length; i++)
                 {
-                    arRS[i] = Utils.GetLastVersion(Utils.strConfig.arstTasks[i].sNameTask, ref Utils.strConfig.arstTasks[i].sCurrentVersion, sExecutePath, Utils.strConfig.sPathToNewSoftSS);
+                    arRS[i] = Utils.GetLastVersion(Utils.strConfig.arstTasks[i].sNameTask, ref Utils.strConfig.arstTasks[i].sCurrentVersion, sExecutePath, Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftSS);
                 }
 
                 arThreadRS = new Thread[arRS.Length];
@@ -119,13 +116,13 @@ namespace StationSyncroCE
                     }
                 }
 
-                Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToUpdTerm);
-                Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToNewSoftTerminal);
-                Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToProtocol);
-                Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToFullBase);
-                Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToOutBox);
-                Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToNewSoftSS);
-                Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToInBox);                
+                Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm);
+                Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftTerminal);
+                Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToProtocol);
+                Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToFullBase);
+                Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToOutBox);
+                Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftSS);
+                Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToInBox);                
 
                 //проверяем, что инициализированно, только потом запускаем
                 for (int i = 0; i < arThreadRS.Length; i++)
@@ -152,17 +149,17 @@ namespace StationSyncroCE
         {
             amUFN.Dispose();
 
-            Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToUpdTerm);
-            Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToNewSoftTerminal);
-            Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToProtocol);
-            Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToFullBase);
-            Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToOutBox);
-            Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToNewSoftSS);
-            Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToInBox);
+            Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm);
+            Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftTerminal);
+            Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToProtocol);
+            Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToFullBase);
+            Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToOutBox);
+            Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftSS);
+            Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToInBox);
 
             Utils.SaveInit();
-            Utils.SaveInit("\\Storage Card" + Utils.pd + Utils.sFileNameInit + ".bak");
-            Utils.SaveInit("\\Documents and Settings\\SSCE" + Utils.pd + Utils.sFileNameInit + ".bak");
+            Utils.SaveInit(Utils.sFolderNameMain + sPd + Utils.sFileNameInit + ".bak");
+            Utils.SaveInit(Utils.sFolderNameSecond + sPd + Utils.sFileNameInit + ".bak");
 
             this.timer1.Enabled = false;
             this.timer4.Enabled = false;
@@ -275,8 +272,8 @@ namespace StationSyncroCE
             if (DateTime.Now > dtSaveConfig)
             {
                 dtSaveConfig = DateTime.Now.AddDays(7);
-                Utils.SaveInit("\\Storage Card" + Utils.pd + Utils.sFileNameInit + ".bak");
-                Utils.SaveInit("\\Documents and Settings\\SSCE" + Utils.pd + Utils.sFileNameInit + ".bak");
+                Utils.SaveInit(Utils.sFolderNameMain + sPd + Utils.sFileNameInit + ".bak");
+                Utils.SaveInit(Utils.sFolderNameSecond + sPd + Utils.sFileNameInit + ".bak");
             }
         }
 
@@ -288,7 +285,7 @@ namespace StationSyncroCE
                 this.panelDockStatus.Top = 0;
                 this.panelDockStatus.BringToFront();
                 this.timer1.Enabled = true;
-                this.labelVersion.Text = "v " + Utils.sVersionSSCE;
+                this.labelVersion.Text = "v " + Utils.sVersionSSLI;
             }
             else
             {
@@ -511,16 +508,16 @@ namespace StationSyncroCE
 
             amUFN.Dispose();
 
-            Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToUpdTerm);
-            Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToNewSoftTerminal);
-            Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToProtocol);
-            Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToFullBase);
-            Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToOutBox);
-            Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToNewSoftSS);
-            Utils.DeleteMarkerDirBusy(Utils.strConfig.sPathToInBox);
+            Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm);
+            Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftTerminal);
+            Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToProtocol);
+            Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToFullBase);
+            Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToOutBox);
+            Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftSS);
+            Utils.DeleteMarkerDirBusy(Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToInBox);
 
-            Utils.SaveInit("\\Storage Card" + Utils.pd + Utils.sFileNameInit + ".bak");
-            Utils.SaveInit("\\Documents and Settings\\SSCE" + Utils.pd + Utils.sFileNameInit + ".bak");
+            Utils.SaveInit(Utils.sFolderNameMain + sPd + Utils.sFileNameInit + ".bak");
+            Utils.SaveInit(Utils.sFolderNameSecond + sPd + Utils.sFileNameInit + ".bak");
 
             for (int i = 0; i < arThreadRS.Length; i++)
             {
@@ -528,43 +525,47 @@ namespace StationSyncroCE
             }
         }
 
+        /// <summary>
+        /// Поиск файла конфига по трем путям.
+        /// </summary>
+        /// <returns>Строка с путем по которому найден файл конфига или NULL.</returns>
         private string FindConfigFile()
         {
             try
             {
                 string sRet = null;
 
-                if (File.Exists(sExecutePath + Utils.pd + Utils.sFileNameInit))
+                if (File.Exists(sExecutePath + sPd + Utils.sFileNameInit))
                 {
                     stSSConfig stC = new stSSConfig();
-                    if (Utils.LoadInitFile(sExecutePath + Utils.pd + Utils.sFileNameInit, ref stC))
+                    if (Utils.LoadInitFile(sExecutePath + sPd + Utils.sFileNameInit, ref stC))
                     {
-                        sRet = sExecutePath + Utils.pd + Utils.sFileNameInit;
-                        Utils.WriteDebugString(sExecutePath, " #FindConfigFile: config use - " + sExecutePath + Utils.pd + Utils.sFileNameInit);
+                        sRet = sExecutePath + sPd + Utils.sFileNameInit;
+                        Utils.WriteDebugString(sExecutePath, " #FindConfigFile: config use - " + sExecutePath + sPd + Utils.sFileNameInit);
                         return sRet;
                     }
                 }
-                if (File.Exists("\\Storage Card" + Utils.pd + Utils.sFileNameInit + ".bak"))
+                if (File.Exists(Utils.sFolderNameMain + sPd + Utils.sFileNameInit + ".bak"))
                 {
                     stSSConfig stC = new stSSConfig();
-                    if (Utils.LoadInitFile("\\Storage Card" + Utils.pd + Utils.sFileNameInit + ".bak", ref stC))
+                    if (Utils.LoadInitFile(Utils.sFolderNameMain + sPd + Utils.sFileNameInit + ".bak", ref stC))
                     {
-                        if (File.Exists(sExecutePath + Utils.pd + Utils.sFileNameInit)) File.Delete(sExecutePath + Utils.pd + Utils.sFileNameInit);
-                        File.Copy("\\Storage Card" + Utils.pd + Utils.sFileNameInit + ".bak", sExecutePath + Utils.pd + Utils.sFileNameInit);
-                        sRet = sExecutePath + Utils.pd + Utils.sFileNameInit;
-                        Utils.WriteDebugString(sExecutePath, " #FindConfigFile: config use - " + "\\Storage Card" + Utils.pd + Utils.sFileNameInit + ".bak");
+                        if (File.Exists(sExecutePath + sPd + Utils.sFileNameInit)) File.Delete(sExecutePath + sPd + Utils.sFileNameInit);
+                        File.Copy(Utils.sFolderNameMain + sPd + Utils.sFileNameInit + ".bak", sExecutePath + sPd + Utils.sFileNameInit);
+                        sRet = sExecutePath + sPd + Utils.sFileNameInit;
+                        Utils.WriteDebugString(sExecutePath, " #FindConfigFile: config use - " + Utils.sFolderNameMain + sPd + Utils.sFileNameInit + ".bak");
                         return sRet;
                     }
                 }
-                if (File.Exists("\\Documents and Settings\\SSCE" + Utils.pd + Utils.sFileNameInit + ".bak"))
+                if (File.Exists(Utils.sFolderNameSecond + sPd + Utils.sFileNameInit + ".bak"))
                 {
                     stSSConfig stC = new stSSConfig();
-                    if (Utils.LoadInitFile("\\Documents and Settings\\SSCE" + Utils.pd + Utils.sFileNameInit + ".bak", ref stC))
+                    if (Utils.LoadInitFile(Utils.sFolderNameSecond + sPd + Utils.sFileNameInit + ".bak", ref stC))
                     {
-                        if (File.Exists(sExecutePath + Utils.pd + Utils.sFileNameInit)) File.Delete(sExecutePath + Utils.pd + Utils.sFileNameInit);
-                        File.Copy("\\Documents and Settings\\SSCE" + Utils.pd + Utils.sFileNameInit + ".bak", sExecutePath + Utils.pd + Utils.sFileNameInit);
-                        sRet = sExecutePath + Utils.pd + Utils.sFileNameInit;
-                        Utils.WriteDebugString(sExecutePath, " #FindConfigFile: config use - " + "\\Documents and Settings\\SSCE" + Utils.pd + Utils.sFileNameInit + ".bak");
+                        if (File.Exists(sExecutePath + sPd + Utils.sFileNameInit)) File.Delete(sExecutePath + sPd + Utils.sFileNameInit);
+                        File.Copy(Utils.sFolderNameSecond + sPd + Utils.sFileNameInit + ".bak", sExecutePath + sPd + Utils.sFileNameInit);
+                        sRet = sExecutePath + sPd + Utils.sFileNameInit;
+                        Utils.WriteDebugString(sExecutePath, " #FindConfigFile: config use - " + Utils.sFolderNameSecond + sPd + Utils.sFileNameInit + ".bak");
                         return sRet;
                     }
                 }
@@ -580,7 +581,7 @@ namespace StationSyncroCE
 
         private void buttonTouchCalibrate_Click(object sender, EventArgs e) //Калибровка экрана
         {
-            Utils.TouchScreenCalibrate();
+            //Utils.TouchScreenCalibrate();
 
             //Registry.RegFlushKey(Registry.HKLM);
         }
@@ -595,9 +596,9 @@ namespace StationSyncroCE
         {
             OnStop();
 
-            System.Diagnostics.Process myProcess = new System.Diagnostics.Process();
-            myProcess.StartInfo.FileName = "\\Windows\\explorer.exe";
-            myProcess.Start();
+            //System.Diagnostics.Process myProcess = new System.Diagnostics.Process();
+            //myProcess.StartInfo.FileName = "\\Windows\\explorer.exe";
+            //myProcess.Start();
 
             Application.Exit();
         }
@@ -610,9 +611,9 @@ namespace StationSyncroCE
 
             OnStop();
 
-            System.Diagnostics.Process myProcess = new System.Diagnostics.Process();
-            myProcess.StartInfo.FileName = "\\Windows\\explorer.exe";
-            myProcess.Start();
+            //System.Diagnostics.Process myProcess = new System.Diagnostics.Process();
+            //myProcess.StartInfo.FileName = "\\Windows\\explorer.exe";
+            //myProcess.Start();
 
             Application.Exit();
         }

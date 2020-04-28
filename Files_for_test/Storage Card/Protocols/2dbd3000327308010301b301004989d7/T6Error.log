@@ -1,0 +1,44 @@
+01.01.2000 00:53:12 ---  MakeIniFile:stConfig.stPaths.sPathToBase = \Storage Card
+01.01.2000 00:53:13 ---  LoadOneBase:OK file: \Storage Card\T6.Base.FED_LICA.xml
+01.01.2000 00:53:13 ---  SaveIniFile:OK
+01.01.2000 00:00:12 ---  LoadIniFile:OK
+01.01.2000 00:54:08 ---  CheckFirstLoadProgram:OK
+01.01.2000 00:54:08 ---  CheckNewFiles(exe):OK
+01.01.2000 00:54:08 ---  CheckNewFiles(dll):OK
+01.01.2000 00:54:08 ---  MakeIniFile:stConfig.stPaths.sPathToBase = \Storage Card
+01.01.2000 00:54:08 ---  LoadOneBase:OK file: \Storage Card\T6.Base.FED_LICA.xml
+01.01.2000 00:54:08 ---  SaveIniFile:OK
+01.01.2000 00:54:09 ---  LoadIniFile:OK
+01.01.2000 00:54:09 ---  LoadRozBaseInfo:OK
+09.10.2009 17:10:57 ---  RunAutoUpdate:OK
+09.10.2009 17:12:00 ---  ResizeLogFiles:OK
+09.10.2009 19:30:45 ---  LoadFormDll:OK
+09.10.2009 20:33:27 ---  LoadFormDll:OK
+09.10.2009 20:38:11 ---  LoadFormDll:OK
+12.10.2009 00:23:50 ---  LoadFormDll:OK
+12.10.2009 00:24:09 ---  CheckFirstLoadProgram:OK
+12.10.2009 00:24:09 ---  LoadRozBaseInfo:OK
+12.10.2009 00:24:09 ---  LoadFormDll:OK
+01.01.2000 00:00:14 ---  LoadIniFile:OK
+01.01.2000 00:00:17 ---  CheckFirstLoadProgram:OK
+01.01.2000 00:00:17 ---  CheckNewFiles(exe):OK
+01.01.2000 00:00:17 ---  CheckNewFiles(dll):OK
+01.01.2000 00:00:17 ---  MakeIniFile:stConfig.stPaths.sPathToBase = \Storage Card
+01.01.2000 00:00:17 ---  LoadOneBase:OK file: \Storage Card\T6.Base.FED_LICA.xml
+01.01.2000 00:00:17 ---  SaveIniFile:OK
+01.01.2000 00:00:18 ---  LoadIniFile:OK
+01.01.2000 00:00:18 ---  LoadRozBaseInfo:OK
+01.01.2000 00:00:21 ---  LoadFormDll:OK
+01.01.2000 20:40:44 ---  LoadIniFile:OK
+01.01.2000 20:40:54 ---  CheckFirstLoadProgram:OK
+01.01.2000 20:40:54 ---  CheckNewFiles(exe):OK
+01.01.2000 20:40:54 ---  CheckNewFiles(dll):OK
+01.01.2000 20:40:54 ---  MakeIniFile:stConfig.stPaths.sPathToBase = \Storage Card
+01.01.2000 20:40:54 ---  LoadOneBase:OK file: \Storage Card\T6.Base.FED_LICA.xml
+01.01.2000 20:40:54 ---  SaveIniFile:OK
+01.01.2000 20:40:55 ---  LoadIniFile:OK
+01.01.2000 20:40:55 ---  LoadRozBaseInfo:OK
+13.10.2009 09:32:47 ---  RunAutoUpdate:OK
+13.10.2009 09:33:50 ---  ResizeLogFiles:OK
+13.10.2009 15:47:22 ---  RunAutoUpdate:OK
+13.10.2009 15:48:24 ---  ResizeLogFiles:OK

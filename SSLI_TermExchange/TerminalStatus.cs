@@ -1,8 +1,8 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.IO;
 using System.Xml.Serialization;
-using SSCE;
+using SSLI;
 
 namespace T6.FileCopy
 {

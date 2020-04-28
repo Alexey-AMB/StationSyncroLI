@@ -1,33 +1,39 @@
 ﻿<Properties StartupConfiguration="{77C02630-4935-4BE5-8CCA-008BD5FEFB63}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Состояние: StationSyncroLI">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SSLI_TermExchange/AMB_NDISNotification.cs">
     <Files>
-      <File FileName="SSLI_Statistic/Statistic.cs" Line="83" Column="138" />
-      <File FileName="SSLI_TermExchange/ClassFileCopy.cs" Line="17" Column="59" />
-      <File FileName="SSLI_WEBServer/WEBServer.cs" Line="19" Column="1" />
-      <File FileName="SSLI_Utils/Utils.cs" Line="1052" Column="13" />
-      <File FileName="StationSyncroLI/FormMain.cs" Line="55" Column="1" />
-      <File FileName="Состояние: StationSyncroLI" />
+      <File FileName="StationSyncroLI/FormMain.cs" Line="12" Column="26" />
+      <File FileName="SSLI_WEBServer/WEBServer.cs" Line="347" Column="28" />
+      <File FileName="SSLI_Utils/Utils.cs" Line="1203" Column="95" />
+      <File FileName="StationSyncroLI/AMB_USBFlashNotification.cs" Line="16" Column="9" />
+      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="165" Column="33" />
+      <File FileName="SSLI_TermExchange/AMB_NDISNotification.cs" Line="14" Column="18" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="StationSyncroLI" expanded="True">
-            <Node name="SSLI_Utils" expanded="True" />
-            <Node name="StationSyncroLI" expanded="True">
-              <Node name="FormMain.cs" selected="True" />
+            <Node name="SSLI_GetFiles" expanded="True" />
+            <Node name="SSLI_TermExchange" expanded="True">
+              <Node name="AMB_NDISNotification.cs" selected="True" />
             </Node>
+            <Node name="SSLI_Utils" expanded="True" />
+            <Node name="SSLI_WEBServer" expanded="True" />
+            <Node name="StationSyncroLI" expanded="True" />
           </Node>
         </State>
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.StationSyncroLI PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches>
+    <Watch file="../../../StationSyncroLI/FormMain.cs" line="103" offsetX="2079" offsetY="1938" expression="arRS" liveUpdate="False" />
+  </MonoDevelop.Ide.DebuggingService.PinnedWatches>
   <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug|x86" />
+  <Debugger.DebugSourceFolders>
+    <String>/home/alexey/MonoProjects</String>
+  </Debugger.DebugSourceFolders>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint file="/home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/FormMain.cs" relfile="StationSyncroLI/FormMain.cs" line="51" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

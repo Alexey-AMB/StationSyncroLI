@@ -1,0 +1,21 @@
+﻿<?xml version="1.0"?>
+<stOneBase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <sTypeBase>PASSPORT</sTypeBase>
+  <sNameFileBase>PASSPORT.sdf</sNameFileBase>
+  <sNameTable>PASSPORT</sNameTable>
+  <sComment>Проверка паспортов</sComment>
+  <sNameButton>Проверка паспортов</sNameButton>
+  <sPrefUpdates> </sPrefUpdates>
+  <iNumCharPref>3</iNumCharPref>
+  <sExtUpdates> </sExtUpdates>
+  <bIsBase>true</bIsBase>
+  <bCheckBase>true</bCheckBase>
+  <sLastUpdates>06.03.2008</sLastUpdates>
+  <sVersion>0.0.0.0</sVersion>
+  <iPriority>6</iPriority>
+  <sTypeUpdate>FULL</sTypeUpdate>
+  <sTypeForm>NONE</sTypeForm>
+  <sNameAsmDll>Bases.ROZ_LICA</sNameAsmDll>
+  <sNameFileDll>Bases.ROZ_LICA.dll</sNameFileDll>
+  <sVerFileDll>6.0.0.23510</sVerFileDll>
+</stOneBase>

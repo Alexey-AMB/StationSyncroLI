@@ -1,4 +1,4 @@
-namespace StationSyncroCE
+namespace StationSyncroLI
 {
     partial class Form_Settings
     {

@@ -1,4 +1,4 @@
-namespace StationSyncroCE
+namespace StationSyncroLI
 {
     partial class FormMain
     {
@@ -135,7 +135,7 @@ namespace StationSyncroCE
             this.buttonClose.Size = new System.Drawing.Size(25, 20);
             this.buttonClose.TabIndex = 28;
             this.buttonClose.Text = "X";
-            this.buttonClose.Visible = false;
+            this.buttonClose.Visible = true;
             this.buttonClose.Click += new System.EventHandler(this.buttonClose_Click);
             // 
             // buttonNext1
@@ -557,6 +557,7 @@ namespace StationSyncroCE
             this.buttonTouchCalibrate.TabIndex = 30;
             this.buttonTouchCalibrate.Text = "Калибровка";
             this.buttonTouchCalibrate.Click += new System.EventHandler(this.buttonTouchCalibrate_Click);
+            this.buttonTouchCalibrate.Enabled = false;
             // 
             // buttonNext6
             // 
