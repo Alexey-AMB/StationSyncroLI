@@ -29,7 +29,7 @@ namespace StationSyncroLI
         public FormMain()
         {
             InitializeComponent();
-            //!!OnStart();
+            OnStart();
             this.timer4.Enabled = true;
             amUFN = new AMB_USBFLASHNOTY.AMB_USBFlashNotification();
             AMB_USBFLASHNOTY.AMB_USBFlashNotification.NewNotification += new AMB_USBFLASHNOTY.AMB_USBFlashNotification.MyEv_NewNotifi(AMB_USBFlashNotification_NewNotification);

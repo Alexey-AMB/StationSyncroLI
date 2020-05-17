@@ -38,6 +38,7 @@
     <Compile Include="Class_SocketTransfer.cs" />
     <Compile Include="TermExchange.cs" />
     <Compile Include="TerminalStatus.cs" />
+    <Compile Include="mycommands.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\SSLI_Utils\SSLI_Utils.csproj">

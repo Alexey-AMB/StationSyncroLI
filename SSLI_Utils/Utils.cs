@@ -7,6 +7,7 @@ using System.Runtime.InteropServices;
 using System.Reflection;
 using System.Collections;
 using Ionic.Zip;
+using System.IO.Ports;
 
 namespace SSLI
 {
@@ -391,6 +392,10 @@ namespace SSLI
         /// Конфигурация сетевых настроек станции
         /// </summary>
         public stSSNet strNet;
+        /// <summary>
+        /// Конфигурация для обмена с терминалами в подставке.
+        /// </summary>
+        public stSSTermExchange strTermExch;
 
         /// <summary>
         /// Пароль администратора станции
@@ -575,6 +580,17 @@ namespace SSLI
         /// </summary>
         public string sMAC_lo;
     }
+    public struct stSSTermExchange
+    {
+        /// <summary>
+        /// The name of the COM port.
+        /// </summary>
+        public string sComPortName;
+        /// <summary>
+        /// The COM port speed.
+        /// </summary>
+        public int iComPortSpeed;
+    }
 
     public struct stTermInMem
     {
@@ -633,6 +649,26 @@ namespace SSLI
         /// Есть в доке или нет
         /// </summary>
         public bool bIsPresented;
+        /// <summary>
+        /// Послений байт ИП адреса сервера (сторона на терминале)
+        /// </summary>
+        public byte iIPaddrServer;
+        /// <summary>
+        /// Последний байт ИП адреса клиента (сторона на станции)
+        /// </summary>
+        public byte iIPaddrClient;
+        /// <summary>
+        /// Статус соединения: 0-не установлено, 1-включено, 2-завершено
+        /// </summary>
+        public int iConectStatus;
+        /// <summary>
+        /// Процент заряда аккумулатора терминала
+        /// </summary>
+        public int iPercentAkk;
+        /// <summary>
+        /// Статус зарядки аккумулятора 0-заряжается, 1-зарядка завершена
+        /// </summary>
+        public int iChargeState;
     }
 
     public struct stBaseInfo
@@ -1263,6 +1299,161 @@ namespace SSLI
         }
 
     }
+
+    public static class ComPort
+    {
+        private static SerialPort sp = null;
+        public static bool bIntrUsart1 = false;
+        private static byte rbyte1 = 0;
+        private static byte iRecived1 = 0;
+        private static byte iExpectedLen1 = 0;
+        public static byte[] arRecivBuff1 = new byte[200];
+        private static byte[] arSendBuff1 = new byte[32];
+
+        public static bool Init(string sPortName, int iPortSpeed)
+        {
+            bool bRet = false;
+
+            sp = new SerialPort(sPortName, iPortSpeed, System.IO.Ports.Parity.None, 8, System.IO.Ports.StopBits.One);
+            sp.Handshake = Handshake.None;
+            sp.ReadTimeout = 100;
+            sp.DtrEnable = true;
+            try
+            {
+                sp.Open();
+            }
+            catch (Exception ex)
+            {
+
+            }
+            if (sp.IsOpen)
+            {
+                bRet = true;
+            }
+
+            return bRet;
+        }
+
+        public static void Close()
+        {
+            if (sp != null)
+            {
+                if (sp.IsOpen) sp.Close();
+                sp.Dispose();
+            }
+            sp = null;
+        }
+
+        public static void CleanBytesReadPort()
+        {
+            if (sp != null)
+            {
+                if (sp.IsOpen)
+                {
+                    while (sp.BytesToRead > 0) sp.ReadByte();
+                }
+            }
+        }
+
+        public static void GetMessage(ref byte[] buff, ref int iReadlen)
+        {
+            Array.Clear(buff, 0, buff.Length);
+            iReadlen = 0;
+            while (!bIntrUsart1)
+            {
+                try
+                {
+                    if(sp.BytesToRead == 0) System.Threading.Thread.Sleep(10);
+                    iReadlen = UsartGetBlock();
+                }
+                catch(TimeoutException)
+                {
+                    iReadlen = 0;
+                    break;
+                }
+            }
+            if(bIntrUsart1 && (iReadlen > 0))
+            {
+                Array.Copy(arRecivBuff1, buff, iReadlen);
+            }
+        }
+
+        private static int UsartGetBlock()
+        {
+            int iRet = 0;
+            while (/*(sp.BytesToRead > 0) && */(!bIntrUsart1))
+            {
+                rbyte1 = (byte)sp.ReadByte();
+                if (iRecived1 == 0)
+                {
+                    if (rbyte1 != 0x0A) break; //continue
+                    else iRecived1++;
+                }
+                else
+                {
+                    if (iRecived1 == 1)
+                    {
+                        iExpectedLen1 = rbyte1;
+                        Array.Clear(arRecivBuff1, 0, arRecivBuff1.Length);
+                        if (iExpectedLen1 > arRecivBuff1.Length)
+                        {
+                            iRecived1 = 0;
+                            iExpectedLen1 = 0;
+                            //sendErr()
+                            break;
+                        }
+                    }
+                    if ((iRecived1 > 1) && (iRecived1 < iExpectedLen1 - 1))
+                    {
+                        arRecivBuff1[iRecived1 - 2] = rbyte1;
+                    }
+                    if (iRecived1 >= iExpectedLen1 - 1)
+                    {
+                        if (GetCRC8(arRecivBuff1, iRecived1, 0) == rbyte1)
+                        {
+                            bIntrUsart1 = true;
+                            iRet = iExpectedLen1;
+                            //sendOk()
+                        }
+                        else
+                        {
+                            //error crc - sendErr()
+                        }
+                        iRecived1 = 0;
+                        iExpectedLen1 = 0;
+                        break;
+                    }
+                    iRecived1++;
+                }
+            }
+            return iRet;
+        }
+
+        public static void SendMessage(byte ans, ref byte[] data, int lendata)
+        {
+            int lenmess = lendata + 4;
+            Array.Clear(arSendBuff1, 0, lenmess);
+
+            arSendBuff1[0] = 0x0A;
+            arSendBuff1[1] = (byte)lenmess;
+            arSendBuff1[2] = ans;
+            Array.Copy(data, 0, arSendBuff1, 3, lendata);
+            arSendBuff1[lendata + 3] = GetCRC8(arSendBuff1, lendata + 1, 2);
+            sp.Write(arSendBuff1, 0, lenmess);
+            bIntrUsart1 = false;
+        }
+
+        private static byte GetCRC8(byte[] buf, int lenbuf, int ofset)
+        {
+            int i;
+            byte crc = 0;
+
+            for (i = ofset; i < (lenbuf + ofset); i++) crc += (byte)(buf[i]);
+
+            return crc;
+        }
+    }
+
 
     /// <summary>
     /// Вся информация о текущем статусе станции. Динамическая! Не сохраняется!

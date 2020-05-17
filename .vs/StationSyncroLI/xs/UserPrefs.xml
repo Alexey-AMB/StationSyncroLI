@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{77C02630-4935-4BE5-8CCA-008BD5FEFB63}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SSLI_TermExchange/AMB_NDISNotification.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SSLI_TermExchange/TermExchange.cs">
     <Files>
-      <File FileName="StationSyncroLI/FormMain.cs" Line="12" Column="26" />
-      <File FileName="SSLI_WEBServer/WEBServer.cs" Line="347" Column="28" />
-      <File FileName="SSLI_Utils/Utils.cs" Line="1203" Column="95" />
-      <File FileName="StationSyncroLI/AMB_USBFlashNotification.cs" Line="16" Column="9" />
-      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="165" Column="33" />
-      <File FileName="SSLI_TermExchange/AMB_NDISNotification.cs" Line="14" Column="18" />
+      <File FileName="StationSyncroLI/FormMain.cs" Line="267" Column="36" />
+      <File FileName="SSLI_Utils/Utils.cs" Line="1765" Column="58" />
+      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="238" Column="1" />
+      <File FileName="SSLI_TermExchange/Class_SocketTransfer.cs" Line="197" Column="40" NotebookId="1" />
+      <File FileName="SSLI_TermExchange/ClassFileCopy.cs" Line="187" Column="58" NotebookId="1" />
+      <File FileName="SSLI_TermExchange/mycommands.cs" Line="51" Column="23" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -14,7 +14,7 @@
           <Node name="StationSyncroLI" expanded="True">
             <Node name="SSLI_GetFiles" expanded="True" />
             <Node name="SSLI_TermExchange" expanded="True">
-              <Node name="AMB_NDISNotification.cs" selected="True" />
+              <Node name="TermExchange.cs" selected="True" />
             </Node>
             <Node name="SSLI_Utils" expanded="True" />
             <Node name="SSLI_WEBServer" expanded="True" />
@@ -33,7 +33,9 @@
     <String>/home/alexey/MonoProjects</String>
   </Debugger.DebugSourceFolders>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint file="/home/alexey/MonoProjects/StationSyncroLI/SSLI_TermExchange/TermExchange.cs" relfile="SSLI_TermExchange/TermExchange.cs" line="145" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>
