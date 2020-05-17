@@ -1310,6 +1310,12 @@ namespace SSLI
         public static byte[] arRecivBuff1 = new byte[200];
         private static byte[] arSendBuff1 = new byte[32];
 
+        /// <summary>
+        /// Init the specified sPortName and iPortSpeed.
+        /// </summary>
+        /// <returns>The init.</returns>
+        /// <param name="sPortName">Имя порта. ("/dev/ttyUSB0") </param>
+        /// <param name="iPortSpeed">Скорость. (9600)</param>
         public static bool Init(string sPortName, int iPortSpeed)
         {
             bool bRet = false;
@@ -1343,7 +1349,9 @@ namespace SSLI
             }
             sp = null;
         }
-
+        /// <summary>
+        /// Очистить входной буфер порта.
+        /// </summary>
         public static void CleanBytesReadPort()
         {
             if (sp != null)
@@ -1354,7 +1362,11 @@ namespace SSLI
                 }
             }
         }
-
+        /// <summary>
+        /// Получение сообщения из порта. Блокирует поток!
+        /// </summary>
+        /// <param name="buff">Буфер, куда записать принятое.</param>
+        /// <param name="iReadlen">Сколько было записано в буфер.</param>
         public static void GetMessage(ref byte[] buff, ref int iReadlen)
         {
             Array.Clear(buff, 0, buff.Length);
@@ -1428,7 +1440,12 @@ namespace SSLI
             }
             return iRet;
         }
-
+        /// <summary>
+        /// Отправить сообщение через ком-порт.
+        /// </summary>
+        /// <param name="ans">Команда сообщения типа UsartCommand.</param>
+        /// <param name="data">Данные для команды.</param>
+        /// <param name="lendata">Длинна данных в буфере.</param>
         public static void SendMessage(byte ans, ref byte[] data, int lendata)
         {
             int lenmess = lendata + 4;

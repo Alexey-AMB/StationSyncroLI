@@ -3,16 +3,18 @@ using System.Collections.Generic;
 using System.Text;
 using System.Collections;
 using System.Threading;
+using System.IO;
+using System.Diagnostics;
 
 namespace SSLI
 {
     public class TermExchange : SSLI.ClassAMBRenewedService
     {
         private string sPd = System.IO.Path.DirectorySeparatorChar.ToString();
-        //private const string sNameNDISCard = "enp0s";
+        private const string sFullIpAddresMask = "172.16.223.";
         //AMB_NDISNOTI.AMB_NDISNotification nn = null;	//!! /sys/class/net/enp0s?/operstate == up or == down
-        T6.FileCopy.ClassFileCopy cfc = null;
-        private bool bTermIsConnected = false;
+        T6.FileCopy.ClassFileCopy[] arCfc = new T6.FileCopy.ClassFileCopy[5];
+        //private bool bTermIsConnected = false;
         private int iDebugLevel = 2;
         private bool bAbort = false;
         private string sPathExecute = null;
@@ -23,13 +25,14 @@ namespace SSLI
 
         private byte[] arbBuff;
 
+
         //private UInt32[] ardwIn = new UInt32[3];
         //private UInt32[] ardwOut = new UInt32[3];
 
         //private ArrayList arFoundTerm = new ArrayList();
         //private ArrayList arUpdatedTerm = new ArrayList();
 
-        private AMB_SPI.AMB_SPI spi = null;
+        //private AMB_SPI.AMB_SPI spi = null;
 
         public override bool Init()
         {
@@ -101,18 +104,6 @@ namespace SSLI
                 bRet = false;
                 //if (nn != null) nn.Dispose();
             }
-            
-
-            try
-            {                
-                cfc = new T6.FileCopy.ClassFileCopy();
-            }
-            catch (Exception ex)
-            {
-                WriteDebugString("Init.ClassFileCopy:ERROR - " + ex.Message, 0);
-            }
-
-            //spi = new AMB_SPI.AMB_SPI();
 
             return bRet;
         }
@@ -182,15 +173,14 @@ namespace SSLI
 
         public override void Stop()
         {
-            //if (nn != null) nn.Dispose();
             ComPort.Close();
             bAbort = true;
-            if (cfc != null) cfc.bAbortThread = true;
+            foreach(T6.FileCopy.ClassFileCopy cfc in arCfc) if (cfc != null) cfc.bAbortThread = true;
             Utils.DeleteMarkerDirBusy(sPathToUpdTerm);
             Utils.DeleteMarkerDirBusy(sPathToNewSoftTerminal);
             Utils.DeleteMarkerDirBusy(sPathToProtocol);
             Utils.DeleteMarkerDirBusy(sPathToFullBase);
-            //PicDisconnect();
+
             WriteDebugString("Stop:OK", 1);
         }
 
@@ -270,257 +260,107 @@ namespace SSLI
 
         private void ConnectNewTermIndock()
         {
+            string sNameNewIface = null;
             for (int i = 0; i < 5; i++)
             {
                 if (Utils.cCurrStatus.arstTermInDock[i].bIsPresented)
                 {
                     if (Utils.cCurrStatus.arstTermInDock[i].iServeStatus <= 0)
                     {
-                        WriteDebugString("UpdateInfoTermInDock:OK found terminal " +
+                        WriteDebugString("ConnectNewTermIndock:OK found terminal " +
                             Utils.cCurrStatus.arstTermInDock[i].sIDTerminal + " in dock №" + i.ToString(), 3);
-                        if (Utils.cCurrStatus.arstTermInDock[i].iConectStatus ==0)
+                        if (Utils.cCurrStatus.arstTermInDock[i].iConectStatus == 0)
                         {
+                            ArrayList arlOldIface = new ArrayList();
+                            DirectoryInfo diNet = new DirectoryInfo("/sys/class/net");
+                            DirectoryInfo[] ardi = diNet.GetDirectories("USB*");
+                            foreach (DirectoryInfo d in ardi) arlOldIface.Add(d.Name);
+                            //получили список всех сетевых интерфейсов ДО подключения нового терминала
+                            Array.Clear(arbBuff, 0, arbBuff.Length);
+                            //ComPort.SendMessage((byte)UsartCommand.CMD_USBA_DIS, ref arbBuff, 0);
+                            arbBuff[0] = (byte)i;//slot number
+                            arbBuff[1] = Utils.cCurrStatus.arstTermInDock[i].iIPaddrClient; //i.e. 1 (if i=1)
+                            arbBuff[2] = Utils.cCurrStatus.arstTermInDock[i].iIPaddrServer; //i.e. 101 (if i=1)
+                            ComPort.SendMessage((byte)UsartCommand.CMDRAS_SET_IP, ref arbBuff, 3);
 
-                        }
-
-
-                        if (bTermIsConnected)
-                        {
-                            Thread.Sleep(1000);     //ждем пока запустится сервер на терминале
-                            WorkWithTerminal(i);
+                            sNameNewIface = null;
+                            for (int n = 0; n < 20; n++)
+                            {
+                                ardi = diNet.GetDirectories("USB*");
+                                if (ardi.Length > arlOldIface.Count)
+                                {//появился новый интерфейс
+                                    foreach (DirectoryInfo dn in ardi)
+                                    {
+                                        if (!arlOldIface.Contains(dn.Name))
+                                        {
+                                            sNameNewIface = dn.Name;
+                                            break;
+                                        }
+                                    }
+                                    break;
+                                }
+                                Thread.Sleep(500);
+                            }
+                            // ip up
+                            if (sNameNewIface != null)
+                            {
+                                NetInterfaceUp(sNameNewIface, Utils.cCurrStatus.arstTermInDock[i].iIPaddrClient);
+                                Thread.Sleep(1000);     //ждем пока запустится сервер на терминале
+                                WorkWithTerminal(i);
+                            }
+                            else
+                            {
+                                Utils.cCurrStatus.arstTermInDock[i].iColorLabelStatus = -1;
+                                Utils.cCurrStatus.arstTermInDock[i].sCurrStatus = "НЕТ СОЕДИНЕНИЯ";
+                                                        
+                                WriteDebugString("ConnectNewTermIndock:ERROR not found net interface in dock №" + i.ToString(), 2);
+                            }
                         }
                     }
                 }
             }
-
-
         }
 
-        //void AMB_NDISNotification_NewNotification(string sNameNDIS, bool bStatus)
-        //{
-        //    if (sNameNDIS == sNameNDISCard)
-        //    {
-        //        bTermIsConnected = bStatus;
-        //        if (!bStatus)
-        //        {
-        //            if (cfc != null) cfc.bAbortThread = true;
-        //        }
-        //    }
-        //}
-        /// <summary>
-        /// Работаем с ПИКом. Если есть необслуженный терминал, подключаем его.
-        /// </summary>
-        //private void GetNextTerminal()
-        //{
-        //    int iCountWaitPIC = 10000;
-        //    while (!PicRead() && !bAbort)
-        //    {
-        //        Thread.Sleep(10);
-        //        iCountWaitPIC--;
-        //        if (iCountWaitPIC == 0)
-        //        {
-        //            WriteDebugString("GetNextTerminal:ERROR - PIC not responded after 100 sec.", 1);
-        //            return;
-        //        }
-        //    }
-        //    //Есть ли в очереди?
-        //    //byte bNum = 0;  //порядковый номер начиная с 1    !!!! не 00000100
-        //    for (byte bNum = 0; bNum < 5; bNum++)
-        //    {
-        //        if (Utils.cCurrStatus.arstTermInDock[bNum].bIsPresented)
-        //        {
-        //            if (Utils.cCurrStatus.arstTermInDock[bNum].iServeStatus <= 0)
-        //            {
-        //                //если есть - Пику - включить.
-        //                WriteDebugString("GetNextTerminal:OK found terminal in dock №" + ((byte)(bNum + 1)).ToString(), 3);
-        //                Thread.Sleep(10);
-        //                //PicConnect(bNum);
-        //                int iCount = 200;   //было 1000
-        //                while (!bTermIsConnected)
-        //                {
-        //                    Thread.Sleep(10);
-        //                    iCount--;       //ждем 10 секунд пока подключится
-        //                    if (iCount == 0)
-        //                    {
-        //                        Utils.cCurrStatus.arstTermInDock[bNum].iColorLabelStatus = -1;
-        //                        Utils.cCurrStatus.arstTermInDock[bNum].sCurrStatus = "НЕТ СОЕДИНЕНИЯ";
-        //                        break;
-        //                    }
-        //                }
-        //                if (bTermIsConnected)
-        //                {
-        //                    Thread.Sleep(1000);     //ждем пока запустится сервер на терминале
-        //                    WorkWithTerminal(bNum);
-        //                }
-        //                Thread.Sleep(10);
-        //                //PicDisconnect();        //Пику - отключить все.
-        //            }
-        //        }
-        //    }
-            
-        //}
+        private void NetInterfaceUp(string sNameIface, int iIpClient) //станция это клиент, сервер на терминале!
+        {
+            string sShellCommand = "-c ", sOut = "";
+
+            Process proc = new Process();
+            proc.StartInfo.FileName = "/bin/bash";
+            proc.StartInfo.UseShellExecute = false;
+            proc.StartInfo.RedirectStandardOutput = true;
+
+            sShellCommand += "ifconfig " + sNameIface + " " + sFullIpAddresMask + iIpClient.ToString() +
+                "netmask 255.255.255.0 up";
+
+            proc.StartInfo.Arguments = sShellCommand;
+            proc.Start();
+
+            //while (!proc.StandardOutput.EndOfStream)
+            //{
+            //    sOut += proc.StandardOutput.ReadToEnd();
+            //}
+        }
+
         /// <summary>
         /// Работаем с подключенным по RNDIS терминалом.
         /// </summary>
         private void WorkWithTerminal(int iNumInDock)
         {
-            if (cfc == null)
+            if (arCfc[iNumInDock] == null)
             {
-                cfc = new T6.FileCopy.ClassFileCopy();
+                arCfc[iNumInDock] = new T6.FileCopy.ClassFileCopy();
             }
 
-            cfc.Init(iNumInDock);
+            arCfc[iNumInDock].Init(iNumInDock);
 
-            bool bRet = cfc.LoadDeviceInfo();
+            bool bRet = arCfc[iNumInDock].LoadDeviceInfo();
 
-            if (cfc != null) cfc.bAbortThread = true;
+            if (arCfc[iNumInDock] != null) arCfc[iNumInDock].bAbortThread = true;
             Thread.Sleep(500);
-            cfc = null;
+            arCfc[iNumInDock] = null;
             if (bRet) Utils.cCurrStatus.UpdateTermInfo();
         }
-        /// <summary>
-        /// Читаем три байта с SPI и обрабатываем.
-        /// </summary>
-        /// <returns>TRUE если CRC = OK.</returns>
-        private bool PicRead()
-        {
-            //ardwOut[0] = 0;
-            //if (!SPIExchange()) return false;
 
-            ////пока заглушка ========
-            ////ardwIn[0] что сейчас в подставке: если есть, то в бите 1
-            ////ardwIn[1] что было изменено с последнего чтения: было изменение в бите 1
-            ////ardwIn[2] контрольная суммк двух первых байт
-            ////======================
-
-            //if ((ardwIn[0] + ardwIn[1]) == ardwIn[2])   //если совпала контрольная сумма
-            //{
-            //    byte bMask = 1;
-            //    ardwIn[0] = ardwIn[0] & 31; //только первые пять бит
-            //    for (int i = 0; i < 5; i++)
-            //    {
-            //        if ((ardwIn[0] & (bMask << i)) == (bMask << i))
-            //        {
-            //            Utils.cCurrStatus.arstTermInDock[i].bIsPresented = true;
-            //            if(Utils.cCurrStatus.arstTermInDock[i].iServeStatus < 1) Utils.cCurrStatus.arstTermInDock[i].sCurrStatus = "ЖДУ ОЧЕРЕДИ";
-            //        }
-            //        else
-            //        {
-            //            Utils.cCurrStatus.arstTermInDock[i].bIsPresented = false;
-            //            Utils.cCurrStatus.arstTermInDock[i].iColorLabelStatus = 0;
-            //            Utils.cCurrStatus.arstTermInDock[i].iServeStatus = 0;
-            //            Utils.cCurrStatus.arstTermInDock[i].sCurrStatus = "НЕ ОБРАБОТАН";
-            //            Utils.cCurrStatus.arstTermInDock[i].sIDTerminal = "";
-            //            Utils.cCurrStatus.arstTermInDock[i].sNameTerminal = "ПУСТО";
-            //        }
-
-            //        if ((ardwIn[1] & (bMask << i)) == (bMask << i))
-            //        {
-            //            Utils.cCurrStatus.arstTermInDock[i].iServeStatus = 0;
-            //            Utils.cCurrStatus.arstTermInDock[i].iColorLabelStatus = 0;
-            //            Utils.cCurrStatus.arstTermInDock[i].sCurrStatus = "НЕ ОБРАБОТАН";
-            //            if (Utils.cCurrStatus.arstTermInDock[i].bIsPresented) Utils.cCurrStatus.arstTermInDock[i].sCurrStatus = "ЖДУ ОЧЕРЕДИ";
-            //            Utils.cCurrStatus.arstTermInDock[i].sIDTerminal = "";
-            //            Utils.cCurrStatus.arstTermInDock[i].sNameTerminal = "ИЗМЕНЁН";
-            //        }
-            //    }
-            //}
-            //else
-            //{
-            //    WriteDebugString("ReadPic:ERROR CRC", 1);
-
-            //    UInt32[] ardwInErrCrc = new UInt32[1];
-            //    UInt32[] ardwOutErrCrc = new UInt32[1];
-            //    ardwOutErrCrc[0] = 0;
-            //    bool bRet = false;
-            //    try
-            //    {
-            //        bRet = spi.Init(8, 100);
-            //        if (bRet)
-            //        {
-            //            bRet = spi.GetSendBuffer(ref ardwInErrCrc, ref ardwOutErrCrc);
-            //        }
-            //        else WriteDebugString("SPIExchangeErrCrc.spi.Init:ERROR", 3);
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        WriteDebugString("SPIExchangeErrCrc:ERROR - " + ex.Message, 1);
-            //        bRet = false;
-            //    }
-            //    finally
-            //    {
-            //        spi.Close();
-            //    }
-
-            //    return false;
-            //}
-            return true;
-        }
-        /// <summary>
-        /// Подключаем указанный слот.
-        /// </summary>
-        /// <param name="bNumSlot">Номер слота начиная с 0.</param>
-        //private void PicConnect(byte bNumSlot)
-        //{
-        //    UInt32 bBt = 1;
-        //    ardwOut[0] = 0;
-        //    for (int i = 0; i < (bNumSlot + 1); i++) ardwOut[0] = bBt << i;
-        //    ardwOut[0] = ardwOut[0] | 128;
-        //    SPIExchange();
-        //}
-
-        /// <summary>
-        /// Обмен с ПИКом по SPI. На момент обмена arbOut[1] должен быть выставлен правильно.
-        /// </summary>
-        /// <returns>TRUE - все ОК.</returns>
-        //private bool SPIExchange()
-        //{
-        //    //всего передается 3 байта
-        //    //информационный только первый байт
-        //    //если 7 бит первого байта == 1 то биты с 0 по 4 будут выставлены на порту А
-        //    //если == 0 то просто как команда чтения текущего статуса
-
-        //    //ardwIn[0] что сейчас в подставке: если есть, то в бите 1
-        //    //ardwIn[1] что было изменено с последнего чтения: было изменение в бите 1
-        //    //ardwIn[2] контрольная сумма двух первых байт
-
-
-        //    bool bRet = true;
-
-        //    ardwOut[1] = 170;   //Просто так, что бы неслать одни нули.
-        //    ardwOut[2] = ardwOut[0] + ardwOut[1];
-
-        //    if (spi == null) return false;
-        //    try
-        //    {
-        //        //;;;;;test
-        //        bRet = spi.Init(8, 100); 
-
-        //        if (bRet)
-        //        {
-        //            bRet = spi.GetSendBuffer(ref ardwIn, ref ardwOut);
-        //        }
-        //        else WriteDebugString("SPIExchange.spi.Init:ERROR", 3);
-        //        //;;;;;test
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        WriteDebugString("SPIExchange:ERROR - " + ex.Message, 1);
-        //        bRet = false;
-        //    }
-        //    finally
-        //    {
-        //        spi.Close();
-        //    }
-
-        //    WriteDebugString("SPIExchange:" + bRet.ToString() + " to SPI: " + ardwOut[0].ToString() + " " + ardwOut[1].ToString() + " " + ardwOut[2].ToString() + " from SPI: " +
-        //        ardwIn[0].ToString() + " " + ardwIn[1].ToString() + " " + ardwIn[2].ToString(), 4);
-
-        //    //ardwIn[0] = 2;      //test only
-        //    //ardwIn[1] = 2;
-        //    //ardwIn[2] = 4;
-
-        //    return bRet;
-        //}
     }
 }

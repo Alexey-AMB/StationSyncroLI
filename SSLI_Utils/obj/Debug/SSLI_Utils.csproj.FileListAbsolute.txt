@@ -14,3 +14,4 @@
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_Utils/obj/Debug/SSLI_Utils.csproj.CopyComplete
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_Utils/obj/Debug/SSLI.Utils.dll
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_Utils/obj/Debug/SSLI.Utils.pdb
+/home/alexey/MonoProjects/StationSyncroLI/SSLI_Utils/obj/Debug/SSLI_Utils.csprojAssemblyReference.cache

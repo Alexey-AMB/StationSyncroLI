@@ -4,7 +4,7 @@ using System.Runtime.InteropServices;
 namespace SSLI
 {
     enum UsartCommand
-    {          //длинна данных, описание
+    {                       //длинна данных, описание
         CMD_NONE = 0,       //0, не используется  
         CMD_TEST,           //0, ответ "ANS_OK"
         CMD_CHRG_EN,        //0, включить зарядку
