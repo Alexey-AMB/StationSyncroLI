@@ -19,8 +19,6 @@ namespace AMB_USBFLASHNOTY
 
         //#endregion
 
-        private bool bAbort = false;
-        private Thread thLissen = null;
         FileSystemWatcher w = null;
         public delegate void MyEv_NewNotifi(string sNameDevice, bool bStatus);
         public static event MyEv_NewNotifi NewNotification;
@@ -50,7 +48,6 @@ namespace AMB_USBFLASHNOTY
         /// </summary>
         public void Run()
         {
-            bAbort = false;
             if (w != null) w.EnableRaisingEvents = true;
         }
 
@@ -70,8 +67,6 @@ namespace AMB_USBFLASHNOTY
         /// </summary>
         public void Dispose()
         {
-            bAbort = true;
-
             try
             {
                 if (w != null) w.EnableRaisingEvents = false;

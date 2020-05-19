@@ -12,9 +12,10 @@ namespace SSLI
     {
         private string sPd = System.IO.Path.DirectorySeparatorChar.ToString();
         private const string sFullIpAddresMask = "172.16.223.";
-        //AMB_NDISNOTI.AMB_NDISNotification nn = null;	//!! /sys/class/net/enp0s?/operstate == up or == down
+
+        Thread[] arThredsCfc = new Thread[5];
         T6.FileCopy.ClassFileCopy[] arCfc = new T6.FileCopy.ClassFileCopy[5];
-        //private bool bTermIsConnected = false;
+
         private int iDebugLevel = 2;
         private bool bAbort = false;
         private string sPathExecute = null;
@@ -24,15 +25,6 @@ namespace SSLI
         private string sPathToProtocol = null;
 
         private byte[] arbBuff;
-
-
-        //private UInt32[] ardwIn = new UInt32[3];
-        //private UInt32[] ardwOut = new UInt32[3];
-
-        //private ArrayList arFoundTerm = new ArrayList();
-        //private ArrayList arUpdatedTerm = new ArrayList();
-
-        //private AMB_SPI.AMB_SPI spi = null;
 
         public override bool Init()
         {
@@ -347,19 +339,31 @@ namespace SSLI
         /// </summary>
         private void WorkWithTerminal(int iNumInDock)
         {
-            if (arCfc[iNumInDock] == null)
+            if (arCfc[iNumInDock] != null)
             {
-                arCfc[iNumInDock] = new T6.FileCopy.ClassFileCopy();
+                arCfc[iNumInDock].bAbortThread = true;
+                Thread.Sleep(500);
             }
 
+            if(arThredsCfc[iNumInDock] != null)
+            {
+                arThredsCfc[iNumInDock].Abort();
+                Thread.Sleep(500);
+            }
+
+            arCfc[iNumInDock] = new T6.FileCopy.ClassFileCopy();
+            arThredsCfc[iNumInDock] = new Thread(new ThreadStart(arCfc[iNumInDock].LoadDeviceInfoTh));
+
             arCfc[iNumInDock].Init(iNumInDock);
+            arThredsCfc[iNumInDock].Start();
 
-            bool bRet = arCfc[iNumInDock].LoadDeviceInfo();
+            //bool bRet = arCfc[iNumInDock].LoadDeviceInfo();
 
-            if (arCfc[iNumInDock] != null) arCfc[iNumInDock].bAbortThread = true;
-            Thread.Sleep(500);
-            arCfc[iNumInDock] = null;
-            if (bRet) Utils.cCurrStatus.UpdateTermInfo();
+            //if (arCfc[iNumInDock] != null) arCfc[iNumInDock].bAbortThread = true;
+            //Thread.Sleep(500);
+            //arCfc[iNumInDock] = null;
+            ////if (bRet) 
+            //Utils.cCurrStatus.UpdateTermInfo();
         }
 
     }

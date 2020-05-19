@@ -12,7 +12,8 @@ namespace T6.FileCopy
 
 	public class ClassFileCopy
 	{
-		private const string sRemoteNameFileT6Init = "T6Init.xml";
+        private string sPd = Path.DirectorySeparatorChar.ToString();
+        private const string sRemoteNameFileT6Init = "T6Init.xml";
 		private const string sErrorFileName = "T6Error.log";
 		public const string sFileNameCurInit = "CurrT6Init.xml";
 		public const string sFileNameCurUpdates = "CurrT6_updates.log";
@@ -89,7 +90,12 @@ namespace T6.FileCopy
         /// Если нет ни там ни там ищет резервный .bak в корне Storage Card.
         /// </summary>
         /// <returns>TRUE - если терминал обнаружен.</returns>
-		public bool LoadDeviceInfo()	//что подключили?
+		public void LoadDeviceInfoTh()
+        {
+            LoadDeviceInfo();
+            Utils.cCurrStatus.UpdateTermInfo();
+        }
+        public bool LoadDeviceInfo()	//что подключили?
 		{
 			bool bIsBakInitFile = false;
 			if (st == null) st = new SocketTransfer.SocketTransfer();
@@ -156,16 +162,16 @@ namespace T6.FileCopy
 					return false;
 				}
 
-                bRet = st.client.ReciveFileFrom(sPathToT6Init, sPathToExecute + "\\" + sFileNameCurInit);
-                term.LoadIniFile(sPathToExecute + "\\" + sFileNameCurInit);
+                bRet = st.client.ReciveFileFrom(sPathToT6Init, sPathToExecute + sPd + sFileNameCurInit);
+                term.LoadIniFile(sPathToExecute + sPd + sFileNameCurInit);
 
 				if (bIsBakInitFile)		//если это бак-файл, то надо прочитать настоящий ини.
 				{
-					if (st.client.FileExits(term.stCurTerm.stPaths.sPathStorageFiles + "\\" + sRemoteNameFileT6Init))
+					if (st.client.FileExits(term.stCurTerm.stPaths.sPathStorageFiles + sPd + sRemoteNameFileT6Init))
 					{
-						string sTmp = term.stCurTerm.stPaths.sPathStorageFiles + "\\" + sRemoteNameFileT6Init;
-                        bRet = st.client.ReciveFileFrom(sTmp, sPathToExecute + "\\" + sFileNameCurInit);
-                        term.LoadIniFile(sPathToExecute + "\\" + sFileNameCurInit);
+						string sTmp = term.stCurTerm.stPaths.sPathStorageFiles + sPd + sRemoteNameFileT6Init;
+                        bRet = st.client.ReciveFileFrom(sTmp, sPathToExecute + sPd + sFileNameCurInit);
+                        term.LoadIniFile(sPathToExecute + sPd + sFileNameCurInit);
 					}	//если настоящего ини нет, то работаем по баку
 				}
 
@@ -247,10 +253,10 @@ namespace T6.FileCopy
 			WriteProtocol("==== RNDIS ==== " + sNameTerm + " - Обмен завершен.", 2);
 			try
 			{
-				if (File.Exists(sPathToExecute + "\\" + sFileNameCurInit)) File.Delete(sPathToExecute + "\\" + sFileNameCurInit);
-				if (File.Exists(sPathToExecute + "\\" + sFileNameCurUpdates)) File.Delete(sPathToExecute + "\\" + sFileNameCurUpdates);
-				if (File.Exists(sPathToExecute + "\\" + sFileNameCurProtocol)) File.Delete(sPathToExecute + "\\" + sFileNameCurProtocol);
-				if (File.Exists(sPathToExecute + "\\" + sFileNameCurCommand)) File.Delete(sPathToExecute + "\\" + sFileNameCurCommand);
+				if (File.Exists(sPathToExecute + sPd + sFileNameCurInit)) File.Delete(sPathToExecute + sPd + sFileNameCurInit);
+				if (File.Exists(sPathToExecute + sPd + sFileNameCurUpdates)) File.Delete(sPathToExecute + sPd + sFileNameCurUpdates);
+				if (File.Exists(sPathToExecute + sPd + sFileNameCurProtocol)) File.Delete(sPathToExecute + sPd + sFileNameCurProtocol);
+				if (File.Exists(sPathToExecute + sPd + sFileNameCurCommand)) File.Delete(sPathToExecute + sPd + sFileNameCurCommand);
 			}
 			catch (Exception ex)
 			{
@@ -280,7 +286,7 @@ namespace T6.FileCopy
 
 			sTextLabelWorkStatus = "Передаю файлы на терминал";
 
-			string sCommandFileName = term.stCurTerm.stPaths.sPathStorageFiles + "\\" + term.stCurTerm.sNameTerminal + sComandFileName;
+			string sCommandFileName = term.stCurTerm.stPaths.sPathStorageFiles + sPd + term.stCurTerm.sNameTerminal + sComandFileName;
 			try
 			{
 				if (st.client.FileExits(sCommandFileName)) st.client.DeleteFile(sCommandFileName);
@@ -315,7 +321,7 @@ namespace T6.FileCopy
 						if ((bRet) && (sFileNames.bChangeConfigFiles))
 						{
 							term.ChangeLastUpdatesByTypeBase(sFileNames.sTypeBase, "FULL" + sFileNames.sDateAktual.Replace(".", "") + ".dat", sFileNames.sDateAktual);
-							term.SaveIniFile(sPathToExecute + "\\" + sFileNameCurInit);
+							term.SaveIniFile(sPathToExecute + sPd + sFileNameCurInit);
 						}
 					}
 					catch (Exception ex)
@@ -334,12 +340,12 @@ namespace T6.FileCopy
 			//без этого файла обновление на терминала не начнется
 			try
 			{
-				if (!File.Exists(sPathToExecute + "\\" + sNameRunUpd))
+				if (!File.Exists(sPathToExecute + sPd + sNameRunUpd))
 				{
-					FileStream fs = File.Create(sPathToExecute + "\\" + sNameRunUpd);
+					FileStream fs = File.Create(sPathToExecute + sPd + sNameRunUpd);
 					if (fs != null) fs.Close();
 				}
-				bRet = st.client.SendFileTo(sPathToExecute + "\\" + sNameRunUpd, term.stCurTerm.stPaths.sPathUpdates + "\\" + sNameRunUpd);
+				bRet = st.client.SendFileTo(sPathToExecute + sPd + sNameRunUpd, term.stCurTerm.stPaths.sPathUpdates + sPd + sNameRunUpd);
                 if (!bRet) iRet = 3;
 				WriteProtocol("Передан файл(" + bRet.ToString() + "): завершающий файл пакета обновлений.", 2);
 			}
@@ -370,12 +376,12 @@ namespace T6.FileCopy
 
 			try
 			{
-				if (!Directory.Exists(sStatPath + "\\" + term.stCurTerm.sDeviceID)) Directory.CreateDirectory(sStatPath + "\\" + term.stCurTerm.sDeviceID);
+				if (!Directory.Exists(sStatPath + sPd + term.stCurTerm.sDeviceID)) Directory.CreateDirectory(sStatPath + sPd + term.stCurTerm.sDeviceID);
 			}
 			catch { }
 
 			//очистить текущую папку
-            DirectoryInfo di = new DirectoryInfo(sStatPath + "\\" + term.stCurTerm.sDeviceID);
+            DirectoryInfo di = new DirectoryInfo(sStatPath + sPd + term.stCurTerm.sDeviceID);
 			if (di.Exists)
 			{
 				//if (Convert.ToDateTime(term.stCurTerm.sLastSyncronisation) < DateTime.Today)
@@ -403,11 +409,11 @@ namespace T6.FileCopy
                             WriteProtocol("==== RNDIS.TransferFrom ==== Aborted5 " + term.stCurTerm.sNameTerminal, 1);
                             return 0;
                         }
-                        bool bR = st.client.ReciveFileFrom(term.stCurTerm.stPaths.sPathStorageFiles + "\\" + pn, sStatPath + "\\" + term.stCurTerm.sDeviceID + "\\" + pn);
-                        if (bR) WriteProtocol("Принят файл: " + sStatPath + "\\" + term.stCurTerm.sDeviceID + "\\" + pn, 2);
+                        bool bR = st.client.ReciveFileFrom(term.stCurTerm.stPaths.sPathStorageFiles + sPd + pn, sStatPath + sPd + term.stCurTerm.sDeviceID + sPd + pn);
+                        if (bR) WriteProtocol("Принят файл: " + sStatPath + sPd + term.stCurTerm.sDeviceID + sPd + pn, 2);
                         else
                         {
-                            WriteProtocol("Ошибка приема файла: " + sStatPath + "\\" + term.stCurTerm.sDeviceID + "\\" + pn, 2);
+                            WriteProtocol("Ошибка приема файла: " + sStatPath + sPd + term.stCurTerm.sDeviceID + sPd + pn, 2);
                             iRet = 1;
                         }
                     }
@@ -415,7 +421,7 @@ namespace T6.FileCopy
                 }
                 catch (Exception exception)
                 {
-                    WriteProtocol("Ошибка приема файла: " + sStatPath + "\\" + term.stCurTerm.sDeviceID + "\\" + pn + " -ERROR- " + exception.Message, 2);
+                    WriteProtocol("Ошибка приема файла: " + sStatPath + sPd + term.stCurTerm.sDeviceID + sPd + pn + " -ERROR- " + exception.Message, 2);
                     iRet = 1;
                 }				
 			}
@@ -434,11 +440,11 @@ namespace T6.FileCopy
                     bBaseAdded = false;
                     if (ob.sTypeBase != null)
                     {
-                        if ((FullBaseIsBetter(ob.sDateLastUpdates, ob.sTypeBase)) && (ob.sTypeUpdate != "FULL") && (File.Exists(sFolderLocalBase + "\\" + Utils.cCurrStatus.GetNewestBaseFileName(ob.sTypeBase))) && bSendFullBase)
+                        if ((FullBaseIsBetter(ob.sDateLastUpdates, ob.sTypeBase)) && (ob.sTypeUpdate != "FULL") && (File.Exists(sFolderLocalBase + sPd + Utils.cCurrStatus.GetNewestBaseFileName(ob.sTypeBase))) && bSendFullBase)
                         {	//отправляем базу целиком
                             stFileUpd fu = new stFileUpd();
-                            fu.sFileSource = sFolderLocalBase + "\\" + Utils.cCurrStatus.GetNewestBaseFileName(ob.sTypeBase);
-                            fu.sFileDest = term.stCurTerm.stPaths.sPathToBase + "\\" + Utils.cCurrStatus.GetNewestBaseFileName(ob.sTypeBase);
+                            fu.sFileSource = sFolderLocalBase + sPd + Utils.cCurrStatus.GetNewestBaseFileName(ob.sTypeBase);
+                            fu.sFileDest = term.stCurTerm.stPaths.sPathToBase + sPd + Utils.cCurrStatus.GetNewestBaseFileName(ob.sTypeBase);
                             fu.bChangeConfigFiles = true;
                             fu.sTypeBase = ob.sTypeBase;
                             fu.sDateAktual = Utils.cCurrStatus.GetNewestBaseDate(ob.sTypeBase).ToString("dd.MM.yyyy");
@@ -453,7 +459,7 @@ namespace T6.FileCopy
                         {
                             stFileUpd fu = new stFileUpd();
                             fu.sFileSource = sUpdFileName.FullName;
-                            fu.sFileDest = term.stCurTerm.stPaths.sPathUpdates + "\\" + sUpdFileName.Name;
+                            fu.sFileDest = term.stCurTerm.stPaths.sPathUpdates + sPd + sUpdFileName.Name;
                             fu.bChangeConfigFiles = false;
                             if (bBaseAdded)
                             {   //если базу передаем, то те обновления, которые новее переданной базы
@@ -468,11 +474,11 @@ namespace T6.FileCopy
                         //потом базы целиком
                         if (ob.sTypeUpdate == "FULL")
                         {
-                            if (File.Exists(sFolderLocalBase + "\\" + Utils.cCurrStatus.GetNewestBaseFileName(ob.sTypeBase)))
+                            if (File.Exists(sFolderLocalBase + sPd + Utils.cCurrStatus.GetNewestBaseFileName(ob.sTypeBase)))
                             {
                                 stFileUpd fu = new stFileUpd();
-                                fu.sFileSource = sFolderLocalBase + "\\" + Utils.cCurrStatus.GetNewestBaseFileName(ob.sTypeBase);
-                                fu.sFileDest = term.stCurTerm.stPaths.sPathToBase + "\\" + Utils.cCurrStatus.GetNewestBaseFileName(ob.sTypeBase);
+                                fu.sFileSource = sFolderLocalBase + sPd + Utils.cCurrStatus.GetNewestBaseFileName(ob.sTypeBase);
+                                fu.sFileDest = term.stCurTerm.stPaths.sPathToBase + sPd + Utils.cCurrStatus.GetNewestBaseFileName(ob.sTypeBase);
                                 fu.bChangeConfigFiles = true;
                                 fu.sTypeBase = ob.sTypeBase;
                                 fu.sDateAktual = Utils.cCurrStatus.GetNewestBaseDate(ob.sTypeBase).ToString("dd.MM.yyyy");
@@ -492,13 +498,13 @@ namespace T6.FileCopy
 
 			//копируем базы целиком по запросу терминала
 			StreamReader sr = null;
-            if ((File.Exists(sStatPath + "\\" + term.stCurTerm.sDeviceID + "\\" + term.sTermName + sComandFileName)) && bSendFullBase)
+            if ((File.Exists(sStatPath + sPd + term.stCurTerm.sDeviceID + sPd + term.sTermName + sComandFileName)) && bSendFullBase)
 			{//"GET_FULL_BASE " с пробелом перед именем файла базы
 				string readStr;
 				ArrayList arGetFile = new ArrayList();
 				try
 				{
-                    sr = File.OpenText(sStatPath + "\\" + term.stCurTerm.sDeviceID + "\\" + term.sTermName + sComandFileName);
+                    sr = File.OpenText(sStatPath + sPd + term.stCurTerm.sDeviceID + sPd + term.sTermName + sComandFileName);
 					while ((readStr = sr.ReadLine()) != null)
 					{
 						if (readStr.IndexOf("GET_FULL_BASE ") == 0)
@@ -517,8 +523,8 @@ namespace T6.FileCopy
 					{
 						if (s == "") continue;
 						stFileUpd fu = new stFileUpd();
-                        fu.sFileSource = sFolderLocalBase + "\\" + Utils.cCurrStatus.GetNewestBaseFileName(s);
-                        fu.sFileDest = term.stCurTerm.stPaths.sPathToBase + "\\" + Utils.cCurrStatus.GetNewestBaseFileName(s);
+                        fu.sFileSource = sFolderLocalBase + sPd + Utils.cCurrStatus.GetNewestBaseFileName(s);
+                        fu.sFileDest = term.stCurTerm.stPaths.sPathToBase + sPd + Utils.cCurrStatus.GetNewestBaseFileName(s);
 						fu.bChangeConfigFiles = true;	//изменить файл конфига терминала, добавить запись в файл списка обновлений
 						fu.sTypeBase = s;
                         fu.sDateAktual = Utils.cCurrStatus.GetNewestBaseDate(s).ToString("dd.MM.yyyy");
@@ -547,7 +553,7 @@ namespace T6.FileCopy
                 {
                     stFileUpd fu = new stFileUpd();
                     fu.sFileSource = sXMLFileName.FullName;
-                    fu.sFileDest = term.stCurTerm.stPaths.sPathToBase + "\\" + sXMLFileName.Name;
+                    fu.sFileDest = term.stCurTerm.stPaths.sPathToBase + sPd + sXMLFileName.Name;
                     fu.bChangeConfigFiles = false;
                     if (bBaseAdded) arFilesToSend.Add(fu);	//если была передана база
                 }
@@ -567,7 +573,7 @@ namespace T6.FileCopy
                         Version vCurrVersion = new Version(0, 0, 0, 0); // vNewVersion = new Version(0, 0, 0, 0);
 						stFileUpd fu = new stFileUpd();
 						fu.sFileSource = sNSFileName.FullName;
-						fu.sFileDest = term.stCurTerm.stPaths.sPathNewSoft + "\\" + sNSFileName.Name;
+						fu.sFileDest = term.stCurTerm.stPaths.sPathNewSoft + sPd + sNSFileName.Name;
 						fu.bChangeConfigFiles = false;
                         if (sNSFileName.Name == "Terminal.exe") vCurrVersion = new Version(term.stCurTerm.stVersions.sVersionTerminal);
                         if (sNSFileName.Name == "Starter.exe") vCurrVersion = new Version(term.stCurTerm.stVersions.sVersionStarter);
@@ -600,7 +606,7 @@ namespace T6.FileCopy
                         //Version vCurrVersion = new Version(0, 0, 0, 0), vNewVersion = new Version(0, 0, 0, 0);
 						stFileUpd fu = new stFileUpd();
 						fu.sFileSource = sNSFileName.FullName;
-						fu.sFileDest = term.stCurTerm.stPaths.sPathNewSoft + "\\" + sNSFileName.Name;
+						fu.sFileDest = term.stCurTerm.stPaths.sPathNewSoft + sPd + sNSFileName.Name;
 						fu.bChangeConfigFiles = false;
                         //bool bFoundInArBases = false;
                         //foreach (stOneBase ob in term.stCurTerm.arBases)
@@ -636,13 +642,13 @@ namespace T6.FileCopy
             //добавить файл конфига в список отправляемых
             stFileUpd fu1 = new stFileUpd();
             fu1.bChangeConfigFiles = false;
-            fu1.sFileSource = sPathToExecute + "\\" + sFileNameCurInit;
-            fu1.sFileDest = term.stCurTerm.stPaths.sPathStorageFiles + "\\" + sRemoteNameFileT6Init;
+            fu1.sFileSource = sPathToExecute + sPd + sFileNameCurInit;
+            fu1.sFileDest = term.stCurTerm.stPaths.sPathStorageFiles + sPd + sRemoteNameFileT6Init;
             arFilesToSend.Add(fu1);
 
             //записать инфу о последней синхронизации
             term.stCurTerm.sLastSyncronisation = DateTime.Now.ToString("dd.MM.yyyy");
-            term.SaveIniFile(sPathToExecute + "\\" + sFileNameCurInit);
+            term.SaveIniFile(sPathToExecute + sPd + sFileNameCurInit);
 		}
         /// <summary>
         /// Запись в файл протокола работы.

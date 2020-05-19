@@ -1,11 +1,12 @@
 ﻿<Properties StartupConfiguration="{77C02630-4935-4BE5-8CCA-008BD5FEFB63}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SSLI_TermExchange/ClassFileCopy.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="StationSyncroLI/FormUSBCopy.cs">
     <Files>
-      <File FileName="StationSyncroLI/FormMain.cs" Line="267" Column="36" />
+      <File FileName="StationSyncroLI/FormMain.cs" Line="615" Column="56" />
       <File FileName="SSLI_Utils/Utils.cs" Line="1448" Column="57" />
-      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="367" Column="13" />
-      <File FileName="SSLI_TermExchange/Class_SocketTransfer.cs" Line="197" Column="40" NotebookId="1" />
-      <File FileName="SSLI_TermExchange/ClassFileCopy.cs" Line="187" Column="58" NotebookId="1" />
+      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="370" Column="2" />
+      <File FileName="StationSyncroLI/FormUSBCopy.cs" Line="43" Column="37" />
+      <File FileName="SSLI_TermExchange/Class_SocketTransfer.cs" Line="1243" Column="63" NotebookId="1" />
+      <File FileName="SSLI_TermExchange/ClassFileCopy.cs" Line="131" Column="17" NotebookId="1" />
       <File FileName="SSLI_TermExchange/mycommands.cs" Line="6" Column="22" NotebookId="1" />
     </Files>
     <Pads>
@@ -13,14 +14,17 @@
         <State name="__root__">
           <Node name="StationSyncroLI" expanded="True">
             <Node name="SSLI_GetFiles" expanded="True" />
-            <Node name="SSLI_TermExchange" expanded="True">
-              <Node name="ClassFileCopy.cs" selected="True" />
-            </Node>
+            <Node name="SSLI_TermExchange" expanded="True" />
             <Node name="SSLI_Utils" expanded="True" />
             <Node name="SSLI_WEBServer" expanded="True" />
-            <Node name="StationSyncroLI" expanded="True" />
+            <Node name="StationSyncroLI" expanded="True">
+              <Node name="FormUSBCopy.cs" selected="True" />
+            </Node>
           </Node>
         </State>
+      </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
       </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
