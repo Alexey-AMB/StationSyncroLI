@@ -669,6 +669,13 @@ namespace SSLI
         /// Статус зарядки аккумулятора 0-заряжается, 1-зарядка завершена
         /// </summary>
         public int iChargeState;
+        /// <summary>
+        /// Текущий режим модуля:
+        /// 0 - выключен
+        /// 1 - экран погашен, но не выключен
+        /// 2 - активен
+        /// </summary>
+        public int iSC_mode;
     }
 
     public struct stBaseInfo

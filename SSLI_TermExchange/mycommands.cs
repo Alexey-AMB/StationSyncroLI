@@ -41,7 +41,7 @@ namespace SSLI
         ANS_SERNUM,     //2
         ANS_ID,         //16
         ANS_AKKVOLT,    //4
-        ANS_STATUS,     //24??? = AnsStatus
+        ANS_STATUS,     //25 = AnsStatus
         ANS_ARSTAT      //5*AnsStatus
     }
 
@@ -54,7 +54,7 @@ namespace SSLI
         public float fAkkV;
         public byte SC_mode; //0-down, 1-sleep, 2-work
         public byte UpdateState; //0-not start, 1-in progress, 2-done
-        public byte ChargeState; //0-none, 1-in progress, 2-done
+        public byte ChargeState; //0-none, 1-in progress
     }
 
     public static class WorkCom

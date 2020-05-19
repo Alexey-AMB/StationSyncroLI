@@ -257,6 +257,7 @@ namespace SSLI
             {
                 if (Utils.cCurrStatus.arstTermInDock[i].bIsPresented)
                 {
+                    if (Utils.cCurrStatus.arstTermInDock[i].iSC_mode < 1) continue; //модуль выключен. Должен влючиться сам если акк заряжен.
                     if (Utils.cCurrStatus.arstTermInDock[i].iServeStatus <= 0)
                     {
                         WriteDebugString("ConnectNewTermIndock:OK found terminal " +
