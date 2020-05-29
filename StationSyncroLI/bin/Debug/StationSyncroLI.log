@@ -1,0 +1,123 @@
+29.05.2020 14:05:22 #FindConfigFile: config use - /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/StationSyncroLI.xml
+29.05.2020 14:05:22 -GetFilesService- ---------------------------
+29.05.2020 14:05:22 -GetFilesService- Init:OK
+29.05.2020 14:05:22 -TermExchange- ---------------------------
+29.05.2020 14:05:22 -TermExchange- Init:COM.ERROR - Ошибка запуска контроля клиентов.
+29.05.2020 14:05:22 -StatisticService- ---------------------------
+29.05.2020 14:05:22 -StatisticService- Init:OK
+29.05.2020 14:05:22 -WEBService- ---------------------------
+29.05.2020 14:05:22 -WEBService- Init:OK - Found WWWdata directory.
+29.05.2020 14:05:22 -WEBService- Init:OK
+29.05.2020 14:05:22 -StatisticService- Start.Entrance:OK
+29.05.2020 14:05:22 -WEBService- Start.Entrance:OK
+29.05.2020 14:05:22 -GetFilesService- Start.Entrance:OK
+29.05.2020 14:05:23 -StatisticService- MakeStatFile.Entrance:OK
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.Entrance:OK
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.ReadInitXML:OK - Test Terminal
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.Exit:OK
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.Entrance:OK
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.ReadInitXML:OK - Test Terminal
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.Exit:OK
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.Entrance:OK
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.ReadInitXML:OK - Test Terminal
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.Exit:OK
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.Entrance:OK
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.ReadInitXML:OK - Test Terminal
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.Exit:OK
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.Entrance:OK
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.ReadInitXML:OK - Test Terminal
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.Exit:OK
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.Entrance:OK
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.ReadInitXML:OK - Test Terminal
+29.05.2020 14:05:23 -StatisticService- WorkWithFiles.Exit:OK
+29.05.2020 14:05:23 -StatisticService- SaveStatFile:OK
+29.05.2020 14:05:23 -StatisticService- MakeStatFile.Exit:OK
+29.05.2020 14:05:23 -StatisticService- WriteNewNextSave:OK
+29.05.2020 14:05:24 -WEBService- WorkWithHTMLFile.Entrance:OK
+29.05.2020 14:05:24 -WEBService- WorkWithHTMLFile.Exit:OK
+29.05.2020 14:05:24 -WEBService- Start:OK
+29.05.2020 14:08:17 #FindConfigFile: config use - /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/StationSyncroLI.xml
+29.05.2020 14:08:17 -GetFilesService- ---------------------------
+29.05.2020 14:08:17 -GetFilesService- Init:OK
+29.05.2020 14:08:17 -TermExchange- ---------------------------
+29.05.2020 14:08:17 -TermExchange- Init:COM.OK - Запуск контроля клиентов.
+29.05.2020 14:08:17 -TermExchange- Init:OK
+29.05.2020 14:08:17 -StatisticService- ---------------------------
+29.05.2020 14:08:17 -StatisticService- Init:OK
+29.05.2020 14:08:17 -WEBService- ---------------------------
+29.05.2020 14:08:17 -WEBService- Init:OK - Found WWWdata directory.
+29.05.2020 14:08:17 -WEBService- Init:OK
+29.05.2020 14:08:17 -GetFilesService- Start.Entrance:OK
+29.05.2020 14:08:17 -TermExchange- Start.Entrance:OK
+29.05.2020 14:08:17 -TermExchange- Start.COM:ERROR - pic NOT answer ANS_OK
+29.05.2020 14:09:05 -WEBService- WorkWithHTMLFile.Entrance:OK
+29.05.2020 14:09:17 -TermExchange- Start.Exit:OK
+29.05.2020 14:09:17 -TermExchange- ===========================
+29.05.2020 14:09:17 -WEBService- WorkWithHTMLFile.Exit:OK
+29.05.2020 14:09:17 -WEBService- Start:OK
+29.05.2020 14:19:49 #FindConfigFile: config use - /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/StationSyncroLI.xml
+29.05.2020 14:19:49 -GetFilesService- ---------------------------
+29.05.2020 14:19:49 -GetFilesService- Init:OK
+29.05.2020 14:19:49 -TermExchange- ---------------------------
+29.05.2020 14:19:49 -TermExchange- Init:COM.OK - Запуск контроля клиентов.
+29.05.2020 14:19:49 -TermExchange- Init:OK
+29.05.2020 14:19:49 -StatisticService- ---------------------------
+29.05.2020 14:19:49 -StatisticService- Init:OK
+29.05.2020 14:19:49 -WEBService- ---------------------------
+29.05.2020 14:19:49 -WEBService- Init:OK - Found WWWdata directory.
+29.05.2020 14:19:49 -WEBService- Init:OK
+29.05.2020 14:19:49 -TermExchange- Start.Entrance:OK
+29.05.2020 14:19:49 -StatisticService- Start.Entrance:OK
+29.05.2020 14:19:55 -WEBService- Start.Entrance:OK
+29.05.2020 14:19:57 -TermExchange- Start.COM:ERROR - pic NOT answer ANS_OK
+29.05.2020 14:19:58 -WEBService- WorkWithHTMLFile.Entrance:OK
+29.05.2020 14:19:59 -TermExchange- Start.Exit:OK
+29.05.2020 14:19:59 -TermExchange- ===========================
+29.05.2020 14:19:59 -WEBService- WorkWithHTMLFile.Exit:OK
+29.05.2020 14:19:59 -WEBService- Start:OK
+29.05.2020 14:22:05 -GetFilesService- LoadRemoteListFile.FTP:ERROR - Couldn't connect to remote server
+29.05.2020 14:22:05 -GetFilesService- LoadRemoteListFile:ERROR - Could not find file "/home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/Storage Card/Temp/List.xml"
+29.05.2020 14:26:39 -GetFilesService- Stop:OK
+29.05.2020 14:26:39 -TermExchange- Stop:OK
+29.05.2020 14:26:39 -StatisticService- Stop:OK
+29.05.2020 14:26:39 -WEBService- Stop:OK
+29.05.2020 14:26:39 -WEBService- Start.Exit:OK
+29.05.2020 14:26:39 -WEBService- ===========================
+29.05.2020 14:26:39 -StatisticService- Start.Exit:OK
+29.05.2020 14:26:39 -StatisticService- ===========================
+29.05.2020 14:26:40 -GetFilesService- Start.Exit:OK
+29.05.2020 14:26:40 -GetFilesService- ===========================
+29.05.2020 14:27:53 #FindConfigFile: config use - /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/StationSyncroLI.xml
+29.05.2020 14:27:53 -GetFilesService- ---------------------------
+29.05.2020 14:27:53 -GetFilesService- Init:OK
+29.05.2020 14:27:53 -TermExchange- ---------------------------
+29.05.2020 14:27:53 -TermExchange- Init:COM.OK - Запуск контроля клиентов.
+29.05.2020 14:27:53 -TermExchange- Init:OK
+29.05.2020 14:27:53 -StatisticService- ---------------------------
+29.05.2020 14:27:53 -StatisticService- Init:OK
+29.05.2020 14:27:53 -WEBService- ---------------------------
+29.05.2020 14:27:53 -WEBService- Init:OK - Found WWWdata directory.
+29.05.2020 14:27:53 -WEBService- Init:OK
+29.05.2020 14:27:53 -WEBService- Start.Entrance:OK
+29.05.2020 14:27:53 -TermExchange- Start.Entrance:OK
+29.05.2020 14:27:53 -GetFilesService- Start.Entrance:OK
+29.05.2020 14:27:53 -StatisticService- Start.Entrance:OK
+29.05.2020 14:27:56 -WEBService- WorkWithHTMLFile.Entrance:OK
+29.05.2020 14:27:56 -WEBService- WorkWithHTMLFile.Exit:OK
+29.05.2020 14:27:56 -WEBService- Start:OK
+29.05.2020 14:27:56 -TermExchange- Start.COM:ERROR - pic NOT answer ANS_OK
+29.05.2020 14:27:56 -TermExchange- Start.Exit:OK
+29.05.2020 14:27:56 -TermExchange- ===========================
+29.05.2020 14:30:03 -GetFilesService- LoadRemoteListFile.FTP:ERROR - Couldn't connect to remote server
+29.05.2020 14:30:03 -GetFilesService- LoadRemoteListFile:ERROR - Could not find file "/home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/Storage Card/Temp/List.xml"
+29.05.2020 14:37:36 -GetFilesService- Stop:OK
+29.05.2020 14:37:36 -TermExchange- Stop:OK
+29.05.2020 14:37:36 -StatisticService- Stop:OK
+29.05.2020 14:37:36 -WEBService- StartListen:ERROR - interrupted
+29.05.2020 14:37:36 -WEBService- Start.Exit:OK
+29.05.2020 14:37:36 -WEBService- ===========================
+29.05.2020 14:37:36 -WEBService- Stop:OK
+29.05.2020 14:37:37 -GetFilesService- Start.Exit:OK
+29.05.2020 14:37:37 -GetFilesService- ===========================
+29.05.2020 14:37:37 -StatisticService- Start.Exit:OK
+29.05.2020 14:37:37 -StatisticService- ===========================

@@ -76,6 +76,7 @@ namespace SSLI
                 else
                 {
                     WriteDebugString("Init:COM.ERROR - Ошибка запуска контроля клиентов.", 0);
+                    return false;
                 }
             }
             else
@@ -124,6 +125,9 @@ namespace SSLI
                 WriteDebugString("Start.COM:ERROR - pic NOT answer ANS_OK", 0);
                 bAbort = true;
             }
+
+            //test_only!!!
+            //stFromPic = WorkCom.ConvertBuffToAnsStat(arbBuff, 1, 5);
 
             while (!bAbort)
             {

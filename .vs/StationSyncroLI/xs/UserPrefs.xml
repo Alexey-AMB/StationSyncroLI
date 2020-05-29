@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{77C02630-4935-4BE5-8CCA-008BD5FEFB63}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="SSLI_TermExchange/TermExchange.cs">
     <Files>
-      <File FileName="StationSyncroLI/FormMain.cs" Line="615" Column="56" />
-      <File FileName="SSLI_Utils/Utils.cs" Line="678" Column="28" />
-      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="260" Column="142" />
+      <File FileName="StationSyncroLI/FormMain.cs" Line="318" Column="23" />
+      <File FileName="SSLI_Utils/Utils.cs" Line="1349" Column="1" />
+      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="130" Column="15" />
       <File FileName="SSLI_TermExchange/Class_SocketTransfer.cs" Line="1243" Column="63" NotebookId="1" />
       <File FileName="SSLI_TermExchange/ClassFileCopy.cs" Line="131" Column="1" NotebookId="1" />
-      <File FileName="SSLI_TermExchange/mycommands.cs" Line="57" Column="57" NotebookId="1" />
+      <File FileName="SSLI_TermExchange/mycommands.cs" Line="78" Column="1" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -22,6 +22,9 @@
           </Node>
         </State>
       </Pad>
+      <Pad Id="MonoDevelop.Debugger.WatchPad">
+        <State />
+      </Pad>
     </Pads>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.StationSyncroLI PreferredExecutionTarget="MonoDevelop.Default" />
@@ -33,7 +36,9 @@
     <String>/home/alexey/MonoProjects</String>
   </Debugger.DebugSourceFolders>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore />
+    <BreakpointStore>
+      <Breakpoint enabled="false" file="/home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/FormMain.cs" relfile="StationSyncroLI/FormMain.cs" line="318" column="1" />
+    </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

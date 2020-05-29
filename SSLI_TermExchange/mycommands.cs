@@ -45,20 +45,32 @@ namespace SSLI
         ANS_ARSTAT      //5*AnsStatus
     }
 
-    [StructLayout(LayoutKind.Sequential)]
+    [StructLayout(LayoutKind.Sequential, /*Size = 25,*/ Pack = 1)]
     public struct AnsStatus
     {
-        public UInt16 SerNum;
-        [MarshalAs(UnmanagedType.U2 , SizeConst = 8)] //.ByValArray
-        public  UInt16[] sID ;
+        [MarshalAs(UnmanagedType.U2)]
+        public ushort SerNum;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+        public ushort[] sID;  //8*2
+        [MarshalAs(UnmanagedType.R4)]
         public float fAkkV;
+        [MarshalAs(UnmanagedType.U1)]
         public byte SC_mode; //0-down, 1-sleep, 2-work
+        [MarshalAs(UnmanagedType.U1)]
         public byte UpdateState; //0-not start, 1-in progress, 2-done
+        [MarshalAs(UnmanagedType.U1)]
         public byte ChargeState; //0-none, 1-in progress
     }
 
     public static class WorkCom
     {
+        /// <summary>
+        /// Converts the buff to struct AnsStatus
+        /// </summary>
+        /// <returns>The buff to ans stat.</returns>
+        /// <param name="buff">Принятый из порта буфер.</param>
+        /// <param name="iStart">Оффсет в буфере, обычно 1.</param>
+        /// <param name="coutnStruct">Ожидаемое количество структур, обычно 5.</param>
         public static AnsStatus[] ConvertBuffToAnsStat(byte[] buff, int iStart, int coutnStruct)
         {
             AnsStatus[] stret = new AnsStatus[coutnStruct];
@@ -73,28 +85,40 @@ namespace SSLI
             }
             return stret;
         }
-
+        /// <summary>
+        /// Возвращает ID терминала в виде строки
+        /// </summary>
+        /// <returns>The byte ar to identifier.</returns>
+        /// <param name="arb">Массив из 8 двубайтовых элементов.</param>
         public static string ConvertByteArToID(UInt16[] arb)
         {
             string sRet = null;
             for (int i = 0; i < arb.Length; i++)
             {
                 byte[] bytes = BitConverter.GetBytes(arb[i]);
-                sRet += bytes[0].ToString("X");
                 sRet += bytes[1].ToString("X");
+                sRet += bytes[0].ToString("X");
             }
             return sRet;
         }
-
+        /// <summary>
+        /// Возвращает сериный номер терминала в виде строки типа 1234-03, где 1234-номер комплекта, а 03-номер терминала в комплекте
+        /// </summary>
+        /// <returns>The byte ar to name term.</returns>
+        /// <param name="ui">Номер терминала в формате двубайтового числа.</param>
         public static string ConvertByteArToNameTerm(UInt16 ui)
-        { //вывод типа "123-04". Первые цифры - номер комплекта, после тире номер терминала в комплекте
+        {
             string sRet = null;
 
             sRet = ui.ToString();
             sRet = sRet.Insert(sRet.Length - 1, "-0");
             return sRet;
         }
-
+        /// <summary>
+        /// Возвращает примерный уровень заряда аккумулятора в процентах
+        /// </summary>
+        /// <returns>The FA kk to percent.</returns>
+        /// <param name="fa">Напряжение аккумулятора.</param>
         public static int ConvertFAkkToPercent(float fa)
         {
             if (fa < 3.0) return 0;
@@ -102,7 +126,7 @@ namespace SSLI
             if (fa < 3.8) return 30;
             if (fa < 3.9) return 50;
             if (fa < 4.1) return 75;
-            if (fa < 4.4) return 100;
+            if (fa < 4.3) return 90;
             return 100;
         }
     }

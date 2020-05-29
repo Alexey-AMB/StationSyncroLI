@@ -3,7 +3,7 @@
   <sNamePodrazdelenie>ЛУВД Тестовое СЕ v6.1.0.0</sNamePodrazdelenie>
   <iDebugLevel>2</iDebugLevel>
   <sTextLastCriticalError>Start.COM:ERROR - pic NOT answer ANS_OK</sTextLastCriticalError>
-  <sTimeLastCriticalError>16.05.2020 13:53:32</sTimeLastCriticalError>
+  <sTimeLastCriticalError>29.05.2020 14:27:56</sTimeLastCriticalError>
   <sPathToExecute>/home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug</sPathToExecute>
   <sPathToFullBase>FullBase</sPathToFullBase>
   <sPathToInBox>InBox</sPathToInBox>
@@ -26,17 +26,17 @@
     <stSSTasks>
       <iNumStart>2</iNumStart>
       <sNameTask>SSLI.TermExchange</sNameTask>
-      <sCurrentVersion>1.0.7441.24989</sCurrentVersion>
+      <sCurrentVersion>1.0.7454.25353</sCurrentVersion>
     </stSSTasks>
     <stSSTasks>
       <iNumStart>3</iNumStart>
       <sNameTask>SSLI.Statistic</sNameTask>
-      <sCurrentVersion>1.0.7441.24989</sCurrentVersion>
+      <sCurrentVersion>1.0.7454.25353</sCurrentVersion>
     </stSSTasks>
     <stSSTasks>
       <iNumStart>4</iNumStart>
       <sNameTask>SSLI.WEBServer</sNameTask>
-      <sCurrentVersion>1.0.7441.24990</sCurrentVersion>
+      <sCurrentVersion>1.0.7454.25353</sCurrentVersion>
     </stSSTasks>
   </arstTasks>
   <strMail>
@@ -51,9 +51,9 @@
   </strMail>
   <strStatistic>
     <sHoursSave>08:30</sHoursSave>
-    <sLastSended>16.05.2020 12:41:49</sLastSended>
-    <sNextSave>17.05.2020</sNextSave>
-    <sPrevionsSave>16.05.2020</sPrevionsSave>
+    <sLastSended>29.05.2020 14:05:23</sLastSended>
+    <sNextSave>30.05.2020</sNextSave>
+    <sPrevionsSave>29.05.2020</sPrevionsSave>
   </strStatistic>
   <strGetFiles>
     <sHoursRecive>18:00</sHoursRecive>
