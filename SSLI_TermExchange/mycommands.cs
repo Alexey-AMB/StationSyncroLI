@@ -96,8 +96,8 @@ namespace SSLI
             for (int i = 0; i < arb.Length; i++)
             {
                 byte[] bytes = BitConverter.GetBytes(arb[i]);
-                sRet += bytes[1].ToString("X");
-                sRet += bytes[0].ToString("X");
+                sRet += bytes[1].ToString("X2");
+                sRet += bytes[0].ToString("X2");
             }
             return sRet;
         }
@@ -128,6 +128,18 @@ namespace SSLI
             if (fa < 4.1) return 75;
             if (fa < 4.3) return 90;
             return 100;
+        }
+
+        public static byte[] ConvertAnsStatToBuff(AnsStatus anss)
+        {
+            int size = Marshal.SizeOf(anss);
+            byte[] arr = new byte[size];
+
+            IntPtr ptr = Marshal.AllocHGlobal(size);
+            Marshal.StructureToPtr(anss, ptr, true);
+            Marshal.Copy(ptr, arr, 0, size);
+            Marshal.FreeHGlobal(ptr);
+            return arr;
         }
     }
 }

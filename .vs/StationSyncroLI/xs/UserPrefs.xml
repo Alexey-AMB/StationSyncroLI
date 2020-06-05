@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{77C02630-4935-4BE5-8CCA-008BD5FEFB63}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="SSLI_TermExchange/TermExchange.cs">
     <Files>
-      <File FileName="StationSyncroLI/FormMain.cs" Line="318" Column="23" />
-      <File FileName="SSLI_Utils/Utils.cs" Line="1349" Column="1" />
-      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="130" Column="15" />
-      <File FileName="SSLI_TermExchange/Class_SocketTransfer.cs" Line="1243" Column="63" NotebookId="1" />
+      <File FileName="StationSyncroLI/FormMain.cs" Line="405" Column="22" />
+      <File FileName="SSLI_Utils/Utils.cs" Line="1342" Column="14" />
+      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="257" Column="44" />
+      <File FileName="SSLI_TermExchange/Class_SocketTransfer.cs" Line="1260" Column="33" NotebookId="1" />
       <File FileName="SSLI_TermExchange/ClassFileCopy.cs" Line="131" Column="1" NotebookId="1" />
-      <File FileName="SSLI_TermExchange/mycommands.cs" Line="78" Column="1" NotebookId="1" />
+      <File FileName="SSLI_TermExchange/mycommands.cs" Line="145" Column="2" NotebookId="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">

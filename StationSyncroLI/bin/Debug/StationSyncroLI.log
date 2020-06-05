@@ -121,3 +121,52 @@
 29.05.2020 14:37:37 -GetFilesService- ===========================
 29.05.2020 14:37:37 -StatisticService- Start.Exit:OK
 29.05.2020 14:37:37 -StatisticService- ===========================
+05.06.2020 12:43:43 #FindConfigFile: config use - /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/StationSyncroLI.xml
+05.06.2020 12:43:43 -GetFilesService- ---------------------------
+05.06.2020 12:43:43 -GetFilesService- Init:OK
+05.06.2020 12:43:43 -TermExchange- ---------------------------
+05.06.2020 12:43:43 -TermExchange- Init:COM.ERROR - Ошибка запуска контроля клиентов.
+05.06.2020 12:43:43 -StatisticService- ---------------------------
+05.06.2020 12:43:43 -StatisticService- Init:OK
+05.06.2020 12:43:43 -WEBService- ---------------------------
+05.06.2020 12:43:43 -WEBService- Init:OK - Found WWWdata directory.
+05.06.2020 12:43:43 -WEBService- Init:OK
+05.06.2020 12:43:43 -StatisticService- Start.Entrance:OK
+05.06.2020 12:43:43 -GetFilesService- Start.Entrance:OK
+05.06.2020 12:43:44 -StatisticService- MakeStatFile.Entrance:OK
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.Entrance:OK
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.ReadInitXML:OK - Test Terminal
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.Exit:OK
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.Entrance:OK
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.ReadInitXML:OK - Test Terminal
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.Exit:OK
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.Entrance:OK
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.ReadInitXML:OK - Test Terminal
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.Exit:OK
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.Entrance:OK
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.ReadInitXML:OK - Test Terminal
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.Exit:OK
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.Entrance:OK
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.ReadInitXML:OK - Test Terminal
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.Exit:OK
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.Entrance:OK
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.ReadInitXML:OK - Test Terminal
+05.06.2020 12:43:44 -StatisticService- WorkWithFiles.Exit:OK
+05.06.2020 12:43:44 -StatisticService- SaveStatFile:OK
+05.06.2020 12:43:44 -StatisticService- MakeStatFile.Exit:OK
+05.06.2020 12:43:44 -StatisticService- WriteNewNextSave:OK
+05.06.2020 12:43:45 -WEBService- WorkWithHTMLFile.Entrance:OK
+05.06.2020 12:43:45 -WEBService- WorkWithHTMLFile.Exit:OK
+05.06.2020 12:43:45 -WEBService- Start:OK
+05.06.2020 12:45:19 -GetFilesService- Stop:OK
+05.06.2020 12:45:19 -StatisticService- Stop:OK
+05.06.2020 12:45:19 -WEBService- Stop:OK
+05.06.2020 12:45:19 -WEBService- StartListen:ERROR - interrupted
+05.06.2020 12:45:19 -WEBService- Start.Exit:OK
+05.06.2020 12:45:19 -WEBService- ===========================
+05.06.2020 12:45:19 -StatisticService- Start.Exit:OK
+05.06.2020 12:45:19 -StatisticService- ===========================
+05.06.2020 12:45:51 -GetFilesService- LoadRemoteListFile.FTP:ERROR - Couldn't connect to remote server
+05.06.2020 12:45:51 -GetFilesService- LoadRemoteListFile:ERROR - Could not find file "/home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/Storage Card/Temp/List.xml"
+05.06.2020 12:45:51 -GetFilesService- Start.Exit:OK
+05.06.2020 12:45:51 -GetFilesService- ===========================

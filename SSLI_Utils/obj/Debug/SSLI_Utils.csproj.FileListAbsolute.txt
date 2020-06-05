@@ -10,6 +10,7 @@
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_Utils/bin/Debug/Ionic.Zip.dll
 /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/SSLI.Utils.dll
 /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/SSLI.Utils.pdb
+/home/alexey/MonoProjects/StationSyncroLI/SSLI_Utils/obj/Debug/SSLI_Utils.csprojAssemblyReference.cache
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_Utils/obj/Debug/SSLI_Utils.csproj.CoreCompileInputs.cache
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_Utils/obj/Debug/SSLI_Utils.csproj.CopyComplete
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_Utils/obj/Debug/SSLI.Utils.dll

@@ -8,6 +8,7 @@ using System.Reflection;
 using System.Collections;
 using Ionic.Zip;
 using System.IO.Ports;
+using System.Threading;
 
 namespace SSLI
 {
@@ -1376,22 +1377,32 @@ namespace SSLI
         /// <param name="iReadlen">Сколько было записано в буфер.</param>
         public static void GetMessage(ref byte[] buff, ref int iReadlen)
         {
+
             Array.Clear(buff, 0, buff.Length);
             iReadlen = 0;
+            int iCnt = 0;
+            for (iCnt = 0; iCnt < 200; iCnt++) //до 1 сек ожидание ответа
+            {
+                if (sp.BytesToRead > 0) break;
+                Thread.Sleep(10);
+            }
+
+            if (sp.BytesToRead == 0) return;
+
             while (!bIntrUsart1)
             {
                 try
                 {
-                    if(sp.BytesToRead == 0) System.Threading.Thread.Sleep(10);
+                    if (sp.BytesToRead == 0) System.Threading.Thread.Sleep(10);
                     iReadlen = UsartGetBlock();
                 }
-                catch(TimeoutException)
+                catch (TimeoutException)
                 {
                     iReadlen = 0;
                     break;
                 }
             }
-            if(bIntrUsart1 && (iReadlen > 0))
+            if (bIntrUsart1 && (iReadlen > 0))
             {
                 Array.Copy(arRecivBuff1, buff, iReadlen);
             }
