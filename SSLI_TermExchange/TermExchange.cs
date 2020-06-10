@@ -48,23 +48,15 @@ namespace SSLI
                 bRet = false;
             }
 
-            //try
-            //{
-            //    WriteDebugString("---------------------------", 1);
-            //    nn = new AMB_NDISNOTI.AMB_NDISNotification();   //!!
-            //    AMB_NDISNOTI.AMB_NDISNotification.NewNotification += new AMB_NDISNOTI.AMB_NDISNotification.MyEv_NewNotifi(AMB_NDISNotification_NewNotification);
-            //    if (nn.Init()) nn.Run();
-            //    else
-            //    {
-            //        WriteDebugString("Init:ERROR - Ошибка запуска контроля клиентов.", 0);
-            //        return false;
-            //    }
-            //}
-            //catch (Exception ex)
-            //{
-            //    WriteDebugString("Init.AMB_NDISNOTI:ERROR - " + ex.Message, 0);
-            //    return false;
-            //}
+
+            //test_only!!!
+            //arbBuff = new byte[300];
+            //arbBuff[0] = (byte)UsartAnswer.ANS_ARSTAT;
+            //AnsStatus[] stFromPic = null;
+            //stFromPic = WorkCom.ConvertBuffToAnsStat(arbBuff, 1, 5);
+            //test_only!!!
+
+
 
             WriteDebugString("---------------------------", 1);
             if ((Utils.strConfig.strTermExch.sComPortName!=null)&&(Utils.strConfig.strTermExch.iComPortSpeed !=0))
@@ -125,9 +117,6 @@ namespace SSLI
                 WriteDebugString("Start.COM:ERROR - pic NOT answer ANS_OK", 0);
                 bAbort = true;
             }
-
-            //test_only!!!
-            //stFromPic = WorkCom.ConvertBuffToAnsStat(arbBuff, 1, 5);
 
             while (!bAbort)
             {

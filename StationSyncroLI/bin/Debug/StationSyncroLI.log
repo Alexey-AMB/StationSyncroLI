@@ -170,3 +170,13 @@
 05.06.2020 12:45:51 -GetFilesService- LoadRemoteListFile:ERROR - Could not find file "/home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/Storage Card/Temp/List.xml"
 05.06.2020 12:45:51 -GetFilesService- Start.Exit:OK
 05.06.2020 12:45:51 -GetFilesService- ===========================
+10.06.2020 16:09:53 #FindConfigFile: config use - /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/StationSyncroLI.xml
+10.06.2020 16:09:53 -GetFilesService- ---------------------------
+10.06.2020 16:09:53 -GetFilesService- Init:OK
+10.06.2020 16:10:30 #FindConfigFile: config use - /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/StationSyncroLI.xml
+10.06.2020 16:10:30 -GetFilesService- ---------------------------
+10.06.2020 16:10:30 -GetFilesService- Init:OK
+10.06.2020 16:13:03 #FindConfigFile: config use - /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/StationSyncroLI.xml
+10.06.2020 16:13:20 #FindConfigFile: config use - /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/StationSyncroLI.xml
+10.06.2020 16:13:20 -GetFilesService- ---------------------------
+10.06.2020 16:13:20 -GetFilesService- Init:OK

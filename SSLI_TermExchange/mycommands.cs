@@ -79,7 +79,7 @@ namespace SSLI
             for (int i = 0; i < coutnStruct; i++)
             {
                 pt = Marshal.AllocHGlobal(an_size);
-                Marshal.Copy(buff, iStart + i*an_size, pt, an_size);
+                Marshal.Copy(buff, iStart + i * an_size, pt, an_size);
                 stret[i] = (AnsStatus)Marshal.PtrToStructure(pt, typeof(AnsStatus));
                 Marshal.FreeHGlobal(pt);
             }
