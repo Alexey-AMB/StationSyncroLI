@@ -1,0 +1,1 @@
+mono --debug --debugger-agent=address=0.0.0.0:12345,server=y,transport=dt_socket /home/pi/Temp/mono/StationSyncroLI/StationSyncroLI/bin/Debug/StationSyncroLI.exe

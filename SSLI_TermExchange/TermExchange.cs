@@ -203,7 +203,7 @@ namespace SSLI
         {
             for(int i=0;i<5;i++)
             {
-                if ((arSt[i].SerNum == 0) && (arSt[i].fAkkV == 0.0)) //слот пуст
+                if ((arSt[i].SerNum == 0) && (arSt[i].uAkkmV == 0)) //слот пуст
                 {
                     Utils.cCurrStatus.arstTermInDock[i].bIsPresented = false;
                     Utils.cCurrStatus.arstTermInDock[i].iColorLabelStatus = 0;
@@ -222,7 +222,7 @@ namespace SSLI
                     if (WorkCom.ConvertByteArToID(arSt[i].sID) == Utils.cCurrStatus.arstTermInDock[i].sIDTerminal)
                     {//тот же терминал
                         Utils.cCurrStatus.arstTermInDock[i].bIsPresented = true;
-                        Utils.cCurrStatus.arstTermInDock[i].iPercentAkk = WorkCom.ConvertFAkkToPercent(arSt[i].fAkkV);
+                        Utils.cCurrStatus.arstTermInDock[i].iPercentAkk = WorkCom.ConvertFAkkToPercent(arSt[i].uAkkmV);
                         Utils.cCurrStatus.arstTermInDock[i].iChargeState = arSt[i].ChargeState;
                     }
                     else
@@ -236,7 +236,7 @@ namespace SSLI
                         Utils.cCurrStatus.arstTermInDock[i].iConectStatus = 0;
                         Utils.cCurrStatus.arstTermInDock[i].iIPaddrClient = (byte)(i + 1);
                         Utils.cCurrStatus.arstTermInDock[i].iIPaddrServer = (byte)(i + 100);
-                        Utils.cCurrStatus.arstTermInDock[i].iPercentAkk = WorkCom.ConvertFAkkToPercent(arSt[i].fAkkV);
+                        Utils.cCurrStatus.arstTermInDock[i].iPercentAkk = WorkCom.ConvertFAkkToPercent(arSt[i].uAkkmV);
                         Utils.cCurrStatus.arstTermInDock[i].iChargeState = arSt[i].ChargeState;
                     }
                 }

@@ -52,8 +52,8 @@ namespace SSLI
         public ushort SerNum;
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
         public ushort[] sID;  //8*2
-        [MarshalAs(UnmanagedType.R4)]
-        public float fAkkV;
+        [MarshalAs(UnmanagedType.U4)]
+        public UInt32 uAkkmV; //in mV
         [MarshalAs(UnmanagedType.U1)]
         public byte SC_mode; //0-down, 1-sleep, 2-work
         [MarshalAs(UnmanagedType.U1)]
@@ -118,15 +118,15 @@ namespace SSLI
         /// Возвращает примерный уровень заряда аккумулятора в процентах
         /// </summary>
         /// <returns>The FA kk to percent.</returns>
-        /// <param name="fa">Напряжение аккумулятора.</param>
-        public static int ConvertFAkkToPercent(float fa)
+        /// <param name="ua">Напряжение аккумулятора в миливольтах.</param>
+        public static int ConvertFAkkToPercent(UInt32 ua)
         {
-            if (fa < 3.0) return 0;
-            if (fa < 3.6) return 10;
-            if (fa < 3.8) return 30;
-            if (fa < 3.9) return 50;
-            if (fa < 4.1) return 75;
-            if (fa < 4.3) return 90;
+            if (ua < 3000) return 0;
+            if (ua < 3600) return 10;
+            if (ua < 3800) return 30;
+            if (ua < 3900) return 50;
+            if (ua < 4100) return 75;
+            if (ua < 4300) return 90;
             return 100;
         }
 
