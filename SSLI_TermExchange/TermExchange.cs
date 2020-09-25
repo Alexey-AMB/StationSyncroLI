@@ -142,12 +142,7 @@ namespace SSLI
 
                     UpdateInfoTermInDock(stFromPic);
 
-                    //check new term
-                    //send for new set_ip
-                    ConnectNewTermIndock();
-                    //wait new usbiface
-                    //if find new usbiface -> up
-                    //create thread WorkWithTerminal
+                    // test_only!!! ConnectNewTermIndock();
                 }
                 catch { }
 
@@ -213,7 +208,7 @@ namespace SSLI
                     Utils.cCurrStatus.arstTermInDock[i].sNameTerminal = "ПУСТО";
                     Utils.cCurrStatus.arstTermInDock[i].iConectStatus = 0;
                     Utils.cCurrStatus.arstTermInDock[i].iIPaddrClient = (byte)(i + 1);
-                    Utils.cCurrStatus.arstTermInDock[i].iIPaddrServer = (byte)(i + 100);
+                    Utils.cCurrStatus.arstTermInDock[i].iIPaddrServer = (byte)(i + 101);
                     Utils.cCurrStatus.arstTermInDock[i].iPercentAkk = 0;
                     Utils.cCurrStatus.arstTermInDock[i].iChargeState = 0;
                 }

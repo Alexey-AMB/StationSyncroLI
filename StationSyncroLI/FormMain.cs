@@ -541,6 +541,9 @@ namespace StationSyncroLI
                     if (Utils.LoadInitFile(sExecutePath + sPd + Utils.sFileNameInit, ref stC))
                     {
                         sRet = sExecutePath + sPd + Utils.sFileNameInit;
+                        Utils.WriteDebugString(sExecutePath, " ");
+                        Utils.WriteDebugString(sExecutePath, " ");
+                        Utils.WriteDebugString(sExecutePath, " <<<<<<<<<<<<<<<<<<<<    >>>>>>>>>>>>>>>>");
                         Utils.WriteDebugString(sExecutePath, " #FindConfigFile: config use - " + sExecutePath + sPd + Utils.sFileNameInit);
                         return sRet;
                     }

@@ -13,7 +13,6 @@
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_WEBServer/bin/Debug/SSLI.Utils.pdb
 /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/SSLI.WEBServer.dll
 /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/SSLI.WEBServer.pdb
-/home/alexey/MonoProjects/StationSyncroLI/SSLI_WEBServer/obj/Debug/SSLI_WEBServer.csprojAssemblyReference.cache
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_WEBServer/obj/Debug/SSLI_WEBServer.csproj.CoreCompileInputs.cache
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_WEBServer/obj/Debug/SSLI_WEBServer.csproj.CopyComplete
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_WEBServer/obj/Debug/SSLI.WEBServer.dll

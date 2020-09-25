@@ -26,17 +26,17 @@
     <stSSTasks>
       <iNumStart>2</iNumStart>
       <sNameTask>SSLI.TermExchange</sNameTask>
-      <sCurrentVersion>1.0.7461.22783</sCurrentVersion>
+      <sCurrentVersion>1.0.7472.17643</sCurrentVersion>
     </stSSTasks>
     <stSSTasks>
       <iNumStart>3</iNumStart>
       <sNameTask>SSLI.Statistic</sNameTask>
-      <sCurrentVersion>1.0.7461.22783</sCurrentVersion>
+      <sCurrentVersion>1.0.7472.17643</sCurrentVersion>
     </stSSTasks>
     <stSSTasks>
       <iNumStart>4</iNumStart>
       <sNameTask>SSLI.WEBServer</sNameTask>
-      <sCurrentVersion>1.0.7461.22784</sCurrentVersion>
+      <sCurrentVersion>1.0.7472.17643</sCurrentVersion>
     </stSSTasks>
   </arstTasks>
   <strMail>
@@ -51,9 +51,9 @@
   </strMail>
   <strStatistic>
     <sHoursSave>08:30</sHoursSave>
-    <sLastSended>05.06.2020 12:43:44</sLastSended>
-    <sNextSave>06.06.2020</sNextSave>
-    <sPrevionsSave>05.06.2020</sPrevionsSave>
+    <sLastSended>16.06.2020 09:48:40</sLastSended>
+    <sNextSave>17.06.2020</sNextSave>
+    <sPrevionsSave>16.06.2020</sPrevionsSave>
   </strStatistic>
   <strGetFiles>
     <sHoursRecive>18:00</sHoursRecive>

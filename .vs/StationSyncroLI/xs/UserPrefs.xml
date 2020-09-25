@@ -1,12 +1,8 @@
 ﻿<Properties StartupConfiguration="{77C02630-4935-4BE5-8CCA-008BD5FEFB63}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="SSLI_TermExchange/TermExchange.cs">
     <Files>
-      <File FileName="StationSyncroLI/FormMain.cs" Line="405" Column="22" />
-      <File FileName="SSLI_Utils/Utils.cs" Line="1342" Column="14" />
-      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="218" Column="74" />
-      <File FileName="SSLI_TermExchange/Class_SocketTransfer.cs" Line="1260" Column="33" NotebookId="1" />
-      <File FileName="SSLI_TermExchange/ClassFileCopy.cs" Line="131" Column="1" NotebookId="1" />
-      <File FileName="SSLI_TermExchange/mycommands.cs" Line="56" Column="31" NotebookId="1" />
+      <File FileName="StationSyncroLI/FormMain.cs" Line="544" Column="18" />
+      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="128" Column="4" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,7 +13,9 @@
               <Node name="TermExchange.cs" selected="True" />
             </Node>
             <Node name="SSLI_Utils" expanded="True" />
-            <Node name="SSLI_WEBServer" expanded="True" />
+            <Node name="SSLI_WEBServer" expanded="True">
+              <Node name="WWWData" expanded="True" />
+            </Node>
             <Node name="StationSyncroLI" expanded="True" />
           </Node>
         </State>
@@ -34,11 +32,9 @@
   </Debugger.DebugSourceFolders>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
     <BreakpointStore>
-      <Breakpoint enabled="false" file="/home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/FormMain.cs" relfile="StationSyncroLI/FormMain.cs" line="318" column="1" />
-      <Breakpoint file="/home/alexey/MonoProjects/StationSyncroLI/SSLI_TermExchange/TermExchange.cs" relfile="SSLI_TermExchange/TermExchange.cs" line="131" column="1" />
-      <Breakpoint file="/home/alexey/MonoProjects/StationSyncroLI/SSLI_TermExchange/TermExchange.cs" relfile="SSLI_TermExchange/TermExchange.cs" line="143" column="1" />
-      <Breakpoint file="/home/alexey/MonoProjects/StationSyncroLI/SSLI_TermExchange/TermExchange.cs" relfile="SSLI_TermExchange/TermExchange.cs" line="137" column="1" />
-      <Breakpoint file="/home/alexey/MonoProjects/StationSyncroLI/SSLI_TermExchange/mycommands.cs" relfile="SSLI_TermExchange/mycommands.cs" line="83" column="1" />
+      <Breakpoint enabled="false" file="/home/alexey/MonoProjects/StationSyncroLI/SSLI_TermExchange/TermExchange.cs" relfile="SSLI_TermExchange/TermExchange.cs" line="131" column="1" />
+      <Breakpoint enabled="false" file="/home/alexey/MonoProjects/StationSyncroLI/SSLI_TermExchange/TermExchange.cs" relfile="SSLI_TermExchange/TermExchange.cs" line="143" column="1" />
+      <Breakpoint enabled="false" file="/home/alexey/MonoProjects/StationSyncroLI/SSLI_TermExchange/TermExchange.cs" relfile="SSLI_TermExchange/TermExchange.cs" line="137" column="1" />
     </BreakpointStore>
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
