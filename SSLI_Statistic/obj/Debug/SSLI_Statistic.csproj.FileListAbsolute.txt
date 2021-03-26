@@ -12,9 +12,3 @@
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_Statistic/bin/Debug/SSLI.Utils.dll
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_Statistic/bin/Debug/Ionic.Zip.dll
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_Statistic/bin/Debug/SSLI.Utils.pdb
-/home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/SSLI.Statistic.dll
-/home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/SSLI.Statistic.pdb
-/home/alexey/MonoProjects/StationSyncroLI/SSLI_Statistic/obj/Debug/SSLI_Statistic.csproj.CoreCompileInputs.cache
-/home/alexey/MonoProjects/StationSyncroLI/SSLI_Statistic/obj/Debug/SSLI_Statistic.csproj.CopyComplete
-/home/alexey/MonoProjects/StationSyncroLI/SSLI_Statistic/obj/Debug/SSLI.Statistic.dll
-/home/alexey/MonoProjects/StationSyncroLI/SSLI_Statistic/obj/Debug/SSLI.Statistic.pdb

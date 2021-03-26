@@ -128,7 +128,7 @@ namespace SSLI
                     Array.Clear(arbBuff, 0, arbBuff.Length);
                     ComPort.CleanBytesReadPort();
                     //send com get_status
-                    ComPort.SendMessage((byte)UsartCommand.CMDRAS_GET_STATUS, ref arbBuff, 0);
+                    ComPort.SendMessage((byte)UsartCommand.CMDRAS_GET_STATUS, ref arbBuff, 0); //надо опрашивать по очереди!!!
                     //wait arStatus
                     ComPort.GetMessage(ref arbBuff, ref iReadLenMessage);
                     if (iReadLenMessage == 0) continue; //такого быть не должно. Это ошибка!
@@ -142,7 +142,7 @@ namespace SSLI
 
                     UpdateInfoTermInDock(stFromPic);
 
-                    // test_only!!! ConnectNewTermIndock();
+                    // test_only!!! ConnectNewTermIndock(); .. обновить файл mycommands !!!
                 }
                 catch { }
 
