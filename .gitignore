@@ -1,3 +1,10 @@
 .cache
 .pdb
 obj/
+*.pdb
+*.cache
+*.o
+*.ko
+*.obj
+*.elf
+*.CopyComplete
