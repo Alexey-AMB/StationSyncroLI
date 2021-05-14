@@ -12,6 +12,9 @@
   <sPathToOutBox>OutBox</sPathToOutBox>
   <sPathToProtocol>Protocols</sPathToProtocol>
   <sPathToUpdTerm>Updates</sPathToUpdTerm>
+  <sPathToRemovableFlash>/media</sPathToRemovableFlash>
+  <sCurrentVersionSS>1.0</sCurrentVersionSS>
+  <sCurrentTypeSS>SSLI</sCurrentTypeSS>
   <arsSupportedBases>
     <string>FED_LICA</string>
     <string>MESTN_LICA</string>

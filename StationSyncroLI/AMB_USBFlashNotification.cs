@@ -26,11 +26,11 @@ namespace AMB_USBFLASHNOTY
         /// Начало работы. Если все нормально возвращает TRUE.
         /// </summary>
         /// <returns></returns>
-        public bool Init()
+        public bool Init(string sPathForWatch)
         {
             try
             {
-                w = new FileSystemWatcher("/media");
+                w = new FileSystemWatcher(sPathForWatch);
                 w.NotifyFilter = NotifyFilters.DirectoryName;
                 w.IncludeSubdirectories = true;
                 w.Deleted += onChange;

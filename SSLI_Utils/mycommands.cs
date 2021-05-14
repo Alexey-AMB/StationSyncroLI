@@ -3,14 +3,24 @@ using System.Runtime.InteropServices;
 
 namespace SSLI
 {
-    enum UsartCommand
+    public enum ScMode
+    {
+        DOWN_MODE = 0,
+        SLEEP_MODE,
+        WORK_MODE,
+        REBOOT_MODE
+    }
+
+    public enum UsartCommand
     {                       //длинна данных, описание
         CMD_NONE = 0,       //0, не используется  
         CMD_TEST,           //0, ответ "ANS_OK"
         CMD_CHRG_EN,        //0, включить зарядку
         CMD_CHRG_DIS,       //0, выключить зарядку
-        CMD_USBA_EN,        //0, включить USB
-        CMD_USBA_DIS,       //0, выключить USB
+        CMD_USBA_EN,        //0, включить USBA, выключть нижний
+        CMD_USBA_DIS,       //0, выключить USBA, включить нижний USB
+        CMD_USB_OE_EN,      //0, включить канал USB
+        CMD_USB_OE_DIS,     //0, полность выключить USB (и top и bottom)      
         CMD_SC_SLEEP,       //0, отправить в сон, если включен, если уже сон или выключен - ничего
         CMD_SC_RUN,         //0, включить если уже не включен
         CMD_SC_DOWN,        //0, полностью выключить модуль - долго - 8 сек
@@ -18,22 +28,46 @@ namespace SSLI
         CMD_LED_R_ON,       //0, зажечь красный
         CMD_LED_R_OFF,      //0, погасить красный
         CMD_LED_G_ON,       //0, зажечь зеленый
-        CMD_LED_G_OFF,      //0, погасить зеленый
-        CMD_SOFT_UPD_PROGRESS, //0, сообщение, что прогр. верх. уровня начала обновление баз
-        CMD_SOFT_UPD_DONE,  //0, сообщение, что прогр. верх. уровня завершила обновление баз
+        CMD_LED_G_OFF,      //0, погасить зеленый    
         CMD_GET_SERNUM,     //0, запрос сер. номера, ответ типа "ANS_SERNUM"
         CMD_GET_ID,         //0, запрос уникального номера, ответ типа "ANS_ID"
-        CMD_GET_AKKVOLT,    //0, запрос напряжения аккумулятора  ответ "ANS_AKKVOLT"
+        CMD_GET_AKKPRCNT,   //0, запросить процент аккумулятора у модуля        
+        CMD_SET_AKKPRCNT,   //1, установить процент аккумулятора в статусе (ответ с модуля на пик) (0-100 - real percent, 100-200 - percent in charge, 201 - full(charge is off), 220 - cold, 221 - hot, 222 - not known)
         CMD_GET_STATUS,     //0, запрос текущего статуса, ответ типа "ANS_STATUS"
         CMD_SET_SERNUM,     //2, передача серийного номера, для проверки считать
         CMD_SET_ID,         //16, передача уникального ID,  для проверки считать
         CMD_SET_IP,         //2, передача последнего байта IP адресов станции и терминала
-        CMDRAS_GET_STATUS,  //0, запрос текущих статусов терминалов - только по USART1
-        CMDRAS_SET_IP       //3, передача последнего байта IP адресов станции и терминала на указанный слот (слот, станция, терм) - только по USART1
+        CMD_SET_UPD_STATUS, //1, обновления баз 0-не обновлен, 1-готов к приему, 2-идет обновление, 3-завершено  
+
+        // комнды далее - со станции на терминал. 1-й параметр номер слота (нумерация слотов с нуля, нулевой ближе к экрану)       
+        CMDRAS_GET_STATUS = 30,  //1, запрос текущего статуса терминала - долго ~1.1 сек
+        CMDRAS_SET_IP,      //3, передача последнего байта IP адресов станции и терминала на указанный слот (слот, станция, терм) - только по USART1
+        CMDRAS_SET_UPDSTRT, //1, включить прием по RNDIS
+                            //       
+        CMDRAS_CHRG_EN,     //1, - параметр номер слота
+        CMDRAS_CHRG_DIS,    //1, - параметр номер слота
+        CMDRAS_USBA_EN,     //1, - параметр номер слота
+        CMDRAS_USBA_DIS,    //1, - параметр номер слота
+        CMDRAS_USBOE_EN,    //1, - параметр номер слота
+        CMDRAS_USBOE_DIS,   //1, - параметр номер слота
+        CMDRAS_LED_R_ON,    //1, - параметр номер слота
+        CMDRAS_LED_R_OFF,   //1, - параметр номер слота
+        CMDRAS_LED_G_ON,    //1, - параметр номер слота
+        CMDRAS_LED_G_OFF,   //1, - параметр номер слота    
+        CMDRAS_SC_SLEEP,    //1, - параметр номер слота
+        CMDRAS_SC_RUN,      //1, - параметр номер слота
+        CMDRAS_SC_DOWN,     //1, - параметр номер слота
+        CMDRAS_SC_REBOOT,   //1, - параметр номер слота
+        CMDRAS_GET_AKKPRCNT,//1, - параметр номер слота
+        CMDRAS_SET_ID,      //17, - параметр номер слота, 16 - передача уникального ID для терминала
+        CMDRAS_SET_SERNUM,  //3, - параметр номер слота, 2 - передача серийного номера для терминала
+                            // управление питанием
+        CMDRAS_SLOT_PWRON,  //1, включить питание на слот
+        CMDRAS_SLOT_PWROFF, //1, выключить питание на слот
+        CMDRAS_RASP_REBOOT  //0, выключить питание малинки, подождать секунду, включить питание малинки
     }
 
-
-    enum UsartAnswer
+    public enum UsartAnswer
     {
         ANS_NONE = 100, //0, не используется
         ANS_OK,         //0
@@ -41,25 +75,34 @@ namespace SSLI
         ANS_SERNUM,     //2
         ANS_ID,         //16
         ANS_AKKVOLT,    //4
-        ANS_STATUS,     //25 = AnsStatus
-        ANS_ARSTAT      //5*AnsStatus
+        ANS_STATUS      //26 = AnsStatus
+        //ANS_ARSTAT,   //5*AnsStatus - не используется
     }
 
-    [StructLayout(LayoutKind.Sequential, /*Size = 25,*/ Pack = 1)]
+    [StructLayout(LayoutKind.Sequential, /*Size = 26,*/ Pack = 1)]
     public struct AnsStatus
     {
         [MarshalAs(UnmanagedType.U2)]
+        //[FieldOffset(0)]
         public ushort SerNum;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 8)]  //.ByValArray
+        //[FieldOffset(2)]
         public ushort[] sID;  //8*2
         [MarshalAs(UnmanagedType.U4)]
-        public UInt32 uAkkmV; //in mV
+        //[FieldOffset(18)]
+        public UInt32 uAkkmV;
         [MarshalAs(UnmanagedType.U1)]
+        //[FieldOffset(22)]
+        public byte uAkkPrcnt; //akk in percent (0-100 - real percent (charge is off), 100-200 - percent in charge, 201 - full(charge is off), 220 - cold, 221 - hot, 222 - not known)
+        [MarshalAs(UnmanagedType.U1)]
+        //[FieldOffset(23)]
         public byte SC_mode; //0-down, 1-sleep, 2-work
         [MarshalAs(UnmanagedType.U1)]
-        public byte UpdateState; //0-not start, 1-in progress, 2-done
+        //[FieldOffset(24)]
+        public byte UpdateState; //0-not start, 1-ready recive, 2-working, 3-finished
         [MarshalAs(UnmanagedType.U1)]
-        public byte ChargeState; //0-none, 1-in progress
+        //[FieldOffset(25)]
+        public byte ChargeState; //0-none, 1-in progress, 2-done
     }
 
     public static class WorkCom
@@ -70,19 +113,17 @@ namespace SSLI
         /// <returns>The buff to ans stat.</returns>
         /// <param name="buff">Принятый из порта буфер.</param>
         /// <param name="iStart">Оффсет в буфере, обычно 1.</param>
-        /// <param name="coutnStruct">Ожидаемое количество структур, обычно 5.</param>
-        public static AnsStatus[] ConvertBuffToAnsStat(byte[] buff, int iStart, int coutnStruct)
+        public static AnsStatus ConvertBuffToAnsStat(byte[] buff, int iStart)
         {
-            AnsStatus[] stret = new AnsStatus[coutnStruct];
+            AnsStatus stret = new AnsStatus();
             int an_size = Marshal.SizeOf(typeof(AnsStatus));
             IntPtr pt = IntPtr.Zero;
-            for (int i = 0; i < coutnStruct; i++)
-            {
-                pt = Marshal.AllocHGlobal(an_size);
-                Marshal.Copy(buff, iStart + i * an_size, pt, an_size);
-                stret[i] = (AnsStatus)Marshal.PtrToStructure(pt, typeof(AnsStatus));
-                Marshal.FreeHGlobal(pt);
-            }
+
+            pt = Marshal.AllocHGlobal(an_size);
+            Marshal.Copy(buff, iStart, pt, an_size);
+            stret = (AnsStatus)Marshal.PtrToStructure(pt, typeof(AnsStatus));
+            Marshal.FreeHGlobal(pt);
+
             return stret;
         }
         /// <summary>
@@ -93,6 +134,7 @@ namespace SSLI
         public static string ConvertByteArToID(UInt16[] arb)
         {
             string sRet = null;
+            if (arb == null) return sRet;
             for (int i = 0; i < arb.Length; i++)
             {
                 byte[] bytes = BitConverter.GetBytes(arb[i]);
@@ -107,7 +149,7 @@ namespace SSLI
         /// <returns>The byte ar to name term.</returns>
         /// <param name="ui">Номер терминала в формате двубайтового числа.</param>
         public static string ConvertByteArToNameTerm(UInt16 ui)
-        {
+        { //вывод типа "123-04". Первые цифры - номер комплекта, после тире номер терминала в комплекте
             string sRet = null;
 
             sRet = ui.ToString();

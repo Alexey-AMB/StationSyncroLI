@@ -11,10 +11,10 @@ namespace SSLI
     public class TermExchange : SSLI.ClassAMBRenewedService
     {
         private string sPd = System.IO.Path.DirectorySeparatorChar.ToString();
-        private const string sFullIpAddresMask = "172.16.223.";
+        private const string sFullIpAddresMask = "172.16.223."; //??
 
-        Thread[] arThredsCfc = new Thread[5];
-        T6.FileCopy.ClassFileCopy[] arCfc = new T6.FileCopy.ClassFileCopy[5];
+        Thread tThredsCfc = null;
+        T6.FileCopy.ClassFileCopy cCfc = new T6.FileCopy.ClassFileCopy();
 
         private int iDebugLevel = 2;
         private bool bAbort = false;
@@ -48,16 +48,6 @@ namespace SSLI
                 bRet = false;
             }
 
-
-            //test_only!!!
-            //arbBuff = new byte[300];
-            //arbBuff[0] = (byte)UsartAnswer.ANS_ARSTAT;
-            //AnsStatus[] stFromPic = null;
-            //stFromPic = WorkCom.ConvertBuffToAnsStat(arbBuff, 1, 5);
-            //test_only!!!
-
-
-
             WriteDebugString("---------------------------", 1);
             if ((Utils.strConfig.strTermExch.sComPortName!=null)&&(Utils.strConfig.strTermExch.iComPortSpeed !=0))
             {
@@ -87,7 +77,6 @@ namespace SSLI
             {
                 WriteDebugString("Init:ERROR - Неполные данные настроек работы в реестре.", 0);
                 bRet = false;
-                //if (nn != null) nn.Dispose();
             }
 
             return bRet;
@@ -97,7 +86,7 @@ namespace SSLI
         {
             arbBuff = new byte[300];
             int iReadLenMessage = 0;
-            AnsStatus[] stFromPic = null;
+            AnsStatus stFromPic;
 
             WriteDebugString("Start.Entrance:OK", 2);
 
@@ -134,13 +123,13 @@ namespace SSLI
                     if (iReadLenMessage == 0) continue; //такого быть не должно. Это ошибка!
 
                     //update infopanel
-                    if (arbBuff[0] == (byte)UsartAnswer.ANS_ARSTAT)
+                    if (arbBuff[0] == (byte)UsartAnswer.ANS_STATUS)
                     {
-                        stFromPic = WorkCom.ConvertBuffToAnsStat(arbBuff, 1, 5);
+                        stFromPic = WorkCom.ConvertBuffToAnsStat(arbBuff, 1);
                     }
                     else continue;
 
-                    UpdateInfoTermInDock(stFromPic);
+                    //UpdateInfoTermInDock(stFromPic);
 
                     // test_only!!! ConnectNewTermIndock(); .. обновить файл mycommands !!!
                 }

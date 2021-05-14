@@ -363,6 +363,18 @@ namespace SSLI
         /// Путь к обновлениям баз
         /// </summary>
         public string sPathToUpdTerm;
+        /// <summary>
+        /// Путь по которому подключается USB флэшка.
+        /// </summary>
+        public string sPathToRemovableFlash;
+        /// <summary>
+        /// Версия ПО.
+        /// </summary>
+        public string sCurrentVersionSS;
+        /// <summary>
+        /// Текущий тип ПО станции. "SSLI".
+        /// </summary>
+        public string sCurrentTypeSS;
 
         /// <summary>
         /// Список баз с которыми должна работать станция
@@ -821,7 +833,7 @@ namespace SSLI
         /// Имя файла программы для обмена с сервером с ПК
         /// </summary>
         public const string sFileNameProgrammTransfer = "TransferFiles_SSLI.exe";
-        public const string sIPLocalRNDIS = "192.168.56.119";// у хоста192.168.56.150, у клиента 192,168,56,119
+        public const string sIPLocalRNDIS = "192.168.42.129";
         public const int iLoacalRNDISPort = 30000;
         /// <summary>
         /// Объект для синхронизации работы с файлом конфигурации.
@@ -1060,6 +1072,9 @@ namespace SSLI
         /// <returns>True - все ОК.</returns>
         public static bool SaveInit(string sFullPathToiniFile)
         {
+            strConfig.sCurrentTypeSS = "SSLI";
+            strConfig.sCurrentVersionSS = sVersionSSLI;
+
             lock (oSyncroLoadSaveInit)
             {
                 FileStream fs = null;
@@ -1094,23 +1109,71 @@ namespace SSLI
         /// <returns>Строка с серийником.</returns>
         public static string GetDeviceID()  
         {
-            string sRet = "";
-            string sNameFile = "/proc/cpuinfo";
-            if (File.Exists(sNameFile))
+            int iReadLenMessage = 0;
+            UInt16[] ints = null;
+            byte [] arbBuff = new byte[300];
+
+            Array.Clear(arbBuff, 0, arbBuff.Length);
+            ComPort.CleanBytesReadPort();
+            //send com get_status
+            ComPort.SendMessage((byte)UsartCommand.CMD_GET_ID, ref arbBuff, 0);
+            //wait arStatus
+            ComPort.GetMessage(ref arbBuff, ref iReadLenMessage);
+            if (iReadLenMessage > 0)
             {
-                string[] lines = File.ReadAllLines(sNameFile);
-                foreach (string s in lines)
+                if (arbBuff[0] == (byte)UsartAnswer.ANS_ID)
                 {
-                    if(s.IndexOf("Serial") >= 0)
+                    int size = 8;
+                    ints = new UInt16[size];
+                    for (int index = 0; index < size; index++)
                     {
-                        sRet = "0000000000000000" + s.Substring(10, 16);
-                        return sRet;
+                        ints[index] = BitConverter.ToUInt16(arbBuff, 1 + index * sizeof(UInt16));
                     }
+                    return WorkCom.ConvertByteArToID(ints);
                 }
             }
 
+            //string sRet = "";
+            //string sNameFile = "/proc/cpuinfo";
+            //if (File.Exists(sNameFile))
+            //{
+            //    string[] lines = File.ReadAllLines(sNameFile);
+            //    foreach (string s in lines)
+            //    {
+            //        if(s.IndexOf("Serial") >= 0)
+            //        {
+            //            sRet = "0000000000000000" + s.Substring(10, 16);
+            //            return sRet;
+            //        }
+            //    }
+            //}
+
             return "01020304050607080102030405060708";
         }
+
+        public static string GetDeviceSernum()
+        {
+            int iReadLenMessage = 0;
+            UInt16 uRet = 0;
+            byte[] arbBuff = new byte[300];
+
+            Array.Clear(arbBuff, 0, arbBuff.Length);
+            ComPort.CleanBytesReadPort();
+            //send com get_status
+            ComPort.SendMessage((byte)UsartCommand.CMD_GET_SERNUM, ref arbBuff, 0);
+            //wait arStatus
+            ComPort.GetMessage(ref arbBuff, ref iReadLenMessage);
+            if (iReadLenMessage > 0)
+            {
+                if (arbBuff[0] == (byte)UsartAnswer.ANS_SERNUM)
+                {
+                    uRet = BitConverter.ToUInt16(arbBuff, 1);
+                    return WorkCom.ConvertByteArToNameTerm(uRet);
+                }
+            }
+            return "0000-00";
+        }
+
         /// <summary>
         /// Получение статуса памяти устройства
         /// </summary>
@@ -1201,9 +1264,9 @@ namespace SSLI
             }
         }
         /// <summary>
-        /// Установка систеного времени.
+        /// Установка системного времени.
         /// </summary>
-        /// <param name="servTime">Дата-время в формате DateTime</param>
+        /// <param name="newTime">Дата-время в формате DateTime</param>
         /// <returns>TRUE - если все ОК.</returns>
         public static bool SetSystemTime(DateTime newTime)
         {
@@ -1476,6 +1539,8 @@ namespace SSLI
             arSendBuff1[lendata + 3] = GetCRC8(arSendBuff1, lendata + 1, 2);
             sp.Write(arSendBuff1, 0, lenmess);
             bIntrUsart1 = false;
+
+            Thread.Sleep(10);
         }
 
         private static byte GetCRC8(byte[] buf, int lenbuf, int ofset)

@@ -1,22 +1,39 @@
 ﻿<Properties StartupConfiguration="{77C02630-4935-4BE5-8CCA-008BD5FEFB63}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="SSLI_TermExchange/TermExchange.cs">
     <Files>
-      <File FileName="StationSyncroLI/FormMain.cs" Line="544" Column="18" />
-      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="145" Column="92" />
+      <File FileName="StationSyncroLI/FormMain.cs" Line="174" Column="28" />
+      <File FileName="SSLI_Utils/Utils.cs" Line="1196" Column="27" />
+      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="35" Column="49" />
+      <File FileName="StationSyncroLI/AMB_USBFlashNotification.cs" Line="5" Column="11" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="StationSyncroLI" expanded="True">
-            <Node name="SSLI_GetFiles" expanded="True" />
             <Node name="SSLI_TermExchange" expanded="True">
               <Node name="TermExchange.cs" selected="True" />
             </Node>
-            <Node name="SSLI_Utils" expanded="True" />
-            <Node name="SSLI_WEBServer" expanded="True">
-              <Node name="WWWData" expanded="True" />
+            <Node name="SSLI_Utils" expanded="True">
+              <Node name="Properties" expanded="True" />
             </Node>
             <Node name="StationSyncroLI" expanded="True" />
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="ClassPad">
+        <State name="__root__">
+          <Node name="StationSyncroLI" expanded="True">
+            <Node name="SSLI_TermExchange" expanded="True">
+              <Node name="SSLI" expanded="True">
+                <Node name="SSLI.WorkCom" expanded="True" />
+              </Node>
+            </Node>
+            <Node name="SSLI_Utils" expanded="True">
+              <Node name="SSLI" selected="True" />
+            </Node>
+            <Node name="StationSyncroLI" expanded="True">
+              <Node name="StationSyncroLI" expanded="True" />
+            </Node>
           </Node>
         </State>
       </Pad>
@@ -31,11 +48,7 @@
     <String>/home/alexey/MonoProjects</String>
   </Debugger.DebugSourceFolders>
   <MonoDevelop.Ide.DebuggingService.Breakpoints>
-    <BreakpointStore>
-      <Breakpoint enabled="false" file="/home/alexey/MonoProjects/StationSyncroLI/SSLI_TermExchange/TermExchange.cs" relfile="SSLI_TermExchange/TermExchange.cs" line="131" column="1" />
-      <Breakpoint enabled="false" file="/home/alexey/MonoProjects/StationSyncroLI/SSLI_TermExchange/TermExchange.cs" relfile="SSLI_TermExchange/TermExchange.cs" line="143" column="1" />
-      <Breakpoint enabled="false" file="/home/alexey/MonoProjects/StationSyncroLI/SSLI_TermExchange/TermExchange.cs" relfile="SSLI_TermExchange/TermExchange.cs" line="137" column="1" />
-    </BreakpointStore>
+    <BreakpointStore />
   </MonoDevelop.Ide.DebuggingService.Breakpoints>
   <MultiItemStartupConfigurations />
 </Properties>

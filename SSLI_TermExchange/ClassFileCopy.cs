@@ -9,7 +9,6 @@ using SSLI;
 
 namespace T6.FileCopy
 {
-
 	public class ClassFileCopy
 	{
         private string sPd = Path.DirectorySeparatorChar.ToString();

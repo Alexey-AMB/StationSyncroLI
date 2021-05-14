@@ -10,6 +10,9 @@
   <sPathToOutBox>\Storage Card\OutBox</sPathToOutBox>
   <sPathToProtocol>\Storage Card\Protocols</sPathToProtocol>
   <sPathToUpdTerm>\Storage Card\Updates</sPathToUpdTerm>
+  <sPathToRemovableFlash>/media</sPathToRemovableFlash>
+  <sCurrentVersionSS>1.0</sCurrentVersionSS>
+  <sCurrentTypeSS>SSLI</sCurrentTypeSS>
   <arsSupportedBases>
     <string>FED_LICA</string>
     <string>MESTN_LICA</string>

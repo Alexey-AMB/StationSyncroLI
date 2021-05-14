@@ -315,7 +315,7 @@ namespace StationSyncroLI
             this.label14.Location = new System.Drawing.Point(13, 184);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(186, 54);
-            this.label14.Text = "Терминал-СС верс. CE 6.0\r\n4 GB\r\nАМБ ИнТех (R) 2009-2012\r\ninfo@ambintech.ru";
+            this.label14.Text = "Терминал-СС верс. LI 0.1\r\n16 GB\r\nАМБ ИнТех (R) 2009-2021\r\ninfo@ambintech.ru";
             // 
             // labelLastError
             // 

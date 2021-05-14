@@ -33,14 +33,15 @@ namespace StationSyncroLI
             this.timer4.Enabled = true;
             amUFN = new AMB_USBFLASHNOTY.AMB_USBFlashNotification();
             AMB_USBFLASHNOTY.AMB_USBFlashNotification.NewNotification += new AMB_USBFLASHNOTY.AMB_USBFlashNotification.MyEv_NewNotifi(AMB_USBFlashNotification_NewNotification);
-            if (amUFN.Init()) amUFN.Run();
+            if (amUFN.Init(Utils.strConfig.sPathToRemovableFlash)) amUFN.Run();
         }
 
         private void OnStart()
         {
-            if (DateTime.Now < DateTime.Parse("01.01.2012"))
+            if (DateTime.Now < DateTime.Parse("01.01.2021"))
             {
-                if (MessageBox.Show("Системное время не установлено.", "Установить время?", MessageBoxButtons.OKCancel, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.OK)
+                if (MessageBox.Show("Системное время не установлено.", "Установить время?", MessageBoxButtons.OKCancel, 
+                    MessageBoxIcon.Question, MessageBoxDefaultButton.Button1) == DialogResult.OK)
                 {
                     Form_Settings formSysSet = new Form_Settings();
                     formSysSet.ShowDialog();
@@ -92,8 +93,9 @@ namespace StationSyncroLI
                     }
                     catch(Exception ex)
                     {
-
+                        Utils.WriteDebugString(sExecutePath, "- ONSTART.CopyNewFiles - ERROR:" + ex.Message);
                     }
+
                 }
 
                 //Загружаем задачи
