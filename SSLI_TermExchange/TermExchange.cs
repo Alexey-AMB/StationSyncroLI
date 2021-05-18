@@ -11,10 +11,10 @@ namespace SSLI
     public class TermExchange : SSLI.ClassAMBRenewedService
     {
         private string sPd = System.IO.Path.DirectorySeparatorChar.ToString();
-        private const string sFullIpAddresMask = "172.16.223."; //??
+        //private const string sFullIpAddresMask = "172.16.223."; //??
 
-        Thread tThredsCfc = null;
-        T6.FileCopy.ClassFileCopy cCfc = new T6.FileCopy.ClassFileCopy();
+        T6.FileCopy.ClassFileCopy cCFC = null;
+        bool[] isFastCharge = new bool[5];
 
         private int iDebugLevel = 2;
         private bool bAbort = false;
@@ -63,7 +63,7 @@ namespace SSLI
             }
             else
             {
-                WriteDebugString("Init:ERROR - Неполные данные настроек работы в реестре.", 0);
+                WriteDebugString("Init:ERROR - Неполные данные настроек работы в реестре для COM.", 0);
                 return false;
             }
 
@@ -86,7 +86,6 @@ namespace SSLI
         {
             arbBuff = new byte[300];
             int iReadLenMessage = 0;
-            AnsStatus stFromPic;
 
             WriteDebugString("Start.Entrance:OK", 2);
 
@@ -107,33 +106,26 @@ namespace SSLI
                 bAbort = true;
             }
 
+            int iSlotNumber = 0;
+            AnsStatus stPic = new AnsStatus();
             while (!bAbort)
             {
-                Thread.Sleep(1000);
+                //Thread.Sleep(1000);
                 try
                 {
-                    //GetNextTerminal();
-
-                    Array.Clear(arbBuff, 0, arbBuff.Length);
-                    ComPort.CleanBytesReadPort();
-                    //send com get_status
-                    ComPort.SendMessage((byte)UsartCommand.CMDRAS_GET_STATUS, ref arbBuff, 0); //надо опрашивать по очереди!!!
-                    //wait arStatus
-                    ComPort.GetMessage(ref arbBuff, ref iReadLenMessage);
-                    if (iReadLenMessage == 0) continue; //такого быть не должно. Это ошибка!
-
-                    //update infopanel
-                    if (arbBuff[0] == (byte)UsartAnswer.ANS_STATUS)
+                    if (GetStatus(iSlotNumber, ref stPic))
                     {
-                        stFromPic = WorkCom.ConvertBuffToAnsStat(arbBuff, 1);
+                        WorkWithSlot(iSlotNumber, ref stPic);
+                        UpdateInfoTermInDock(iSlotNumber, ref stPic);
                     }
-                    else continue;
 
-                    //UpdateInfoTermInDock(stFromPic);
-
-                    // test_only!!! ConnectNewTermIndock(); .. обновить файл mycommands !!!
+                    iSlotNumber++;
+                    if (iSlotNumber > 4) iSlotNumber = 0;
                 }
-                catch { }
+                catch (Exception ex)
+                {
+                    WriteDebugString("Start.MainLoop:ERROR - " + ex.Message, 2);
+                }
 
             }
             WriteDebugString("Start.Exit:OK", 2);
@@ -144,7 +136,7 @@ namespace SSLI
         {
             ComPort.Close();
             bAbort = true;
-            foreach(T6.FileCopy.ClassFileCopy cfc in arCfc) if (cfc != null) cfc.bAbortThread = true;
+            if (cCFC != null) cCFC.bAbortThread = true;
             Utils.DeleteMarkerDirBusy(sPathToUpdTerm);
             Utils.DeleteMarkerDirBusy(sPathToNewSoftTerminal);
             Utils.DeleteMarkerDirBusy(sPathToProtocol);
@@ -183,133 +175,172 @@ namespace SSLI
             return bRet;
         }
 
-        private void UpdateInfoTermInDock(AnsStatus[] arSt)
+        private bool GetStatus(int iNumSlot, ref AnsStatus stPic)  // CMDRAS_GET_STATUS запрос от малины к станции
         {
-            for(int i=0;i<5;i++)
+            int iReadLenMessage = 0;
+            bool bRet = false;
+
+            Array.Clear(arbBuff, 0, arbBuff.Length);
+            arbBuff[0] = (byte)iNumSlot;
+            ComPort.CleanBytesReadPort();
+            ComPort.SendMessage((byte)UsartCommand.CMDRAS_SLOT_PWRON, ref arbBuff, 1);
+            ComPort.SendMessage((byte)UsartCommand.CMDRAS_GET_STATUS, ref arbBuff, 1);
+            ComPort.GetMessage(ref arbBuff, ref iReadLenMessage);
+
+            if (arbBuff[0] == (byte)UsartAnswer.ANS_STATUS)
             {
-                if ((arSt[i].SerNum == 0) && (arSt[i].uAkkmV == 0)) //слот пуст
+                stPic = WorkCom.ConvertBuffToAnsStat(arbBuff, 1);
+                if (stPic.SerNum > 0)
                 {
-                    Utils.cCurrStatus.arstTermInDock[i].bIsPresented = false;
-                    Utils.cCurrStatus.arstTermInDock[i].iColorLabelStatus = 0;
-                    Utils.cCurrStatus.arstTermInDock[i].iServeStatus = 0;
-                    Utils.cCurrStatus.arstTermInDock[i].sCurrStatus = "НЕ ОБРАБОТАН";
-                    Utils.cCurrStatus.arstTermInDock[i].sIDTerminal = "";
-                    Utils.cCurrStatus.arstTermInDock[i].sNameTerminal = "ПУСТО";
-                    Utils.cCurrStatus.arstTermInDock[i].iConectStatus = 0;
-                    Utils.cCurrStatus.arstTermInDock[i].iIPaddrClient = (byte)(i + 1);
-                    Utils.cCurrStatus.arstTermInDock[i].iIPaddrServer = (byte)(i + 101);
-                    Utils.cCurrStatus.arstTermInDock[i].iPercentAkk = 0;
-                    Utils.cCurrStatus.arstTermInDock[i].iChargeState = 0;
+                    WriteDebugString("Found terminal №" + stPic.SerNum + " in slot " + iNumSlot.ToString(), 2);
+                    WriteDebugString("SerNum = " + stPic.SerNum, 3);
+                    WriteDebugString("V akk = " + stPic.uAkkmV, 3);
+                    WriteDebugString("mode  = " + stPic.SC_mode, 3);
+                    WriteDebugString("kv% akk = " + stPic.uAkkPrcnt, 3);
+                    WriteDebugString("update = " + stPic.UpdateState, 3);
+                    bRet = true;
                 }
                 else
                 {
-                    if (WorkCom.ConvertByteArToID(arSt[i].sID) == Utils.cCurrStatus.arstTermInDock[i].sIDTerminal)
+                    WriteDebugString("Slot " + iNumSlot.ToString() + " - terminal not found...", 2);
+                    //WriteDebugString("GET_STATUS - ERROR", 0);
+                    //ComPort.SendMessage((byte)UsartCommand.CMDRAS_SLOT_PWROFF, ref arbBuff, 1);
+                    bRet = false;
+                }
+            }
+            else
+            {
+                WriteDebugString("Slot " + iNumSlot.ToString() + " GET_STATUS - ERROR", 0);
+                //ComPort.SendMessage((byte)UsartCommand.CMDRAS_SLOT_PWROFF, ref arbBuff, 1);
+                bRet = false;
+            }
+            UpdateInfoTermInDock(iNumSlot, ref stPic);
+            return bRet;
+        }
+
+        private void UpdateInfoTermInDock(int iNumSlot, ref AnsStatus stSt)
+        {
+                if ((stSt.SerNum == 0) && (stSt.uAkkmV == 0)) //слот пуст
+                {
+                    Utils.cCurrStatus.arstTermInDock[iNumSlot].bIsPresented = false;
+                    Utils.cCurrStatus.arstTermInDock[iNumSlot].iColorLabelStatus = 0;
+                    Utils.cCurrStatus.arstTermInDock[iNumSlot].iServeStatus = 0;
+                    Utils.cCurrStatus.arstTermInDock[iNumSlot].sCurrStatus = "НЕ ОБРАБОТАН";
+                    Utils.cCurrStatus.arstTermInDock[iNumSlot].sIDTerminal = "";
+                    Utils.cCurrStatus.arstTermInDock[iNumSlot].sNameTerminal = "ПУСТО";
+                    Utils.cCurrStatus.arstTermInDock[iNumSlot].iUpdateStatus = 0;
+                    Utils.cCurrStatus.arstTermInDock[iNumSlot].iPercentAkk = 0;
+                    Utils.cCurrStatus.arstTermInDock[iNumSlot].iChargeState = 0;
+                }
+                else
+                {
+                    if (WorkCom.ConvertByteArToID(stSt.sID) == Utils.cCurrStatus.arstTermInDock[iNumSlot].sIDTerminal)
                     {//тот же терминал
-                        Utils.cCurrStatus.arstTermInDock[i].bIsPresented = true;
-                        Utils.cCurrStatus.arstTermInDock[i].iPercentAkk = WorkCom.ConvertFAkkToPercent(arSt[i].uAkkmV);
-                        Utils.cCurrStatus.arstTermInDock[i].iChargeState = arSt[i].ChargeState;
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].bIsPresented = true;
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].iPercentAkk = WorkCom.ConvertFAkkToPercent(stSt.uAkkmV);
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].iChargeState = stSt.ChargeState;
                     }
                     else
                     {//другой
-                        Utils.cCurrStatus.arstTermInDock[i].bIsPresented = true;
-                        Utils.cCurrStatus.arstTermInDock[i].iColorLabelStatus = 0;
-                        Utils.cCurrStatus.arstTermInDock[i].iServeStatus = 0;
-                        Utils.cCurrStatus.arstTermInDock[i].sCurrStatus = "ИЗМЕНЕН";
-                        Utils.cCurrStatus.arstTermInDock[i].sIDTerminal = WorkCom.ConvertByteArToID(arSt[i].sID);
-                        Utils.cCurrStatus.arstTermInDock[i].sNameTerminal = WorkCom.ConvertByteArToNameTerm(arSt[i].SerNum);
-                        Utils.cCurrStatus.arstTermInDock[i].iConectStatus = 0;
-                        Utils.cCurrStatus.arstTermInDock[i].iIPaddrClient = (byte)(i + 1);
-                        Utils.cCurrStatus.arstTermInDock[i].iIPaddrServer = (byte)(i + 100);
-                        Utils.cCurrStatus.arstTermInDock[i].iPercentAkk = WorkCom.ConvertFAkkToPercent(arSt[i].uAkkmV);
-                        Utils.cCurrStatus.arstTermInDock[i].iChargeState = arSt[i].ChargeState;
-                    }
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].bIsPresented = true;
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].iColorLabelStatus = 0;
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].iServeStatus = 0;
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].sCurrStatus = "ИЗМЕНЕН";
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].sIDTerminal = WorkCom.ConvertByteArToID(stSt.sID);
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].sNameTerminal = WorkCom.ConvertByteArToNameTerm(stSt.SerNum);
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].iUpdateStatus = 0;
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].iPercentAkk = WorkCom.ConvertFAkkToPercent(stSt.uAkkmV);
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].iChargeState = stSt.ChargeState;
                 }
-            }
+                }            
         }
 
-        private void ConnectNewTermIndock()
+        private void WorkWithSlot(int iNumSlot, ref AnsStatus stPic)
         {
-            string sNameNewIface = null;
-            for (int i = 0; i < 5; i++)
-            {
-                if (Utils.cCurrStatus.arstTermInDock[i].bIsPresented)
-                {
-                    if (Utils.cCurrStatus.arstTermInDock[i].iSC_mode < 1) continue; //модуль выключен. Должен влючиться сам если акк заряжен.
-                    if (Utils.cCurrStatus.arstTermInDock[i].iServeStatus <= 0)
-                    {
-                        WriteDebugString("ConnectNewTermIndock:OK found terminal " +
-                            Utils.cCurrStatus.arstTermInDock[i].sIDTerminal + " in dock №" + i.ToString(), 3);
-                        if (Utils.cCurrStatus.arstTermInDock[i].iConectStatus == 0)
-                        {
-                            ArrayList arlOldIface = new ArrayList();
-                            DirectoryInfo diNet = new DirectoryInfo("/sys/class/net");
-                            DirectoryInfo[] ardi = diNet.GetDirectories("USB*");
-                            foreach (DirectoryInfo d in ardi) arlOldIface.Add(d.Name);
-                            //получили список всех сетевых интерфейсов ДО подключения нового терминала
-                            Array.Clear(arbBuff, 0, arbBuff.Length);
-                            //ComPort.SendMessage((byte)UsartCommand.CMD_USBA_DIS, ref arbBuff, 0);
-                            arbBuff[0] = (byte)i;//slot number
-                            arbBuff[1] = Utils.cCurrStatus.arstTermInDock[i].iIPaddrClient; //i.e. 1 (if i=1)
-                            arbBuff[2] = Utils.cCurrStatus.arstTermInDock[i].iIPaddrServer; //i.e. 101 (if i=1)
-                            ComPort.SendMessage((byte)UsartCommand.CMDRAS_SET_IP, ref arbBuff, 3);
+            WriteDebugString("WorkWithSlot " + iNumSlot.ToString() + " ----------", 3);
 
-                            sNameNewIface = null;
-                            for (int n = 0; n < 20; n++)
+            Array.Clear(arbBuff, 0, arbBuff.Length);
+            arbBuff[0] = (byte)iNumSlot;
+            ComPort.CleanBytesReadPort();
+
+            if (stPic.uAkkmV > 3600)
+            {
+                if ((stPic.SC_mode != (byte)ScMode.WORK_MODE) && (!isFastCharge[iNumSlot]))
+                {
+                    ComPort.SendMessage((byte)UsartCommand.CMDRAS_SC_RUN, ref arbBuff, 1);
+                    WriteDebugString("WorkWithSlot " + iNumSlot.ToString() + " включить!", 3);
+                }
+            }
+            else
+            {
+                ComPort.SendMessage((byte)UsartCommand.CMDRAS_SLOT_PWRON, ref arbBuff, 1);
+                WriteDebugString("WorkWithSlot " + iNumSlot.ToString() + " не заряжен.", 3);
+                return;
+            }
+
+
+            if (stPic.SC_mode != (byte)ScMode.WORK_MODE) return;
+
+            switch (stPic.UpdateState)
+            {
+                case 0:
+                    ComPort.CleanBytesReadPort();
+                    //ComPort.SendMessage((byte)UsartCommand.CMDRAS_SLOT_PWROFF, ref arbBuff, 1);
+                    //Thread.Sleep(5000);
+                    ComPort.SendMessage((byte)UsartCommand.CMDRAS_CHRG_EN, ref arbBuff, 1);
+                    ComPort.SendMessage((byte)UsartCommand.CMDRAS_USBOE_EN, ref arbBuff, 1);
+                    ComPort.SendMessage((byte)UsartCommand.CMDRAS_LED_R_ON, ref arbBuff, 1);
+                    ComPort.SendMessage((byte)UsartCommand.CMDRAS_LED_G_OFF, ref arbBuff, 1);
+                    //TODO: зажигать и гасить лампочки в соответствии со stPic.uAkkPrcnt!
+                    ComPort.SendMessage((byte)UsartCommand.CMDRAS_SLOT_PWRON, ref arbBuff, 1);
+
+                    ComPort.SendMessage((byte)UsartCommand.CMDRAS_GET_AKKPRCNT, ref arbBuff, 1);
+                    ComPort.SendMessage((byte)UsartCommand.CMDRAS_SET_UPDSTRT, ref arbBuff, 1);
+                    Thread.Sleep(10000);
+                    isFastCharge[iNumSlot] = false;
+                    //TODO:  запускать передачу и уходить на круг неправильно! Надо ждать. 
+                    WriteDebugString("WorkWithSlot " + iNumSlot.ToString() + " включить прием RNDIS.", 3);
+                    break;
+                case 1:
+                    WriteDebugString("WorkWithSlot " + iNumSlot.ToString() + " начало работы с RNDIS.", 3);
+
+                    WorkWithTerminal(iNumSlot); // <--------
+
+                    WriteDebugString("WorkWithSlot " + iNumSlot.ToString() + " завершено RNDIS.", 3);
+                    break;
+                case 2:
+
+                    break;
+                case 3:
+                    if (!isFastCharge[iNumSlot])
+                    {
+                        ComPort.CleanBytesReadPort();
+                        ComPort.SendMessage((byte)UsartCommand.CMDRAS_SLOT_PWROFF, ref arbBuff, 1);
+                        Thread.Sleep(10000);
+                        ComPort.SendMessage((byte)UsartCommand.CMDRAS_CHRG_EN, ref arbBuff, 1);
+                        ComPort.SendMessage((byte)UsartCommand.CMDRAS_USBOE_DIS, ref arbBuff, 1);
+                        ComPort.SendMessage((byte)UsartCommand.CMDRAS_LED_R_ON, ref arbBuff, 1);
+                        ComPort.SendMessage((byte)UsartCommand.CMDRAS_LED_G_OFF, ref arbBuff, 1);
+                        //TODO: зажигать и гасить лампочки в соответствии со stPic.uAkkPrcnt!
+                        ComPort.SendMessage((byte)UsartCommand.CMDRAS_SLOT_PWRON, ref arbBuff, 1);
+                        isFastCharge[iNumSlot] = true;
+                        WriteDebugString("WorkWithSlot " + iNumSlot.ToString() + " включить FAST_CHARGE.", 3);
+                    }
+                    else
+                    {
+                        if (stPic.uAkkPrcnt != 222)
+                        {
+                            ComPort.SendMessage((byte)UsartCommand.CMDRAS_GET_AKKPRCNT, ref arbBuff, 1);
+                            if (stPic.uAkkPrcnt == 201)
                             {
-                                ardi = diNet.GetDirectories("USB*");
-                                if (ardi.Length > arlOldIface.Count)
-                                {//появился новый интерфейс
-                                    foreach (DirectoryInfo dn in ardi)
-                                    {
-                                        if (!arlOldIface.Contains(dn.Name))
-                                        {
-                                            sNameNewIface = dn.Name;
-                                            break;
-                                        }
-                                    }
-                                    break;
-                                }
-                                Thread.Sleep(500);
+                                ComPort.SendMessage((byte)UsartCommand.CMDRAS_LED_R_OFF, ref arbBuff, 1);
+                                ComPort.SendMessage((byte)UsartCommand.CMDRAS_LED_G_ON, ref arbBuff, 1);
                             }
-                            // ip up
-                            if (sNameNewIface != null)
-                            {
-                                NetInterfaceUp(sNameNewIface, Utils.cCurrStatus.arstTermInDock[i].iIPaddrClient);
-                                Thread.Sleep(1000);     //ждем пока запустится сервер на терминале
-                                WorkWithTerminal(i);
-                            }
-                            else
-                            {
-                                Utils.cCurrStatus.arstTermInDock[i].iColorLabelStatus = -1;
-                                Utils.cCurrStatus.arstTermInDock[i].sCurrStatus = "НЕТ СОЕДИНЕНИЯ";
-                                                        
-                                WriteDebugString("ConnectNewTermIndock:ERROR not found net interface in dock №" + i.ToString(), 2);
-                            }
+                            //TODO: зажигать и гасить лампочки в соответствии со stPic.uAkkPrcnt!
                         }
                     }
-                }
+                    break;
             }
-        }
-
-        private void NetInterfaceUp(string sNameIface, int iIpClient) //станция это клиент, сервер на терминале!
-        {
-            string sShellCommand = "-c ", sOut = "";
-
-            Process proc = new Process();
-            proc.StartInfo.FileName = "/bin/bash";
-            proc.StartInfo.UseShellExecute = false;
-            proc.StartInfo.RedirectStandardOutput = true;
-
-            sShellCommand += "ifconfig " + sNameIface + " " + sFullIpAddresMask + iIpClient.ToString() +
-                "netmask 255.255.255.0 up";
-
-            proc.StartInfo.Arguments = sShellCommand;
-            proc.Start();
-
-            //while (!proc.StandardOutput.EndOfStream)
-            //{
-            //    sOut += proc.StandardOutput.ReadToEnd();
-            //}
         }
 
         /// <summary>
@@ -317,31 +348,19 @@ namespace SSLI
         /// </summary>
         private void WorkWithTerminal(int iNumInDock)
         {
-            if (arCfc[iNumInDock] != null)
+            if (cCFC == null)
             {
-                arCfc[iNumInDock].bAbortThread = true;
-                Thread.Sleep(500);
+                cCFC = new T6.FileCopy.ClassFileCopy();
             }
 
-            if(arThredsCfc[iNumInDock] != null)
-            {
-                arThredsCfc[iNumInDock].Abort();
-                Thread.Sleep(500);
-            }
+            cCFC.Init(iNumInDock);
 
-            arCfc[iNumInDock] = new T6.FileCopy.ClassFileCopy();
-            arThredsCfc[iNumInDock] = new Thread(new ThreadStart(arCfc[iNumInDock].LoadDeviceInfoTh));
+            bool bRet = cCFC.LoadDeviceInfo();
 
-            arCfc[iNumInDock].Init(iNumInDock);
-            arThredsCfc[iNumInDock].Start();
-
-            //bool bRet = arCfc[iNumInDock].LoadDeviceInfo();
-
-            //if (arCfc[iNumInDock] != null) arCfc[iNumInDock].bAbortThread = true;
-            //Thread.Sleep(500);
-            //arCfc[iNumInDock] = null;
-            ////if (bRet) 
-            //Utils.cCurrStatus.UpdateTermInfo();
+            if (cCFC != null) cCFC.bAbortThread = true;
+            Thread.Sleep(500);
+            cCFC = null;
+            if (bRet) Utils.cCurrStatus.UpdateTermInfo();
         }
 
     }

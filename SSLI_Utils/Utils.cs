@@ -671,15 +671,15 @@ namespace SSLI
         /// </summary>
         public byte iIPaddrClient;
         /// <summary>
-        /// Статус соединения: 0-не установлено, 1-включено, 2-завершено
+        /// Статус состояния обновления: 0-не начиналось, 1-готов к приему, 2-в процессе работы, 3-завершено
         /// </summary>
-        public int iConectStatus;
+        public int iUpdateStatus;
         /// <summary>
         /// Процент заряда аккумулатора терминала
         /// </summary>
         public int iPercentAkk;
         /// <summary>
-        /// Статус зарядки аккумулятора 0-заряжается, 1-зарядка завершена
+        /// Статус зарядки аккумулятора с лапки модуля 0-заряжается, 1-зарядка завершена
         /// </summary>
         public int iChargeState;
         /// <summary>
@@ -834,7 +834,7 @@ namespace SSLI
         /// </summary>
         public const string sFileNameProgrammTransfer = "TransferFiles_SSLI.exe";
         public const string sIPLocalRNDIS = "192.168.42.129";
-        public const int iLoacalRNDISPort = 30000;
+        public const int iLocalRNDISPort = 30000;
         /// <summary>
         /// Объект для синхронизации работы с файлом конфигурации.
         /// </summary>

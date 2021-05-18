@@ -17,3 +17,4 @@
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_TermExchange/obj/Debug/SSLI_TermExchange.csproj.CopyComplete
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_TermExchange/obj/Debug/SSLI.TermExchange.dll
 /home/alexey/MonoProjects/StationSyncroLI/SSLI_TermExchange/obj/Debug/SSLI.TermExchange.pdb
+/home/alexey/MonoProjects/StationSyncroLI/SSLI_TermExchange/obj/Debug/SSLI_TermExchange.csprojAssemblyReference.cache

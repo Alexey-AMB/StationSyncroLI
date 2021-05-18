@@ -89,19 +89,14 @@ namespace T6.FileCopy
         /// Если нет ни там ни там ищет резервный .bak в корне Storage Card.
         /// </summary>
         /// <returns>TRUE - если терминал обнаружен.</returns>
-		public void LoadDeviceInfoTh()
-        {
-            LoadDeviceInfo();
-            Utils.cCurrStatus.UpdateTermInfo();
-        }
-        public bool LoadDeviceInfo()	//что подключили?
+		public bool LoadDeviceInfo()	//что подключили?
 		{
 			bool bIsBakInitFile = false;
 			if (st == null) st = new SocketTransfer.SocketTransfer();
             bAbortThread = false;
 
-            bool bConnected = st.InitClient(Utils.sIPLocalRNDIS, 30000);
-            st.client.OnProgress += new SocketTransfer.SocketTransfer.STC_SendFileTo_Progress(client_OnProgress);
+            bool bConnected = st.InitClient(Utils.sIPLocalRNDIS, Utils.iLocalRNDISPort);
+            if (st.client != null) st.client.OnProgress += new SocketTransfer.SocketTransfer.STC_SendFileTo_Progress(client_OnProgress);
 			if (!bConnected)	
 			{
 				WriteProtocol("st.InitClient:ERROR - Ошибка подключения.", 3);
@@ -115,7 +110,7 @@ namespace T6.FileCopy
 			else
 			{
                 sTextLabelStatus = "Устанавливаю соединение...";
-                if (!st.client.SendMessage("Test connection"))  //если терминал не подключен
+                if (!st.client.SendMessage("#INFO#" + "Test connection"))  //если терминал не подключен
                 {
                     sTextLabelStatus = "Терминал не найден";
                     WriteProtocol("st.Test_connection:ERROR - Ошибка подключения.", 3);
@@ -176,6 +171,12 @@ namespace T6.FileCopy
 
 				bFinal = false;
 				RunTransfer(term.sTermName);
+
+                //bRet = st.client.SendMessage("#CHANGE_STATUS#" + "3");
+                //WriteDebugString("RunRndis " + "SendMessage" + " - " + bRet.ToString(), 0);
+
+                //st.client.CloseServer();
+
                 if (iError == 0) return true;
                 else return false;
 			}
@@ -199,7 +200,7 @@ namespace T6.FileCopy
             }
 			WriteProtocol("==== RNDIS ==== Работаю с терминалом: " + sNameTerm, 2);
             Utils.cCurrStatus.arstTermInDock[iNumInDock].iServeStatus = 1;
-            Utils.cCurrStatus.arstTermInDock[iNumInDock].sCurrStatus = "ПРИНИМАЮ ФАЙЛЫ";
+            Utils.cCurrStatus.arstTermInDock[iNumInDock].sCurrStatus = "ПРИНИМАЮ ФАЙЛЫ";    //todo искуственное замедление
             Utils.cCurrStatus.arstTermInDock[iNumInDock].iColorLabelStatus = 1;
             try
             {
@@ -214,7 +215,7 @@ namespace T6.FileCopy
                 WriteProtocol("==== RNDIS ==== Aborted2 " + sNameTerm, 1);
                 return;
             }
-            Utils.cCurrStatus.arstTermInDock[iNumInDock].sCurrStatus = "АНАЛИЗИРУЮ ФАЙЛЫ";
+            Utils.cCurrStatus.arstTermInDock[iNumInDock].sCurrStatus = "АНАЛИЗИРУЮ ФАЙЛЫ";   //todo искуственное замедление
             try
             {
                 AnalisRecivedFiles();
@@ -228,7 +229,7 @@ namespace T6.FileCopy
                 WriteProtocol("==== RNDIS ==== Aborted3 " + sNameTerm, 1);
                 return;
             }
-            Utils.cCurrStatus.arstTermInDock[iNumInDock].sCurrStatus = "ПЕРЕДАЮ ОБНОВЛЕНИЯ";
+            Utils.cCurrStatus.arstTermInDock[iNumInDock].sCurrStatus = "ПЕРЕДАЮ ОБНОВЛЕНИЯ";    //todo искуственное замедление
             try
             {
                 iError = TransferTo();

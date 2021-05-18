@@ -9,7 +9,6 @@
 /home/alexey/Projects/StationSyncroLI/StationSyncroLI/obj/x86/Debug/StationSyncroLI.pdb
 /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/StationSyncroLI.exe
 /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/StationSyncroLI.pdb
-/home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/Ionic.Zip.dll
 /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/bin/Debug/SSLI.Utils.pdb
 /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/obj/x86/Debug/StationSyncroLI.csprojAssemblyReference.cache
 /home/alexey/MonoProjects/StationSyncroLI/StationSyncroLI/obj/x86/Debug/StationSyncroLI.csproj.CoreCompileInputs.cache

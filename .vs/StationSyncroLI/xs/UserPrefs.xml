@@ -1,39 +1,24 @@
 ﻿<Properties StartupConfiguration="{77C02630-4935-4BE5-8CCA-008BD5FEFB63}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="SSLI_TermExchange/TermExchange.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="SSLI_TermExchange/ClassFileCopy.cs">
     <Files>
-      <File FileName="StationSyncroLI/FormMain.cs" Line="174" Column="28" />
-      <File FileName="SSLI_Utils/Utils.cs" Line="1196" Column="27" />
-      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="35" Column="49" />
+      <File FileName="StationSyncroLI/FormMain.cs" Line="12" Column="26" />
+      <File FileName="SSLI_Utils/Utils.cs" Line="680" Column="32" />
+      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="354" Column="14" />
+      <File FileName="SSLI_TermExchange/ClassFileCopy.cs" Line="196" Column="30" />
       <File FileName="StationSyncroLI/AMB_USBFlashNotification.cs" Line="5" Column="11" />
+      <File FileName="SSLI_Utils/mycommands.cs" Line="164" Column="27" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="StationSyncroLI" expanded="True">
             <Node name="SSLI_TermExchange" expanded="True">
-              <Node name="TermExchange.cs" selected="True" />
+              <Node name="ClassFileCopy.cs" selected="True" />
             </Node>
             <Node name="SSLI_Utils" expanded="True">
               <Node name="Properties" expanded="True" />
             </Node>
             <Node name="StationSyncroLI" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State name="__root__">
-          <Node name="StationSyncroLI" expanded="True">
-            <Node name="SSLI_TermExchange" expanded="True">
-              <Node name="SSLI" expanded="True">
-                <Node name="SSLI.WorkCom" expanded="True" />
-              </Node>
-            </Node>
-            <Node name="SSLI_Utils" expanded="True">
-              <Node name="SSLI" selected="True" />
-            </Node>
-            <Node name="StationSyncroLI" expanded="True">
-              <Node name="StationSyncroLI" expanded="True" />
-            </Node>
           </Node>
         </State>
       </Pad>
