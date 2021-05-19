@@ -134,14 +134,13 @@ namespace SSLI
 
         public override void Stop()
         {
-            ComPort.Close();
             bAbort = true;
             if (cCFC != null) cCFC.bAbortThread = true;
             Utils.DeleteMarkerDirBusy(sPathToUpdTerm);
             Utils.DeleteMarkerDirBusy(sPathToNewSoftTerminal);
             Utils.DeleteMarkerDirBusy(sPathToProtocol);
             Utils.DeleteMarkerDirBusy(sPathToFullBase);
-
+            ComPort.Close();
             WriteDebugString("Stop:OK", 1);
         }
 
@@ -218,9 +217,9 @@ namespace SSLI
             return bRet;
         }
 
-        private void UpdateInfoTermInDock(int iNumSlot, ref AnsStatus stSt)
+        private void UpdateInfoTermInDock(int iNumSlot, ref AnsStatus stPic)
         {
-                if ((stSt.SerNum == 0) && (stSt.uAkkmV == 0)) //слот пуст
+                if ((stPic.SerNum == 0) && (stPic.uAkkmV == 0)) //слот пуст
                 {
                     Utils.cCurrStatus.arstTermInDock[iNumSlot].bIsPresented = false;
                     Utils.cCurrStatus.arstTermInDock[iNumSlot].iColorLabelStatus = 0;
@@ -234,11 +233,11 @@ namespace SSLI
                 }
                 else
                 {
-                    if (WorkCom.ConvertByteArToID(stSt.sID) == Utils.cCurrStatus.arstTermInDock[iNumSlot].sIDTerminal)
+                    if (WorkCom.ConvertByteArToID(stPic.sID) == Utils.cCurrStatus.arstTermInDock[iNumSlot].sIDTerminal)
                     {//тот же терминал
                         Utils.cCurrStatus.arstTermInDock[iNumSlot].bIsPresented = true;
-                        Utils.cCurrStatus.arstTermInDock[iNumSlot].iPercentAkk = WorkCom.ConvertFAkkToPercent(stSt.uAkkmV);
-                        Utils.cCurrStatus.arstTermInDock[iNumSlot].iChargeState = stSt.ChargeState;
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].iPercentAkk = WorkCom.ConvertFAkkToPercent(stPic.uAkkmV);
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].iChargeState = stPic.ChargeState;
                     }
                     else
                     {//другой
@@ -246,11 +245,11 @@ namespace SSLI
                         Utils.cCurrStatus.arstTermInDock[iNumSlot].iColorLabelStatus = 0;
                         Utils.cCurrStatus.arstTermInDock[iNumSlot].iServeStatus = 0;
                         Utils.cCurrStatus.arstTermInDock[iNumSlot].sCurrStatus = "ИЗМЕНЕН";
-                        Utils.cCurrStatus.arstTermInDock[iNumSlot].sIDTerminal = WorkCom.ConvertByteArToID(stSt.sID);
-                        Utils.cCurrStatus.arstTermInDock[iNumSlot].sNameTerminal = WorkCom.ConvertByteArToNameTerm(stSt.SerNum);
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].sIDTerminal = WorkCom.ConvertByteArToID(stPic.sID);
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].sNameTerminal = WorkCom.ConvertByteArToNameTerm(stPic.SerNum);
                         Utils.cCurrStatus.arstTermInDock[iNumSlot].iUpdateStatus = 0;
-                        Utils.cCurrStatus.arstTermInDock[iNumSlot].iPercentAkk = WorkCom.ConvertFAkkToPercent(stSt.uAkkmV);
-                        Utils.cCurrStatus.arstTermInDock[iNumSlot].iChargeState = stSt.ChargeState;
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].iPercentAkk = WorkCom.ConvertFAkkToPercent(stPic.uAkkmV);
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].iChargeState = stPic.ChargeState;
                 }
                 }            
         }
@@ -269,12 +268,14 @@ namespace SSLI
                 {
                     ComPort.SendMessage((byte)UsartCommand.CMDRAS_SC_RUN, ref arbBuff, 1);
                     WriteDebugString("WorkWithSlot " + iNumSlot.ToString() + " включить!", 3);
+                    Utils.cCurrStatus.arstTermInDock[iNumSlot].sCurrStatus = "Включить...";
                 }
             }
             else
             {
                 ComPort.SendMessage((byte)UsartCommand.CMDRAS_SLOT_PWRON, ref arbBuff, 1);
                 WriteDebugString("WorkWithSlot " + iNumSlot.ToString() + " не заряжен.", 3);
+                Utils.cCurrStatus.arstTermInDock[iNumSlot].sCurrStatus = "Не заряжен";
                 return;
             }
 
@@ -300,6 +301,7 @@ namespace SSLI
                     isFastCharge[iNumSlot] = false;
                     //TODO:  запускать передачу и уходить на круг неправильно! Надо ждать. 
                     WriteDebugString("WorkWithSlot " + iNumSlot.ToString() + " включить прием RNDIS.", 3);
+                    Utils.cCurrStatus.arstTermInDock[iNumSlot].sCurrStatus = "Соединение...";
                     break;
                 case 1:
                     WriteDebugString("WorkWithSlot " + iNumSlot.ToString() + " начало работы с RNDIS.", 3);
@@ -309,7 +311,7 @@ namespace SSLI
                     WriteDebugString("WorkWithSlot " + iNumSlot.ToString() + " завершено RNDIS.", 3);
                     break;
                 case 2:
-
+                    Utils.cCurrStatus.arstTermInDock[iNumSlot].sCurrStatus = "Обработка...";
                     break;
                 case 3:
                     if (!isFastCharge[iNumSlot])
@@ -325,6 +327,8 @@ namespace SSLI
                         ComPort.SendMessage((byte)UsartCommand.CMDRAS_SLOT_PWRON, ref arbBuff, 1);
                         isFastCharge[iNumSlot] = true;
                         WriteDebugString("WorkWithSlot " + iNumSlot.ToString() + " включить FAST_CHARGE.", 3);
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].sCurrStatus = "Заряжается - " +
+                            WorkCom.ConvertFAkkToPercent(stPic.uAkkmV) + "%";
                     }
                     else
                     {
@@ -335,9 +339,13 @@ namespace SSLI
                             {
                                 ComPort.SendMessage((byte)UsartCommand.CMDRAS_LED_R_OFF, ref arbBuff, 1);
                                 ComPort.SendMessage((byte)UsartCommand.CMDRAS_LED_G_ON, ref arbBuff, 1);
+                                Utils.cCurrStatus.arstTermInDock[iNumSlot].sCurrStatus = "Готов";
+                                break;
                             }
                             //TODO: зажигать и гасить лампочки в соответствии со stPic.uAkkPrcnt!
                         }
+                        Utils.cCurrStatus.arstTermInDock[iNumSlot].sCurrStatus = "Заряжается - " +
+                            WorkCom.ConvertFAkkToPercent(stPic.uAkkmV) + "%";
                     }
                     break;
             }

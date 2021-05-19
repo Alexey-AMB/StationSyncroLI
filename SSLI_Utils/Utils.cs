@@ -665,11 +665,11 @@ namespace SSLI
         /// <summary>
         /// Послений байт ИП адреса сервера (сторона на терминале)
         /// </summary>
-        public byte iIPaddrServer;
+        //public byte iIPaddrServer;
         /// <summary>
         /// Последний байт ИП адреса клиента (сторона на станции)
         /// </summary>
-        public byte iIPaddrClient;
+        //public byte iIPaddrClient;
         /// <summary>
         /// Статус состояния обновления: 0-не начиналось, 1-готов к приему, 2-в процессе работы, 3-завершено
         /// </summary>
