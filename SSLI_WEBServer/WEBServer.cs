@@ -512,7 +512,7 @@ namespace SSLI
                     {
                         sw.WriteLine("<h3>Терминалы</h3>");
                         sw.WriteLine("<table border=\"1\" style=\"border-collapse: collapse\" bordercolor=\"#111111\">");
-                        sw.WriteLine("<tr><td><h4>Имя терминала</h4><td><h4>Дата синзронизации</h4><td><h4>Последнее обновление</h4></h4><td><h4>Уникальный номер</h4></tr>");
+                        sw.WriteLine("<tr><td><h4>Имя терминала</h4><td><h4>Дата синхронизации</h4><td><h4>Последнее обновление</h4></h4><td><h4>Уникальный номер</h4></tr>");
                         foreach (stTermInMem sT in Utils.cCurrStatus.arstTermInMemory)
                         {
                             sw.WriteLine("<tr><td>" + sT.sNameTerminal + "<td>" + sT.sLastSyncronized + "<td>" + sT.sLastUpdatesBaseLica + "<td>" + sT.sIDTerminal + "</tr>");

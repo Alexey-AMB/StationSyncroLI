@@ -171,7 +171,7 @@ namespace StationSyncroLI
             }
         }
 
-        private void timer1_Tick(object sender, EventArgs e)    //Отображение статуса терминалов в подставке
+        private void timer1_Tick(object sender, EventArgs e)    //100ms Отображение статуса терминалов в подставке
         {
             if (Utils.cCurrStatus != null)
             {
@@ -194,7 +194,7 @@ namespace StationSyncroLI
                 this.labelTStat5.ForeColor = GetColorLabel(Utils.cCurrStatus.arstTermInDock[4].iColorLabelStatus);
             }
         }
-        private void timer2_Tick(object sender, EventArgs e)    //Отображение статуса отправленных файлов и сети
+        private void timer2_Tick(object sender, EventArgs e)    //500ms Отображение статуса отправленных файлов и сети
         {
             if (Utils.cCurrStatus != null)
             {
@@ -215,11 +215,11 @@ namespace StationSyncroLI
                 this.labelNetIs.ForeColor = Color.Red;
             }
         }
-        private void timer3_Tick(object sender, EventArgs e)    //Текущее время
+        private void timer3_Tick(object sender, EventArgs e)    //500ms Текущее время
         {
             this.labelDateTime.Text = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
         }
-        private void timer4_Tick(object sender, EventArgs e)    //таймер для контоля USB брелка
+        private void timer4_Tick(object sender, EventArgs e)    //100ms таймер для контоля USB брелка
         {
             if ((bRebootNow)||(Utils.bRebootRequest))
             {

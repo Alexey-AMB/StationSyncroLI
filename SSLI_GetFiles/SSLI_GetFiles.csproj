@@ -39,7 +39,6 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="AMB_FTPCLIENT.cs" />
     <Compile Include="AMB_SMTP.cs" />
-    <Compile Include="AMB_WebClient.cs" />
     <Compile Include="GetFiles.cs" />
   </ItemGroup>
   <ItemGroup>
