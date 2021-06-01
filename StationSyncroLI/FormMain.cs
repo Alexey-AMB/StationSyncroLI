@@ -198,9 +198,9 @@ namespace StationSyncroLI
         {
             if (Utils.cCurrStatus != null)
             {
-                this.labelLastRecived.Text = Utils.cCurrStatus.sLastReciveName;
+                //this.labelLastRecived.Text = Utils.cCurrStatus.sLastReciveName;
                 this.labelLastRecivedTime.Text = Utils.cCurrStatus.sLastReciveTime;
-                this.labelLastSended.Text = Utils.cCurrStatus.sLastSendedName;
+                //this.labelLastSended.Text = Utils.cCurrStatus.sLastSendedName;
                 this.labelLastSendedTime.Text = Utils.cCurrStatus.sLastSendedTime;
             }
 

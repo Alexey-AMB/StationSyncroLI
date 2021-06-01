@@ -523,9 +523,9 @@ namespace SSLI
 
                     sw.WriteLine("<h3>Прием - передача файлов</h3>");
                     sw.WriteLine("<ul><li>Переданные:");
-                    sw.WriteLine("<ul><li>Файл: " + Utils.cCurrStatus.sLastSendedName + "<li>Передан: " + Utils.cCurrStatus.sLastSendedTime + "</ul>");
+                    sw.WriteLine("<ul><li>Файл: " + /*Utils.cCurrStatus.sLastSendedName +*/ "<li>Передан: " + Utils.cCurrStatus.sLastSendedTime + "</ul>");
                     sw.WriteLine("<li>Приятые:");
-                    sw.WriteLine("<ul><li>Файл: " + Utils.cCurrStatus.sLastReciveName + "<li>Принят: " + Utils.cCurrStatus.sLastReciveTime + "</ul>");
+                    sw.WriteLine("<ul><li>Файл: " + /*Utils.cCurrStatus.sLastReciveName +*/ "<li>Принят: " + Utils.cCurrStatus.sLastReciveTime + "</ul>");
                     sw.WriteLine("</ul><hr>");
                     sw.WriteLine("Уникальный номер станции: "+Utils.cCurrStatus.sDeviceSS_ID+".");
                     sw.WriteLine("<br><br>");

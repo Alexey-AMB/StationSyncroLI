@@ -1,32 +1,25 @@
 ﻿<Properties StartupConfiguration="{77C02630-4935-4BE5-8CCA-008BD5FEFB63}|Default">
   <MonoDevelop.Ide.Workbench ActiveDocument="SSLI_GetFiles/GetFiles.cs">
     <Files>
-      <File FileName="StationSyncroLI/FormMain.cs" Line="389" Column="22" />
-      <File FileName="SSLI_Utils/Utils.cs" Line="314" Column="19" />
-      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="200" Column="33" />
+      <File FileName="StationSyncroLI/FormMain.cs" Line="118" Column="1" />
+      <File FileName="SSLI_Utils/Utils.cs" Line="1119" Column="30" />
+      <File FileName="SSLI_TermExchange/TermExchange.cs" Line="95" Column="1" />
       <File FileName="SSLI_TermExchange/ClassFileCopy.cs" Line="17" Column="9" />
-      <File FileName="SSLI_GetFiles/GetFiles.cs" Line="535" Column="43" />
+      <File FileName="SSLI_GetFiles/GetFiles.cs" Line="141" Column="1" />
+      <File FileName="SSLI_Statistic/Statistic.cs" Line="219" Column="97" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
         <State name="__root__">
           <Node name="StationSyncroLI" expanded="True">
-            <Node name="SSLI_GetFiles" expanded="True" />
+            <Node name="SSLI_GetFiles" expanded="True">
+              <Node name="GetFiles.cs" selected="True" />
+            </Node>
+            <Node name="SSLI_Statistic" expanded="True" />
             <Node name="SSLI_TermExchange" expanded="True" />
             <Node name="SSLI_Utils" expanded="True" />
             <Node name="SSLI_WEBServer" expanded="True" />
             <Node name="StationSyncroLI" expanded="True" />
-          </Node>
-        </State>
-      </Pad>
-      <Pad Id="ClassPad">
-        <State name="__root__">
-          <Node name="StationSyncroLI" expanded="True">
-            <Node name="SSLI_Utils" expanded="True">
-              <Node name="SSLI" expanded="True">
-                <Node name="SSLI.stSSConfig" selected="True" />
-              </Node>
-            </Node>
           </Node>
         </State>
       </Pad>

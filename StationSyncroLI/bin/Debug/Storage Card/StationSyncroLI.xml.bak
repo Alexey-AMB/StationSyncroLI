@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <stSSConfig xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
-  <sNamePodrazdelenie>ЛУВД Тестовое СЕ v6.1.0.0</sNamePodrazdelenie>
+  <sNamePodrazdelenie>ЛУВД Тестовое LI v0.1.0.0</sNamePodrazdelenie>
   <iDebugLevel>2</iDebugLevel>
   <sTextLastCriticalError />
   <sTimeLastCriticalError />
@@ -12,6 +12,9 @@
   <sPathToOutBox>OutBox</sPathToOutBox>
   <sPathToProtocol>Protocols</sPathToProtocol>
   <sPathToUpdTerm>Updates</sPathToUpdTerm>
+  <sPathToRemovableFlash>/media</sPathToRemovableFlash>
+  <sCurrentVersionSS>1.0.7822.25180</sCurrentVersionSS>
+  <sCurrentTypeSS>SSLI</sCurrentTypeSS>
   <arsSupportedBases>
     <string>FED_LICA</string>
     <string>MESTN_LICA</string>
@@ -26,34 +29,24 @@
     <stSSTasks>
       <iNumStart>2</iNumStart>
       <sNameTask>SSLI.TermExchange</sNameTask>
-      <sCurrentVersion>1.0.7472.19275</sCurrentVersion>
+      <sCurrentVersion>1.0.7822.25180</sCurrentVersion>
     </stSSTasks>
     <stSSTasks>
       <iNumStart>3</iNumStart>
       <sNameTask>SSLI.Statistic</sNameTask>
-      <sCurrentVersion>1.0.7472.19275</sCurrentVersion>
+      <sCurrentVersion>1.0.7822.25180</sCurrentVersion>
     </stSSTasks>
     <stSSTasks>
       <iNumStart>4</iNumStart>
       <sNameTask>SSLI.WEBServer</sNameTask>
-      <sCurrentVersion>1.0.7472.19275</sCurrentVersion>
+      <sCurrentVersion>1.0.7822.25180</sCurrentVersion>
     </stSSTasks>
   </arstTasks>
-  <strMail>
-    <sAdressMailLocal>test@ambintech.ru</sAdressMailLocal>
-    <sAdresServerUVD>test_UVD@ambintech.ru</sAdresServerUVD>
-    <sPOP3Server />
-    <sUserPOP3 />
-    <sPassPOP3 />
-    <sSMTPServer>87.249.14.90</sSMTPServer>
-    <iReciveInterval>360</iReciveInterval>
-    <iSendInterval>360</iSendInterval>
-  </strMail>
   <strStatistic>
     <sHoursSave>08:30</sHoursSave>
-    <sLastSended>21.01.2021 15:14:26</sLastSended>
-    <sNextSave>22.01.2021</sNextSave>
-    <sPrevionsSave>21.01.2021</sPrevionsSave>
+    <sLastSended>01.06.2021 14:02:00</sLastSended>
+    <sNextSave>02.06.2021</sNextSave>
+    <sPrevionsSave>01.06.2021</sPrevionsSave>
   </strStatistic>
   <strGetFiles>
     <sHoursRecive>18:00</sHoursRecive>
@@ -80,8 +73,6 @@
     <sIPAdressLocal>10.0.2.15</sIPAdressLocal>
     <sMask>255.255.255.0</sMask>
     <sGateway>10.0.2.2</sGateway>
-    <sMAC_hi>4208</sMAC_hi>
-    <sMAC_lo>286228480</sMAC_lo>
   </strNet>
   <strTermExch>
     <sComPortName>/dev/ttyUSB0</sComPortName>

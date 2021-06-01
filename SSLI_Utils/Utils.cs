@@ -318,6 +318,15 @@ namespace SSLI
         /// </summary>
         public string sNamePodrazdelenie;
         /// <summary>
+        /// The unical identifier station.
+        /// </summary>
+        public string sIdStation;
+        /// <summary>
+        /// The serial number station.
+        /// </summary>
+        public string sSerNumStation;
+
+        /// <summary>
         /// Уровень отладки 2 - все сообщения, 1 - важные, 0 - критические
         /// </summary>
         public int iDebugLevel;
@@ -388,7 +397,7 @@ namespace SSLI
         /// <summary>
         /// Конфигурация почты
         /// </summary>
-        public stSSMail strMail;
+        //public stSSMail strMail;
         /// <summary>
         /// Конфигурация статистики
         /// </summary>
@@ -430,49 +439,49 @@ namespace SSLI
         /// </summary>
         public string sCurrentVersion;
     }
-    public struct stSSMail
-    {
-        /// <summary>
-        /// Адрес откуда забирать почту
-        /// </summary>
-        public string sAdressMailLocal;
-        /// <summary>
-        /// IP адрес сервера УВД в виде "192.168.0.100"
-        /// </summary>
-        public string sAdresServerUVD;
-        /// <summary>
-        /// IP адрес сервера POP3
-        /// </summary>
-        public string sPOP3Server;
-        /// <summary>
-        /// Имя пользователя на сервере РОР3
-        /// </summary>
-        public string sUserPOP3;
-        /// <summary>
-        /// Пароль на сервере РОР3
-        /// </summary>
-        public string sPassPOP3;
-        /// <summary>
-        /// IP адрес сервера SMTP
-        /// </summary>
-        public string sSMTPServer;
-        /// <summary>
-        /// Последнее время приема файлов
-        /// </summary>
-        public string sLastRecivedTime;
-        /// <summary>
-        /// Последнее время передачи файлов
-        /// </summary>
-        public string sLastSendedTime;
-        /// <summary>
-        /// Интервал приема файлов в минутах (обновления только. Базы целиком в stSSGetFiles)
-        /// </summary>
-        public int iReciveInterval;
-        /// <summary>
-        /// Интервал отправки файлов (Почта) в минутах
-        /// </summary>
-        public int iSendInterval;
-    }
+    //public struct stSSMail
+    //{
+    //    /// <summary>
+    //    /// Адрес откуда забирать почту
+    //    /// </summary>
+    //    public string sAdressMailLocal;
+    //    /// <summary>
+    //    /// IP адрес сервера УВД в виде "192.168.0.100"
+    //    /// </summary>
+    //    public string sAdresServerUVD;
+    //    /// <summary>
+    //    /// IP адрес сервера POP3
+    //    /// </summary>
+    //    public string sPOP3Server;
+    //    /// <summary>
+    //    /// Имя пользователя на сервере РОР3
+    //    /// </summary>
+    //    public string sUserPOP3;
+    //    /// <summary>
+    //    /// Пароль на сервере РОР3
+    //    /// </summary>
+    //    public string sPassPOP3;
+    //    /// <summary>
+    //    /// IP адрес сервера SMTP
+    //    /// </summary>
+    //    public string sSMTPServer;
+    //    /// <summary>
+    //    /// Последнее время приема файлов
+    //    /// </summary>
+    //    public string sLastRecivedTime;
+    //    /// <summary>
+    //    /// Последнее время передачи файлов
+    //    /// </summary>
+    //    public string sLastSendedTime;
+    //    /// <summary>
+    //    /// Интервал приема файлов в минутах (обновления только. Базы целиком в stSSGetFiles)
+    //    /// </summary>
+    //    public int iReciveInterval;
+    //    /// <summary>
+    //    /// Интервал отправки файлов (Почта) в минутах
+    //    /// </summary>
+    //    public int iSendInterval;
+    //}
     public struct stSSStatistic
     {
         /// <summary>
@@ -558,6 +567,14 @@ namespace SSLI
         /// Протокол приема файлов. HTTP или FTP.
         /// </summary>
         public string sNameProtocol;
+        /// <summary>
+        /// Последнее время приема файлов
+        /// </summary>
+        //public string sLastRecivedTime;
+        /// <summary>
+        /// Последнее время передачи файлов
+        /// </summary>
+        //public string sLastSendedTime;
     }
     public struct stSSWEBServer
     {
@@ -584,14 +601,6 @@ namespace SSLI
         /// Сетевой шлюз по умолчанию в виде "192.168.0.1"
         /// </summary>
         public string sGateway;
-        /// <summary>
-        /// Старший DWORD MAC-адреса станции
-        /// </summary>
-        public string sMAC_hi;
-        /// <summary>
-        /// Младший DWORD MAC-адреса станции
-        /// </summary>
-        public string sMAC_lo;
     }
     public struct stSSTermExchange
     {
@@ -723,7 +732,7 @@ namespace SSLI
         public string sNameFileBase;
     }
 
-    public struct DEVICE_ID
+    public struct DEVICE_ID //todo: delete
     {
         public uint dwSize;
         public uint dwPresetIDOffset;
@@ -778,13 +787,13 @@ namespace SSLI
     #endregion
     public static class Utils
     {
-        #region Импорт Dll
-        [DllImport("coredll.dll")]
+        #region Импорт Dll  
+        [DllImport("coredll.dll")] //todo: переделать
         private static extern bool KernelIoControl(Int32 IoControlCode, IntPtr
             InputBuffer, Int32 InputBufferSize, ref DEVICE_ID OutputBuffer, Int32
             OutputBufferSize, ref Int32 BytesReturned);
 
-        [DllImport("coredll.dll")]
+        [DllImport("coredll.dll")] //todo: переделать
         private static extern bool KernelIoControl(Int32 IoControlCode, ref UInt32
             InputBuffer, Int32 InputBufferSize, ref Guid OutputBuffer, Int32
             OutputBufferSize, ref UInt32 BytesReturned);
@@ -1440,6 +1449,8 @@ namespace SSLI
         /// <param name="iReadlen">Сколько было записано в буфер.</param>
         public static void GetMessage(ref byte[] buff, ref int iReadlen)
         {
+            if (sp == null) return;
+            if (!sp.IsOpen) return;
 
             Array.Clear(buff, 0, buff.Length);
             iReadlen = 0;
@@ -1474,6 +1485,10 @@ namespace SSLI
         private static int UsartGetBlock()
         {
             int iRet = 0;
+
+            if (sp == null) return 0;
+            if (!sp.IsOpen) return 0;
+
             while (/*(sp.BytesToRead > 0) && */(!bIntrUsart1))
             {
                 rbyte1 = (byte)sp.ReadByte();
@@ -1529,6 +1544,9 @@ namespace SSLI
         /// <param name="lendata">Длинна данных в буфере.</param>
         public static void SendMessage(byte ans, ref byte[] data, int lendata)
         {
+            if (sp == null) return;
+            if (!sp.IsOpen) return;
+
             int lenmess = lendata + 4;
             Array.Clear(arSendBuff1, 0, lenmess);
 
@@ -1575,7 +1593,7 @@ namespace SSLI
         /// <summary>
         /// Имя последнего принятого файла
         /// </summary>
-        public string sLastReciveName;
+        //public string sLastReciveName;
         /// <summary>
         /// Время получения последнего принятого файла
         /// </summary>
@@ -1583,7 +1601,7 @@ namespace SSLI
         /// <summary>
         /// Имя последнего отправленного файла
         /// </summary>
-        public string sLastSendedName;
+        //public string sLastSendedName;
         /// <summary>
         /// Время отправки последнего файла
         /// </summary>
@@ -1605,11 +1623,11 @@ namespace SSLI
         public cSSCurrStatus()
         {
             sNamePodrazdelenie = Utils.strConfig.sNamePodrazdelenie;
-            sDeviceSS_ID = Utils.GetDeviceID();
-            sLastReciveName = "нет данных";
-            sLastReciveTime = Utils.strConfig.strMail.sLastRecivedTime;
-            sLastSendedName = "нет данных";
-            sLastSendedTime = Utils.strConfig.strMail.sLastSendedTime;
+            sDeviceSS_ID = Utils.strConfig.sIdStation;
+            //sLastReciveName = "нет данных";
+            sLastReciveTime = Utils.strConfig.strGetFiles.sLastRecive;
+            //sLastSendedName = "нет данных";
+            //sLastSendedTime = Utils.strConfig.strGetFiles.sLastSendedTime;
 
             arstTermInDock = new stTermInDock[5];
             for (int i = 0; i < arstTermInDock.Length; i++)

@@ -54,6 +54,11 @@ namespace SSLI
                 if(ComPort.Init(Utils.strConfig.strTermExch.sComPortName, Utils.strConfig.strTermExch.iComPortSpeed))
                 {
                     WriteDebugString("Init:COM.OK - Запуск контроля клиентов.", 2);
+
+                    Utils.strConfig.sIdStation = Utils.GetDeviceID();
+                    Utils.strConfig.sSerNumStation = Utils.GetDeviceSernum();
+                    Utils.cCurrStatus.sDeviceSS_ID = Utils.strConfig.sIdStation;
+
                 }
                 else
                 {

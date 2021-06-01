@@ -6,7 +6,7 @@ using System.Threading;
 using System.Xml.Serialization;
 using System.Collections;
 using AMB_FTPCLIENT;
-using AMB_MAIL;
+//using AMB_MAIL;
 using Ionic.Zip;
 
 namespace SSLI
@@ -20,23 +20,23 @@ namespace SSLI
         private string sPathExecute = null;
         private string sPathToOutBox = null;
         //private string sPathToInBox = null;
-        private string sSMTPServer = null;
+        //private string sSMTPServer = null;
         //private string sPOP3Server = null;
         //private string sUserPOP3 = null;
         //private string sPasswordPOP3 = null;
-        private string sNamePodrazdelenie = null;
+        //private string sNamePodrazdelenie = null;
         private string sPathToNewSoftSS = null;
         private string sPathToNewSoftTerminal = null;
         private string sPathToUpdTerm = null;
-        private string sAdressMailServerUVD = null;
-        private string sAdressMailLocal = null;
+        //private string sAdressMailServerUVD = null;
+        //private string sAdressMailLocal = null;
 
         private const string sFileNameResult = "SSStat_X.xml";
 
-        private TimeSpan tsReciveInterval;
-        private TimeSpan tsSendInterval;
-        private DateTime dtLastRecive = DateTime.Now.AddHours(0); //было -1
-        private DateTime dtLastSend = DateTime.Now.AddHours(0);
+        //private TimeSpan tsReciveInterval;
+        //private TimeSpan tsSendInterval;
+        //private DateTime dtLastRecive = DateTime.Now.AddHours(0); //было -1
+        //private DateTime dtLastSend = DateTime.Now.AddHours(0);
         //private POPClient popClient = new POPClient();
 
         //========== GFB - GetFullBases ================
@@ -52,10 +52,10 @@ namespace SSLI
         private string sPathOnServerToUpdates = null;
         private string sPathOnServerToIncoming = null;
 
-        private TimeSpan tsGFBReciveInterval;
+        //private TimeSpan tsGFBReciveInterval;
         private DateTime dtGFBLastRecive = DateTime.Now.AddHours(0);
         private DateTime dtGFBNextRecive = DateTime.Now;
-        private DateTime dtNewSoftNextRecive = DateTime.Now;
+        //private DateTime dtNewSoftNextRecive = DateTime.Now;
         private string sGFBHoursRecive = "01:00";
         private stOneBaseFull[] stRemoteFiles = null;
 
@@ -78,36 +78,35 @@ namespace SSLI
                     sPathOnServerToUpdates = Utils.strConfig.strGetFiles.sPathOnServerToUpdates;
                     if (Utils.strConfig.strGetFiles.sPathOnServerToIncoming == null) sPathOnServerToIncoming = "Incoming";
                     else sPathOnServerToIncoming = Utils.strConfig.strGetFiles.sPathOnServerToIncoming;
-                    tsGFBReciveInterval = TimeSpan.FromDays(Utils.strConfig.strGetFiles.iReciveInterval);
+                    //tsGFBReciveInterval = TimeSpan.FromDays(Utils.strConfig.strGetFiles.iReciveInterval);
                     sGFBHoursRecive = Utils.strConfig.strGetFiles.sHoursRecive;
                     dtGFBNextRecive = Convert.ToDateTime(Utils.strConfig.strGetFiles.sNextRecive);
 
-                    // ==== MAIL ====
+
                     sPathToOutBox = Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToOutBox;
                     //sPathToInBox = Utils.strConfig.sPathToInBox;
                     sPathExecute = Utils.strConfig.sPathToExecute;
-                    sNamePodrazdelenie = Utils.strConfig.sNamePodrazdelenie;
+                    //sNamePodrazdelenie = Utils.strConfig.sNamePodrazdelenie;
                     iDebugLevel = Utils.strConfig.iDebugLevel;
 
                     sPathToNewSoftSS = Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftSS;
                     sPathToNewSoftTerminal = Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToNewSoftTerminal;
                     sPathToUpdTerm = Utils.sFolderNameMain + sPd + Utils.strConfig.sPathToUpdTerm;
 
-                    sSMTPServer = Utils.strConfig.strMail.sSMTPServer;
+                    //sSMTPServer = Utils.strConfig.strMail.sSMTPServer;
                     //sPOP3Server = Utils.strConfig.strMail.sPOP3Server;
                     //sUserPOP3 = Utils.strConfig.strMail.sUserPOP3;
                     //sPasswordPOP3 = Utils.strConfig.strMail.sPassPOP3;
-                    sAdressMailServerUVD = Utils.strConfig.strMail.sAdresServerUVD;
-                    sAdressMailLocal = Utils.strConfig.strMail.sAdressMailLocal;
+                    //sAdressMailServerUVD = Utils.strConfig.strMail.sAdresServerUVD;
+                    //sAdressMailLocal = Utils.strConfig.strMail.sAdressMailLocal;
 
-                    tsReciveInterval = TimeSpan.FromMinutes(Utils.strConfig.strMail.iReciveInterval);
-                    tsSendInterval = TimeSpan.FromMinutes(Utils.strConfig.strMail.iSendInterval);
+                    //tsReciveInterval = TimeSpan.FromMinutes(Utils.strConfig.strGetFiles.iReciveInterval);
+                    //tsSendInterval = TimeSpan.FromMinutes(Utils.strConfig.strGetFiles.iSendInterval);
                 }
                 WriteDebugString("---------------------------", 1);
 
                 if ((sPathToOutBox != null) && (sPathExecute != null) && (sIPServerUVD != null) &&
-                    (sPortServerUVD != null) && (sPathToFullBase != null) && (sNamePodrazdelenie != null) && (sSMTPServer != null)&&
-                    (sAdressMailServerUVD != null))
+                    (sPortServerUVD != null) && (sPathToFullBase != null))
                 {
                     WriteDebugString("Init:OK", 2);
                     bRet = true;
@@ -147,28 +146,18 @@ namespace SSLI
 
                 if (Utils.IsNetPresented())     //если нет сети, то что тут делать?
                 {
-                    if (DateTime.Now > (dtLastRecive + tsReciveInterval))
+                    if (DateTime.Now > dtGFBNextRecive)
                     {                                                       //пришло время забирать файлы
                         GetUpdatesFTP();
 
-                        if (DateTime.Now > dtNewSoftNextRecive)
-                        {
-                            GetNewSoftFTP();
-                            dtNewSoftNextRecive.AddDays(1);             //обновления софта забираются раз в день
-                        }
-                        dtLastRecive = DateTime.Now;
-                    }
-                    if (DateTime.Now > (dtLastSend + tsSendInterval))
-                    {                                                       //пришло время файлы разбрасывать
-                        PrepareAndSend();
-                    }
+                        GetNewSoftFTP(); //todo: забирать все каждый раз неправильно
 
-                    if (DateTime.Now > dtGFBNextRecive)
-                    {                                                       //забираем базу целиком
+                        PrepareAndSend();                                   //пришло время файлы разбрасывать   
+
                         if (!Utils.bRebootRequest)
                         {
-                            GetFullBase();
-                            Utils.SaveInit(Utils.sFolderNameMain + sPd + Utils.sFileNameInit + ".bak");
+                            GetFullBase();                                  //забираем базу целиком
+                            Utils.SaveInit(Utils.sFolderNameMain + sPd + Utils.sFileNameInit + ".bak");     //делаем копию конфига
                             Utils.SaveInit(Utils.sFolderNameSecond + sPd + Utils.sFileNameInit + ".bak");
                         }
                     }
@@ -208,7 +197,7 @@ namespace SSLI
                         Utils.strConfig.sTimeLastCriticalError = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
                         Utils.strConfig.sTextLastCriticalError = strWr;
                     }
-                    Utils.SaveInit();
+                    Utils.SaveInit();   //если была критическая ошибка
                 }
                 catch //(Exception ex)
                 {
@@ -220,82 +209,23 @@ namespace SSLI
 
         private void PrepareAndSend()
         {
-            if (Utils.IsFolderBusy(sPathToOutBox)) return;
-
-            if (!SendFtpOrMail(sPathOnServerToIncoming))
-            {                                                   //отправка по почте
-                #region send_from_mail
-                string sFrom = sNamePodrazdelenie;
-                if (sAdressMailLocal != null) sFrom = sAdressMailLocal;
-                string sBodyMail = "Отправлено автоматической службой AMBInTech_MailService со станции синхронизации " + sNamePodrazdelenie + ".\r\n"
-                    + "Не отвечайте на это письмо. Если Вы получили его по ошибке свяжитесь с разработчиками по адресу info@ambintech.ru \r\n"
-                    + "STATION_NAME=" + sNamePodrazdelenie + ".\r\n" + "STATION_VERSION=" + System.Reflection.Assembly.GetExecutingAssembly().FullName;
-
-                if (Utils.IsFolderBusy(sPathToOutBox))
+            #region Folder busy
+            int iCount = 0;
+            while (Utils.IsFolderBusy(sPathToOutBox))
+            {
+                Thread.Sleep(1000);
+                iCount++;
+                if (iCount > 30)
                 {
-                    WriteDebugString("PrepareAndSendMail.Send:OK - Directory is busy", 2);
-                    dtLastSend = DateTime.Now;
+                    WriteDebugString("PrepareAndSend:ERROR - Directory is busy: " + sPathToOutBox, 1);
                     return;
                 }
-
-                DirectoryInfo di = new DirectoryInfo(sPathToOutBox);
-                FileInfo[] fiOut = di.GetFiles("*.*");
-                int i = 1;
-                AMB_SMTP clientSMTP = new AMB_SMTP();
-                clientSMTP.SmtpServer = sSMTPServer;
-
-                Utils.MarkedDirBusy(sPathToOutBox);
-
-                foreach (FileInfo fi in fiOut)
-                {
-                    bool bSendOk = false;
-                    MailMessage message = new MailMessage();
-                    message.From = sFrom;
-                    message.To = sAdressMailServerUVD;
-                    message.Subject = GetSubjectByName(fi.Name);
-                    message.Body = sBodyMail;
-                    message.BodyEncoding = Encoding.GetEncoding(1251);
-                    try
-                    {
-                        if (fi.Name != Utils.sFileNameFlagBusy)
-                        {
-                            MailAttachment att = new MailAttachment(fi.FullName);
-                            message.Attachments.Add(att);
-                            bSendOk = clientSMTP.Send(message);
-                            if (bSendOk)
-                            {
-                                WriteDebugString("PrepareAndSendMail.Send(" + i.ToString() + "):OK - file: " + fi.Name, 2);
-                                AddLastSendedInfo(fi.Name);
-                            }
-                            else WriteDebugString("PrepareAndSendMail.Send(" + i.ToString() + "):FALSE - file: " + fi.Name, 2);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        WriteDebugString("PrepareSendingMail.Send(" + i.ToString() + "):ERROR - " + ex.Message, 1);
-                        bSendOk = false;
-                    }
-
-                    try
-                    {
-                        if (bSendOk)
-                        {
-                            File.Delete(fi.FullName);
-                            WriteDebugString("PrepareAndSendMail.Delete(" + i.ToString() + "):OK - file: " + fi.FullName, 2);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        WriteDebugString("PrepareSendingMail.Delete(" + i.ToString() + "):ERROR - " + ex.Message, 1);
-                    }
-                    i++;
-                }
-                Utils.DeleteMarkerDirBusy(sPathToOutBox);
-                dtLastSend = DateTime.Now;
-                #endregion
             }
-            else
-            {                                                   //отправка по FTP
+            #endregion
+
+            if (FindRemoteFtpIncoming(sPathOnServerToIncoming))
+            {                                                   
+                //отправка по FTP
                 #region senf_from_ftp                
 
                 Utils.MarkedDirBusy(sPathToOutBox);
@@ -392,7 +322,6 @@ namespace SSLI
                 }
 
                 Utils.DeleteMarkerDirBusy(sPathToOutBox);
-                dtLastSend = DateTime.Now;                
 
                 #endregion
             }
@@ -404,25 +333,8 @@ namespace SSLI
             if (sName.IndexOf(".log") >= 0) sRet = "SSSERVICE_LOG";
             return sRet;
         }
-        private void AddLastSendedInfo(string sFileName)
-        {
-            lock (Utils.oSyncroLoadSaveInit)
-            {
-                try
-                {
-                    Utils.strConfig.strMail.sLastSendedTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
-                    Utils.cCurrStatus.sLastSendedTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
-                    Utils.cCurrStatus.sLastSendedName = sFileName;
-                    Utils.SaveInit();
-                    WriteDebugString("AddLastSendedInfo:OK", 2);
-                }
-                catch (Exception ex)
-                {
-                    WriteDebugString("AddLastSendedInfo:ERROR - " + ex.Message, 1);
-                }
-            }
-        }
-        private bool SendFtpOrMail(string sFolderFtpIncom)
+
+        private bool FindRemoteFtpIncoming(string sFolderFtpIncom)
         {
             bool bRet = false;
 
@@ -452,12 +364,19 @@ namespace SSLI
 
         private void GetFullBase()
         {
-            if (Utils.IsFolderBusy(sPathToFullBase))
+            #region Folder busy
+            int iCount = 0;
+            while (Utils.IsFolderBusy(sPathToFullBase))
             {
-                WriteDebugString("GetFullBase:OK  - Directory is busy", 2);
-                Thread.Sleep(10000);
-                return;
+                Thread.Sleep(1000);
+                iCount++;
+                if (iCount > 30)
+                {
+                    WriteDebugString("GetFullBase:ERROR - Directory is busy: " + sPathToFullBase, 1);
+                    return;
+                }
             }
+            #endregion
 
             stRemoteFiles = LoadRemoteListFileFTP();
 
@@ -528,7 +447,7 @@ namespace SSLI
             {
                 if (fs != null) fs.Close();
                 WriteDebugString("LoadRemoteListFile:ERROR - " + ex.Message, 1);
-                dtGFBNextRecive = DateTime.Now.AddHours(24);    //повторим через сутки
+                dtGFBNextRecive = DateTime.Now.AddHours(2);    //повторим через 2 часа
             }
             try
             {
@@ -681,9 +600,8 @@ namespace SSLI
         {
             try
             {
-                //throw new Exception("The method or operation is not implemented.");
                 dtGFBLastRecive = DateTime.Now;
-                dtGFBNextRecive = Convert.ToDateTime((((DateTime)(dtGFBLastRecive + tsGFBReciveInterval)).ToString("dd.MM.yyyy") + " " + sGFBHoursRecive));
+                dtGFBNextRecive = Convert.ToDateTime((((DateTime)(dtGFBLastRecive)).ToString("dd.MM.yyyy") + " " + sGFBHoursRecive));
 
                 lock (Utils.oSyncroLoadSaveInit)
                 {
@@ -691,7 +609,7 @@ namespace SSLI
                     Utils.strConfig.strGetFiles.sLastRecive = DateTime.Now.ToString();
                 }
                 Utils.SaveInit();
-                WriteDebugString("WriteNewNextSaveGFB:OK", 2);
+                WriteDebugString("WriteNewNextSaveGFB:OK", 3);
             }
             catch (Exception ex)
             {
@@ -887,15 +805,33 @@ namespace SSLI
             {
                 try
                 {
-                    Utils.strConfig.strMail.sLastRecivedTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
+                    //Utils.strConfig.strGetFiles.sLastRecivedTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
                     Utils.cCurrStatus.sLastReciveTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
-                    Utils.cCurrStatus.sLastReciveName = sFileName;
-                    Utils.SaveInit();
-                    WriteDebugString("AddLastRecivedInfo:OK", 2);
+                    //Utils.cCurrStatus.sLastReciveName = sFileName;
+                    //Utils.SaveInit();
+                    WriteDebugString("AddLastRecivedInfo:OK", 3);
                 }
                 catch (Exception ex)
                 {
                     WriteDebugString("AddLastRecivedInfo:ERROR - " + ex.Message, 1);
+                }
+            }
+        }
+        private void AddLastSendedInfo(string sFileName)
+        {
+            lock (Utils.oSyncroLoadSaveInit)
+            {
+                try
+                {
+                    //Utils.strConfig.strGetFiles.sLastSendedTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
+                    Utils.cCurrStatus.sLastSendedTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
+                    //Utils.cCurrStatus.sLastSendedName = sFileName;
+                    //Utils.SaveInit();
+                    WriteDebugString("AddLastSendedInfo:OK", 3);
+                }
+                catch (Exception ex)
+                {
+                    WriteDebugString("AddLastSendedInfo:ERROR - " + ex.Message, 1);
                 }
             }
         }

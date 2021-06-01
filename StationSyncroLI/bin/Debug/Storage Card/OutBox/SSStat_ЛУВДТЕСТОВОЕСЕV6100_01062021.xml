@@ -4,8 +4,32 @@
     <sPodrazdelenieID>01020304050607080102030405060708</sPodrazdelenieID>
     <sNamePodrazdelenie>ЛУВД Тестовое СЕ v6.1.0.0</sNamePodrazdelenie>
     <sNameTerminal>Test Terminal</sNameTerminal>
+    <sDeviceID>2dbd3000327308010301b3010149f830</sDeviceID>
+    <sDateTimeLastSyncronisation>26.03.2021 11:51:42</sDateTimeLastSyncronisation>
+    <iCountBases>1</iCountBases>
+    <iCountSearch>0</iCountSearch>
+    <stVersions>
+      <sVersionStarter>6.0.0.9</sVersionStarter>
+      <sVersionTerminal>6.0.0.2</sVersionTerminal>
+    </stVersions>
+    <arSearch />
+    <arBaseStat>
+      <stOneBaseStat>
+        <sTypeBase>FED_LICA</sTypeBase>
+        <sComment>Федеральный розыск лиц</sComment>
+        <bIsBase>true</bIsBase>
+        <bCheckBase>true</bCheckBase>
+        <sDateLastUpdates>03.04.2008</sDateLastUpdates>
+        <sVerFileDll>6.0.0.7</sVerFileDll>
+      </stOneBaseStat>
+    </arBaseStat>
+  </stOneTermStatistic>
+  <stOneTermStatistic>
+    <sPodrazdelenieID>01020304050607080102030405060708</sPodrazdelenieID>
+    <sNamePodrazdelenie>ЛУВД Тестовое СЕ v6.1.0.0</sNamePodrazdelenie>
+    <sNameTerminal>Test Terminal</sNameTerminal>
     <sDeviceID>2dbd3000327308010301b301004989d7</sDeviceID>
-    <sDateTimeLastSyncronisation>20.05.2020 11:53:20</sDateTimeLastSyncronisation>
+    <sDateTimeLastSyncronisation>26.03.2021 11:51:42</sDateTimeLastSyncronisation>
     <iCountBases>1</iCountBases>
     <iCountSearch>0</iCountSearch>
     <stVersions>
@@ -28,40 +52,8 @@
     <sPodrazdelenieID>01020304050607080102030405060708</sPodrazdelenieID>
     <sNamePodrazdelenie>ЛУВД Тестовое СЕ v6.1.0.0</sNamePodrazdelenie>
     <sNameTerminal>Test Terminal</sNameTerminal>
-    <sDeviceID>2dbd300032730801031684005144024a</sDeviceID>
-    <sDateTimeLastSyncronisation>20.05.2020 11:53:20</sDateTimeLastSyncronisation>
-    <iCountBases>2</iCountBases>
-    <iCountSearch>0</iCountSearch>
-    <stVersions>
-      <sVersionStarter>6.0.0.9</sVersionStarter>
-      <sVersionTerminal>6.0.0.2</sVersionTerminal>
-    </stVersions>
-    <arSearch />
-    <arBaseStat>
-      <stOneBaseStat>
-        <sTypeBase>FED_LICA</sTypeBase>
-        <sComment>Федеральный розыск лиц</sComment>
-        <bIsBase>true</bIsBase>
-        <bCheckBase>true</bCheckBase>
-        <sDateLastUpdates>18.09.2007</sDateLastUpdates>
-        <sVerFileDll>6.0.0.7</sVerFileDll>
-      </stOneBaseStat>
-      <stOneBaseStat>
-        <sTypeBase>MESTN_LICA</sTypeBase>
-        <sComment>Местный розыск лиц</sComment>
-        <bIsBase>false</bIsBase>
-        <bCheckBase>false</bCheckBase>
-        <sDateLastUpdates>30.08.2007</sDateLastUpdates>
-        <sVerFileDll>6.0.0.3</sVerFileDll>
-      </stOneBaseStat>
-    </arBaseStat>
-  </stOneTermStatistic>
-  <stOneTermStatistic>
-    <sPodrazdelenieID>01020304050607080102030405060708</sPodrazdelenieID>
-    <sNamePodrazdelenie>ЛУВД Тестовое СЕ v6.1.0.0</sNamePodrazdelenie>
-    <sNameTerminal>Test Terminal</sNameTerminal>
     <sDeviceID>2dbd3000327308010d519a01fe487d7f</sDeviceID>
-    <sDateTimeLastSyncronisation>20.05.2020 11:53:20</sDateTimeLastSyncronisation>
+    <sDateTimeLastSyncronisation>26.03.2021 11:51:42</sDateTimeLastSyncronisation>
     <iCountBases>1</iCountBases>
     <iCountSearch>0</iCountSearch>
     <stVersions>
@@ -85,7 +77,7 @@
     <sNamePodrazdelenie>ЛУВД Тестовое СЕ v6.1.0.0</sNamePodrazdelenie>
     <sNameTerminal>Test Terminal</sNameTerminal>
     <sDeviceID>2dbd30003273080101519a01fe48b361</sDeviceID>
-    <sDateTimeLastSyncronisation>20.05.2020 11:53:20</sDateTimeLastSyncronisation>
+    <sDateTimeLastSyncronisation>26.03.2021 11:51:42</sDateTimeLastSyncronisation>
     <iCountBases>2</iCountBases>
     <iCountSearch>0</iCountSearch>
     <stVersions>
@@ -116,9 +108,9 @@
     <sPodrazdelenieID>01020304050607080102030405060708</sPodrazdelenieID>
     <sNamePodrazdelenie>ЛУВД Тестовое СЕ v6.1.0.0</sNamePodrazdelenie>
     <sNameTerminal>Test Terminal</sNameTerminal>
-    <sDeviceID>2dbd3000327308010301b3010149f830</sDeviceID>
-    <sDateTimeLastSyncronisation>20.05.2020 11:53:20</sDateTimeLastSyncronisation>
-    <iCountBases>1</iCountBases>
+    <sDeviceID>2dbd300032730801031684005144024a</sDeviceID>
+    <sDateTimeLastSyncronisation>26.03.2021 11:51:42</sDateTimeLastSyncronisation>
+    <iCountBases>2</iCountBases>
     <iCountSearch>0</iCountSearch>
     <stVersions>
       <sVersionStarter>6.0.0.9</sVersionStarter>
@@ -131,8 +123,16 @@
         <sComment>Федеральный розыск лиц</sComment>
         <bIsBase>true</bIsBase>
         <bCheckBase>true</bCheckBase>
-        <sDateLastUpdates>03.04.2008</sDateLastUpdates>
+        <sDateLastUpdates>18.09.2007</sDateLastUpdates>
         <sVerFileDll>6.0.0.7</sVerFileDll>
+      </stOneBaseStat>
+      <stOneBaseStat>
+        <sTypeBase>MESTN_LICA</sTypeBase>
+        <sComment>Местный розыск лиц</sComment>
+        <bIsBase>false</bIsBase>
+        <bCheckBase>false</bCheckBase>
+        <sDateLastUpdates>30.08.2007</sDateLastUpdates>
+        <sVerFileDll>6.0.0.3</sVerFileDll>
       </stOneBaseStat>
     </arBaseStat>
   </stOneTermStatistic>
@@ -141,7 +141,7 @@
     <sNamePodrazdelenie>ЛУВД Тестовое СЕ v6.1.0.0</sNamePodrazdelenie>
     <sNameTerminal>Test Terminal</sNameTerminal>
     <sDeviceID>2dbd3000327308010e01b3010149f217</sDeviceID>
-    <sDateTimeLastSyncronisation>20.05.2020 11:53:20</sDateTimeLastSyncronisation>
+    <sDateTimeLastSyncronisation>26.03.2021 11:51:42</sDateTimeLastSyncronisation>
     <iCountBases>1</iCountBases>
     <iCountSearch>0</iCountSearch>
     <stVersions>

@@ -391,10 +391,10 @@ namespace StationSyncroLI
             {
                 try
                 {
-                    Utils.strConfig.strMail.sLastRecivedTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
+                    //Utils.strConfig.strGetFiles.sLastRecivedTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
                     Utils.cCurrStatus.sLastReciveTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
-                    Utils.cCurrStatus.sLastReciveName = sFileName;
-                    if (!bRequestReboot) Utils.SaveInit();
+                    //Utils.cCurrStatus.sLastReciveName = sFileName;
+                    //if (!bRequestReboot) Utils.SaveInit();
                     WriteDebugString("AddLastRecivedInfo:OK - " + sFileName, 2);
                 }
                 catch (Exception ex)
@@ -413,10 +413,10 @@ namespace StationSyncroLI
             {
                 try
                 {
-                    Utils.strConfig.strMail.sLastSendedTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
+                    //Utils.strConfig.strGetFiles.sLastSendedTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
                     Utils.cCurrStatus.sLastSendedTime = DateTime.Now.ToString("dd.MM.yyyy HH:mm:ss");
-                    Utils.cCurrStatus.sLastSendedName = sFileName;
-                    if (!bRequestReboot) Utils.SaveInit();
+                    //Utils.cCurrStatus.sLastSendedName = sFileName;
+                    //if (!bRequestReboot) Utils.SaveInit();
                     WriteDebugString("AddLastSendedInfo:OK - " + sFileName, 2);
                 }
                 catch (Exception ex)
